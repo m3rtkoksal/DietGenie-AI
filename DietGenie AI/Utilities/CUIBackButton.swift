@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CUIBackButton: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    var color: Color? = Color.C1C1B1F
     
     var body: some View {
         Button {
@@ -17,7 +16,7 @@ struct CUIBackButton: View {
         } label: {
             Image(systemName: "chevron.backward")
                 .font(.system(size: 16, weight: .semibold))
-                .foregroundColor(color == nil ? Color.C1C1B1F : color)
+                .foregroundColor(.teal)
                 .padding(5)
         }
         .frame(width: 50)

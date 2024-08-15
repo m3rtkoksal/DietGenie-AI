@@ -42,7 +42,9 @@ struct CUILeftHeadline: View {
     var bottomPadding: CGFloat?
 
     var body: some View {
-        VStack(spacing: 0){
+        LinearGradient(gradient: Gradient(colors: [.red, .blue, .teal]), startPoint: .leading, endPoint: .trailing)
+            .frame(height: 100)
+        .mask(VStack(spacing: 0){
             HStack {
                 Text(title)
                     .foregroundColor(style.titleColor)
@@ -59,7 +61,7 @@ struct CUILeftHeadline: View {
                     Spacer()
                 }
             }.padding(.bottom, bottomPadding ?? 40)
-        }
+        })
         .padding(.horizontal, 16)
     }
 }

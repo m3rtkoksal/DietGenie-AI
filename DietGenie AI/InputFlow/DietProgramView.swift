@@ -31,7 +31,7 @@ struct DietProgramView: View {
                             MealCardElementView(meal: meal)
                         }
                     }
-                    .padding(.horizontal) // Padding for the whole list
+                    .padding(.horizontal)
                 }
             }
             
