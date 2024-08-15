@@ -1,0 +1,547 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8E02CF382C6B8205006E5B93 /* DietGenie_AIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF372C6B8205006E5B93 /* DietGenie_AIApp.swift */; };
+		8E02CF3A2C6B8205006E5B93 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF392C6B8205006E5B93 /* ContentView.swift */; };
+		8E02CF3C2C6B8207006E5B93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E02CF3B2C6B8207006E5B93 /* Assets.xcassets */; };
+		8E02CF3F2C6B8207006E5B93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E02CF3E2C6B8207006E5B93 /* Preview Assets.xcassets */; };
+		8E02CF472C6B8331006E5B93 /* GenderInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF462C6B8331006E5B93 /* GenderInputView.swift */; };
+		8E02CF4A2C6B83FF006E5B93 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF492C6B83FF006E5B93 /* BaseView.swift */; };
+		8E02CF4D2C6B8440006E5B93 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF4C2C6B8440006E5B93 /* Color+Ext.swift */; };
+		8E02CF502C6B8486006E5B93 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF4F2C6B8486006E5B93 /* ColorScheme.swift */; };
+		8E02CF522C6B84B7006E5B93 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF512C6B84B7006E5B93 /* BaseViewModel.swift */; };
+		8E02CF552C6B8506006E5B93 /* CUIDropDownElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF542C6B8506006E5B93 /* CUIDropDownElement.swift */; };
+		8E02CF572C6B8542006E5B93 /* CUIDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF562C6B8542006E5B93 /* CUIDropDown.swift */; };
+		8E02CF592C6B856B006E5B93 /* Font+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF582C6B856B006E5B93 /* Font+Ext.swift */; };
+		8E02CF5B2C6B860B006E5B93 /* InputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF5A2C6B860B006E5B93 /* InputViewModel.swift */; };
+		8E02CF5D2C6B86A9006E5B93 /* ItemHeightPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF5C2C6B86A9006E5B93 /* ItemHeightPreferenceKey.swift */; };
+		8E02CF5F2C6B8746006E5B93 /* Screen+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF5E2C6B8746006E5B93 /* Screen+Ext.swift */; };
+		8E02CF612C6B87A3006E5B93 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF602C6B87A3006E5B93 /* View+Ext.swift */; };
+		8E02CF632C6B8885006E5B93 /* NdDropdownModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF622C6B8885006E5B93 /* NdDropdownModifier.swift */; };
+		8E02CF662C6B88BB006E5B93 /* BackgroundBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF652C6B88BB006E5B93 /* BackgroundBlurView.swift */; };
+		8E02CF682C6B8993006E5B93 /* CUIDropdownField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF672C6B8993006E5B93 /* CUIDropdownField.swift */; };
+		8E02CF6A2C6B89B9006E5B93 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF692C6B89B9006E5B93 /* String+Ext.swift */; };
+		8E02CF6C2C6B8A8D006E5B93 /* CUISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF6B2C6B8A8D006E5B93 /* CUISearchBar.swift */; };
+		8E02CF702C6B94C3006E5B93 /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF6F2C6B94C3006E5B93 /* SegmentedControlView.swift */; };
+		8E02CF722C6B9F36006E5B93 /* CUILeftHeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF712C6B9F36006E5B93 /* CUILeftHeadline.swift */; };
+		8E02CF742C6BA020006E5B93 /* CUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF732C6BA020006E5B93 /* CUIButton.swift */; };
+		8E02CF762C6BA882006E5B93 /* PurposeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF752C6BA882006E5B93 /* PurposeInputView.swift */; };
+		8E02CF782C6BA91C006E5B93 /* UserInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF772C6BA91C006E5B93 /* UserInputModel.swift */; };
+		8E02CF7A2C6BAAB4006E5B93 /* BMIInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF792C6BAAB4006E5B93 /* BMIInputView.swift */; };
+		8E02CF7C2C6BACD6006E5B93 /* CUIBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF7B2C6BACD6006E5B93 /* CUIBackButton.swift */; };
+		8E02CF7E2C6BB0ED006E5B93 /* CUIValidationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF7D2C6BB0ED006E5B93 /* CUIValidationField.swift */; };
+		8E02CF802C6BB137006E5B93 /* CUIDefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF7F2C6BB137006E5B93 /* CUIDefaultTextField.swift */; };
+		8E02CF822C6BB2D8006E5B93 /* ValidatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF812C6BB2D8006E5B93 /* ValidatorHelper.swift */; };
+		8E02CF862C6BB7B1006E5B93 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF852C6BB7B1006E5B93 /* HealthKitManager.swift */; };
+		8E02CF882C6BF777006E5B93 /* SelectInputMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF872C6BF777006E5B93 /* SelectInputMethodView.swift */; };
+		8E02CF8A2C6BFB43006E5B93 /* DietProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF892C6BFB43006E5B93 /* DietProgramView.swift */; };
+		8E02CF8C2C6C02E6006E5B93 /* OpenAIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF8B2C6C02E6006E5B93 /* OpenAIManager.swift */; };
+		8E02CF942C6C7671006E5B93 /* MealCardElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF932C6C7671006E5B93 /* MealCardElementView.swift */; };
+		8E02CF962C6CC3F6006E5B93 /* CUILoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF952C6CC3F6006E5B93 /* CUILoadingView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8E02CF342C6B8205006E5B93 /* DietGenie AI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DietGenie AI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E02CF372C6B8205006E5B93 /* DietGenie_AIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietGenie_AIApp.swift; sourceTree = "<group>"; };
+		8E02CF392C6B8205006E5B93 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8E02CF3B2C6B8207006E5B93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8E02CF3E2C6B8207006E5B93 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8E02CF462C6B8331006E5B93 /* GenderInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderInputView.swift; sourceTree = "<group>"; };
+		8E02CF492C6B83FF006E5B93 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		8E02CF4C2C6B8440006E5B93 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		8E02CF4F2C6B8486006E5B93 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
+		8E02CF512C6B84B7006E5B93 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		8E02CF542C6B8506006E5B93 /* CUIDropDownElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIDropDownElement.swift; sourceTree = "<group>"; };
+		8E02CF562C6B8542006E5B93 /* CUIDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIDropDown.swift; sourceTree = "<group>"; };
+		8E02CF582C6B856B006E5B93 /* Font+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Ext.swift"; sourceTree = "<group>"; };
+		8E02CF5A2C6B860B006E5B93 /* InputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModel.swift; sourceTree = "<group>"; };
+		8E02CF5C2C6B86A9006E5B93 /* ItemHeightPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHeightPreferenceKey.swift; sourceTree = "<group>"; };
+		8E02CF5E2C6B8746006E5B93 /* Screen+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen+Ext.swift"; sourceTree = "<group>"; };
+		8E02CF602C6B87A3006E5B93 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
+		8E02CF622C6B8885006E5B93 /* NdDropdownModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NdDropdownModifier.swift; sourceTree = "<group>"; };
+		8E02CF652C6B88BB006E5B93 /* BackgroundBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundBlurView.swift; sourceTree = "<group>"; };
+		8E02CF672C6B8993006E5B93 /* CUIDropdownField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIDropdownField.swift; sourceTree = "<group>"; };
+		8E02CF692C6B89B9006E5B93 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		8E02CF6B2C6B8A8D006E5B93 /* CUISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUISearchBar.swift; sourceTree = "<group>"; };
+		8E02CF6F2C6B94C3006E5B93 /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
+		8E02CF712C6B9F36006E5B93 /* CUILeftHeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUILeftHeadline.swift; sourceTree = "<group>"; };
+		8E02CF732C6BA020006E5B93 /* CUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIButton.swift; sourceTree = "<group>"; };
+		8E02CF752C6BA882006E5B93 /* PurposeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurposeInputView.swift; sourceTree = "<group>"; };
+		8E02CF772C6BA91C006E5B93 /* UserInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputModel.swift; sourceTree = "<group>"; };
+		8E02CF792C6BAAB4006E5B93 /* BMIInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIInputView.swift; sourceTree = "<group>"; };
+		8E02CF7B2C6BACD6006E5B93 /* CUIBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIBackButton.swift; sourceTree = "<group>"; };
+		8E02CF7D2C6BB0ED006E5B93 /* CUIValidationField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIValidationField.swift; sourceTree = "<group>"; };
+		8E02CF7F2C6BB137006E5B93 /* CUIDefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIDefaultTextField.swift; sourceTree = "<group>"; };
+		8E02CF812C6BB2D8006E5B93 /* ValidatorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorHelper.swift; sourceTree = "<group>"; };
+		8E02CF832C6BB6F3006E5B93 /* DietGenie AI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DietGenie AI.entitlements"; sourceTree = "<group>"; };
+		8E02CF852C6BB7B1006E5B93 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		8E02CF872C6BF777006E5B93 /* SelectInputMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInputMethodView.swift; sourceTree = "<group>"; };
+		8E02CF892C6BFB43006E5B93 /* DietProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietProgramView.swift; sourceTree = "<group>"; };
+		8E02CF8B2C6C02E6006E5B93 /* OpenAIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIManager.swift; sourceTree = "<group>"; };
+		8E02CF932C6C7671006E5B93 /* MealCardElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCardElementView.swift; sourceTree = "<group>"; };
+		8E02CF952C6CC3F6006E5B93 /* CUILoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUILoadingView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8E02CF312C6B8205006E5B93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8E02CF2B2C6B8205006E5B93 = {
+			isa = PBXGroup;
+			children = (
+				8E02CF362C6B8205006E5B93 /* DietGenie AI */,
+				8E02CF352C6B8205006E5B93 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8E02CF352C6B8205006E5B93 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E02CF342C6B8205006E5B93 /* DietGenie AI.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E02CF362C6B8205006E5B93 /* DietGenie AI */ = {
+			isa = PBXGroup;
+			children = (
+				8E02CF842C6BB79E006E5B93 /* Manager */,
+				8E02CF832C6BB6F3006E5B93 /* DietGenie AI.entitlements */,
+				8E02CF642C6B889F006E5B93 /* Utilities */,
+				8E02CF532C6B84EC006E5B93 /* Dropdown */,
+				8E02CF4E2C6B846B006E5B93 /* Color */,
+				8E02CF4B2C6B8424006E5B93 /* Extension */,
+				8E02CF482C6B83EC006E5B93 /* Base */,
+				8E02CF452C6B831D006E5B93 /* InputFlow */,
+				8E02CF372C6B8205006E5B93 /* DietGenie_AIApp.swift */,
+				8E02CF392C6B8205006E5B93 /* ContentView.swift */,
+				8E02CF3B2C6B8207006E5B93 /* Assets.xcassets */,
+				8E02CF3D2C6B8207006E5B93 /* Preview Content */,
+			);
+			path = "DietGenie AI";
+			sourceTree = "<group>";
+		};
+		8E02CF3D2C6B8207006E5B93 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8E02CF3E2C6B8207006E5B93 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8E02CF452C6B831D006E5B93 /* InputFlow */ = {
+			isa = PBXGroup;
+			children = (
+				8E02CF872C6BF777006E5B93 /* SelectInputMethodView.swift */,
+				8E02CF5A2C6B860B006E5B93 /* InputViewModel.swift */,
+				8E02CF462C6B8331006E5B93 /* GenderInputView.swift */,
+				8E02CF752C6BA882006E5B93 /* PurposeInputView.swift */,
+				8E02CF792C6BAAB4006E5B93 /* BMIInputView.swift */,
+				8E02CF892C6BFB43006E5B93 /* DietProgramView.swift */,
+				8E02CF932C6C7671006E5B93 /* MealCardElementView.swift */,
+			);
+			path = InputFlow;
+			sourceTree = "<group>";
+		};
+		8E02CF482C6B83EC006E5B93 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				8E02CF492C6B83FF006E5B93 /* BaseView.swift */,
+				8E02CF512C6B84B7006E5B93 /* BaseViewModel.swift */,
+				8E02CF772C6BA91C006E5B93 /* UserInputModel.swift */,
+				8E02CF812C6BB2D8006E5B93 /* ValidatorHelper.swift */,
+				8E02CF952C6CC3F6006E5B93 /* CUILoadingView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		8E02CF4B2C6B8424006E5B93 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8E02CF4C2C6B8440006E5B93 /* Color+Ext.swift */,
+				8E02CF582C6B856B006E5B93 /* Font+Ext.swift */,
+				8E02CF5E2C6B8746006E5B93 /* Screen+Ext.swift */,
+				8E02CF602C6B87A3006E5B93 /* View+Ext.swift */,
+				8E02CF692C6B89B9006E5B93 /* String+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		8E02CF4E2C6B846B006E5B93 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				8E02CF4F2C6B8486006E5B93 /* ColorScheme.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		8E02CF532C6B84EC006E5B93 /* Dropdown */ = {
+			isa = PBXGroup;
+			children = (
+				8E02CF542C6B8506006E5B93 /* CUIDropDownElement.swift */,
+				8E02CF562C6B8542006E5B93 /* CUIDropDown.swift */,
+				8E02CF5C2C6B86A9006E5B93 /* ItemHeightPreferenceKey.swift */,
+				8E02CF622C6B8885006E5B93 /* NdDropdownModifier.swift */,
+				8E02CF672C6B8993006E5B93 /* CUIDropdownField.swift */,
+				8E02CF6B2C6B8A8D006E5B93 /* CUISearchBar.swift */,
+			);
+			path = Dropdown;
+			sourceTree = "<group>";
+		};
+		8E02CF642C6B889F006E5B93 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8E02CF652C6B88BB006E5B93 /* BackgroundBlurView.swift */,
+				8E02CF6F2C6B94C3006E5B93 /* SegmentedControlView.swift */,
+				8E02CF712C6B9F36006E5B93 /* CUILeftHeadline.swift */,
+				8E02CF732C6BA020006E5B93 /* CUIButton.swift */,
+				8E02CF7B2C6BACD6006E5B93 /* CUIBackButton.swift */,
+				8E02CF7D2C6BB0ED006E5B93 /* CUIValidationField.swift */,
+				8E02CF7F2C6BB137006E5B93 /* CUIDefaultTextField.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		8E02CF842C6BB79E006E5B93 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				8E02CF852C6BB7B1006E5B93 /* HealthKitManager.swift */,
+				8E02CF8B2C6C02E6006E5B93 /* OpenAIManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8E02CF332C6B8205006E5B93 /* DietGenie AI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E02CF422C6B8207006E5B93 /* Build configuration list for PBXNativeTarget "DietGenie AI" */;
+			buildPhases = (
+				8E02CF302C6B8205006E5B93 /* Sources */,
+				8E02CF312C6B8205006E5B93 /* Frameworks */,
+				8E02CF322C6B8205006E5B93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DietGenie AI";
+			packageProductDependencies = (
+			);
+			productName = "DietGenie AI";
+			productReference = 8E02CF342C6B8205006E5B93 /* DietGenie AI.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8E02CF2C2C6B8205006E5B93 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					8E02CF332C6B8205006E5B93 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 8E02CF2F2C6B8205006E5B93 /* Build configuration list for PBXProject "DietGenie AI" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8E02CF2B2C6B8205006E5B93;
+			packageReferences = (
+			);
+			productRefGroup = 8E02CF352C6B8205006E5B93 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8E02CF332C6B8205006E5B93 /* DietGenie AI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8E02CF322C6B8205006E5B93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E02CF3F2C6B8207006E5B93 /* Preview Assets.xcassets in Resources */,
+				8E02CF3C2C6B8207006E5B93 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8E02CF302C6B8205006E5B93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E02CF6A2C6B89B9006E5B93 /* String+Ext.swift in Sources */,
+				8E02CF612C6B87A3006E5B93 /* View+Ext.swift in Sources */,
+				8E02CF682C6B8993006E5B93 /* CUIDropdownField.swift in Sources */,
+				8E02CF472C6B8331006E5B93 /* GenderInputView.swift in Sources */,
+				8E02CF3A2C6B8205006E5B93 /* ContentView.swift in Sources */,
+				8E02CF662C6B88BB006E5B93 /* BackgroundBlurView.swift in Sources */,
+				8E02CF382C6B8205006E5B93 /* DietGenie_AIApp.swift in Sources */,
+				8E02CF882C6BF777006E5B93 /* SelectInputMethodView.swift in Sources */,
+				8E02CF802C6BB137006E5B93 /* CUIDefaultTextField.swift in Sources */,
+				8E02CF8A2C6BFB43006E5B93 /* DietProgramView.swift in Sources */,
+				8E02CF862C6BB7B1006E5B93 /* HealthKitManager.swift in Sources */,
+				8E02CF742C6BA020006E5B93 /* CUIButton.swift in Sources */,
+				8E02CF522C6B84B7006E5B93 /* BaseViewModel.swift in Sources */,
+				8E02CF5D2C6B86A9006E5B93 /* ItemHeightPreferenceKey.swift in Sources */,
+				8E02CF702C6B94C3006E5B93 /* SegmentedControlView.swift in Sources */,
+				8E02CF4A2C6B83FF006E5B93 /* BaseView.swift in Sources */,
+				8E02CF8C2C6C02E6006E5B93 /* OpenAIManager.swift in Sources */,
+				8E02CF762C6BA882006E5B93 /* PurposeInputView.swift in Sources */,
+				8E02CF822C6BB2D8006E5B93 /* ValidatorHelper.swift in Sources */,
+				8E02CF722C6B9F36006E5B93 /* CUILeftHeadline.swift in Sources */,
+				8E02CF7E2C6BB0ED006E5B93 /* CUIValidationField.swift in Sources */,
+				8E02CF502C6B8486006E5B93 /* ColorScheme.swift in Sources */,
+				8E02CF782C6BA91C006E5B93 /* UserInputModel.swift in Sources */,
+				8E02CF7A2C6BAAB4006E5B93 /* BMIInputView.swift in Sources */,
+				8E02CF632C6B8885006E5B93 /* NdDropdownModifier.swift in Sources */,
+				8E02CF5F2C6B8746006E5B93 /* Screen+Ext.swift in Sources */,
+				8E02CF6C2C6B8A8D006E5B93 /* CUISearchBar.swift in Sources */,
+				8E02CF4D2C6B8440006E5B93 /* Color+Ext.swift in Sources */,
+				8E02CF942C6C7671006E5B93 /* MealCardElementView.swift in Sources */,
+				8E02CF572C6B8542006E5B93 /* CUIDropDown.swift in Sources */,
+				8E02CF962C6CC3F6006E5B93 /* CUILoadingView.swift in Sources */,
+				8E02CF7C2C6BACD6006E5B93 /* CUIBackButton.swift in Sources */,
+				8E02CF592C6B856B006E5B93 /* Font+Ext.swift in Sources */,
+				8E02CF552C6B8506006E5B93 /* CUIDropDownElement.swift in Sources */,
+				8E02CF5B2C6B860B006E5B93 /* InputViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		8E02CF402C6B8207006E5B93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8E02CF412C6B8207006E5B93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8E02CF432C6B8207006E5B93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "DietGenie AI/DietGenie AI.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DietGenie AI/Preview Content\"";
+				DEVELOPMENT_TEAM = QH2FS8GDVG;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app requires access to your health data to provide personalized insights and recommendations.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aodeme.DietGenie-AI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8E02CF442C6B8207006E5B93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "DietGenie AI/DietGenie AI.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DietGenie AI/Preview Content\"";
+				DEVELOPMENT_TEAM = QH2FS8GDVG;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app requires access to your health data to provide personalized insights and recommendations.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aodeme.DietGenie-AI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8E02CF2F2C6B8205006E5B93 /* Build configuration list for PBXProject "DietGenie AI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E02CF402C6B8207006E5B93 /* Debug */,
+				8E02CF412C6B8207006E5B93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E02CF422C6B8207006E5B93 /* Build configuration list for PBXNativeTarget "DietGenie AI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E02CF432C6B8207006E5B93 /* Debug */,
+				8E02CF442C6B8207006E5B93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8E02CF2C2C6B8205006E5B93 /* Project object */;
+}
