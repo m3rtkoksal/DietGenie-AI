@@ -11,7 +11,7 @@ import HealthKit
 class OpenAIManager: ObservableObject {
     private let openAIURL = URL(string: "https://api.openai.com/v1/chat/completions")
     private var openAIKey: String {
-        return "sk-Aw_uR2YHd0t42wc14hFSOGS2Uud0nqMCbGSMwf-wQ7T3BlbkFJw_ryMndDLF3ceP48fWd_SUEhr8VOVVATUWgvV4VnUA" // Replace with your actual API key
+        return "" // Replace with your actual API key
     }
     
     private func executeRequest(request: URLRequest) -> Data? {
