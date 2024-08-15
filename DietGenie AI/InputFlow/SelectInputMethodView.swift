@@ -12,7 +12,8 @@ struct SelectInputMethodView: View {
     @StateObject private var viewModel = InputViewModel()
     @StateObject private var healthKitManager = HealthKitManager()
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    @State private var isLoading = false
+    @State private var showAlert = false
+    @State private var alertMessage = ""
     
     var body: some View {
         BaseView(currentViewModel: viewModel,
@@ -30,19 +31,9 @@ struct SelectInputMethodView: View {
                 isActive: $viewModel.goToPurposeInputPage
             ) {}
             VStack(spacing: 50) {
-                CUIButton(text: "Allow HealthKit") {
-                    isLoading = true
+                CUIButton(text: "Create Program with HealthKit") {
                     if healthKitManager.isAuthorized {
                         fetchAndNavigate()
-                    } else {
-                        healthKitManager.requestAuthorization()
-                        // Check authorization status again
-                        viewModel.showIndicator = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            if healthKitManager.isAuthorized {
-                                fetchAndNavigate()
-                            }
-                        }
                     }
                 }
                 CUIButton(text: "Enter Manually") {
@@ -54,9 +45,25 @@ struct SelectInputMethodView: View {
             .onDisappear {
                 viewModel.showIndicator = false
             }
+            .onAppear {
+                healthKitManager.requestAuthorization()
+                checkHealthKitAuthorization()
+            }
         }
         .navigationBarTitle("DietGenie AI")
         .navigationBarBackButtonHidden()
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Authorization Required"),
+                message: Text(alertMessage),
+                primaryButton: .default(Text("Allow")) {
+                    if !healthKitManager.isAuthorized {
+                        healthKitManager.requestAuthorization()
+                    }
+                },
+                secondaryButton: .cancel(Text("Cancel"))
+            )
+        }
     }
     private func fetchAndNavigate() {
         healthKitManager.fetchYearlyData { activeEnergyData, restingEnergyData, bodyFatPercentageData, leanBodyMassData, weightData, genderData, heightData, ageData  in
@@ -73,6 +80,15 @@ struct SelectInputMethodView: View {
             self.userInputModel.age = ageData
             // Ensure navigation only happens after data is fetched
             self.viewModel.goToPurposeInputPage = true
+        }
+    }
+    private func checkHealthKitAuthorization() {
+        // Perform the authorization check after a brief delay to allow isAuthorized to update
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            if !self.healthKitManager.isAuthorized {
+                self.alertMessage = "HealthKit authorization is required to proceed. Please allow access in your device settings."
+                self.showAlert = true
+            }
         }
     }
 }
