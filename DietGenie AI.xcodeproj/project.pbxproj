@@ -44,6 +44,9 @@
 		8E02CF8C2C6C02E6006E5B93 /* OpenAIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF8B2C6C02E6006E5B93 /* OpenAIManager.swift */; };
 		8E02CF942C6C7671006E5B93 /* MealCardElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF932C6C7671006E5B93 /* MealCardElementView.swift */; };
 		8E02CF962C6CC3F6006E5B93 /* CUILoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF952C6CC3F6006E5B93 /* CUILoadingView.swift */; };
+		8E02CF982C6E0D79006E5B93 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF972C6E0D79006E5B93 /* KeychainManager.swift */; };
+		8E02CF9B2C6E0E67006E5B93 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8E02CF9A2C6E0E67006E5B93 /* KeychainSwift */; };
+		8E02CF9D2C6E0FDC006E5B93 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF9C2C6E0FDC006E5B93 /* Constant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +89,8 @@
 		8E02CF8B2C6C02E6006E5B93 /* OpenAIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIManager.swift; sourceTree = "<group>"; };
 		8E02CF932C6C7671006E5B93 /* MealCardElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCardElementView.swift; sourceTree = "<group>"; };
 		8E02CF952C6CC3F6006E5B93 /* CUILoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUILoadingView.swift; sourceTree = "<group>"; };
+		8E02CF972C6E0D79006E5B93 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		8E02CF9C2C6E0FDC006E5B93 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E02CF9B2C6E0E67006E5B93 /* KeychainSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +217,7 @@
 				8E02CF7B2C6BACD6006E5B93 /* CUIBackButton.swift */,
 				8E02CF7D2C6BB0ED006E5B93 /* CUIValidationField.swift */,
 				8E02CF7F2C6BB137006E5B93 /* CUIDefaultTextField.swift */,
+				8E02CF9C2C6E0FDC006E5B93 /* Constant.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -220,6 +227,7 @@
 			children = (
 				8E02CF852C6BB7B1006E5B93 /* HealthKitManager.swift */,
 				8E02CF8B2C6C02E6006E5B93 /* OpenAIManager.swift */,
+				8E02CF972C6E0D79006E5B93 /* KeychainManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -241,6 +249,7 @@
 			);
 			name = "DietGenie AI";
 			packageProductDependencies = (
+				8E02CF9A2C6E0E67006E5B93 /* KeychainSwift */,
 			);
 			productName = "DietGenie AI";
 			productReference = 8E02CF342C6B8205006E5B93 /* DietGenie AI.app */;
@@ -271,6 +280,7 @@
 			);
 			mainGroup = 8E02CF2B2C6B8205006E5B93;
 			packageReferences = (
+				8E02CF992C6E0E67006E5B93 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = 8E02CF352C6B8205006E5B93 /* Products */;
 			projectDirPath = "";
@@ -303,6 +313,7 @@
 				8E02CF682C6B8993006E5B93 /* CUIDropdownField.swift in Sources */,
 				8E02CF472C6B8331006E5B93 /* GenderInputView.swift in Sources */,
 				8E02CF3A2C6B8205006E5B93 /* ContentView.swift in Sources */,
+				8E02CF9D2C6E0FDC006E5B93 /* Constant.swift in Sources */,
 				8E02CF662C6B88BB006E5B93 /* BackgroundBlurView.swift in Sources */,
 				8E02CF382C6B8205006E5B93 /* DietGenie_AIApp.swift in Sources */,
 				8E02CF882C6BF777006E5B93 /* SelectInputMethodView.swift in Sources */,
@@ -329,6 +340,7 @@
 				8E02CF942C6C7671006E5B93 /* MealCardElementView.swift in Sources */,
 				8E02CF572C6B8542006E5B93 /* CUIDropDown.swift in Sources */,
 				8E02CF962C6CC3F6006E5B93 /* CUILoadingView.swift in Sources */,
+				8E02CF982C6E0D79006E5B93 /* KeychainManager.swift in Sources */,
 				8E02CF7C2C6BACD6006E5B93 /* CUIBackButton.swift in Sources */,
 				8E02CF592C6B856B006E5B93 /* Font+Ext.swift in Sources */,
 				8E02CF552C6B8506006E5B93 /* CUIDropDownElement.swift in Sources */,
@@ -542,6 +554,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8E02CF992C6E0E67006E5B93 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
+			requirement = {
+				kind = exactVersion;
+				version = 20.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8E02CF9A2C6E0E67006E5B93 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E02CF992C6E0E67006E5B93 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8E02CF2C2C6B8205006E5B93 /* Project object */;
 }

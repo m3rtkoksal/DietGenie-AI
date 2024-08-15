@@ -10,12 +10,9 @@ import HealthKit
 
 class OpenAIManager: ObservableObject {
     private let openAIURL = URL(string: "https://api.openai.com/v1/chat/completions")
-    private var openAIKey: String {
-        return "sk-Aw_uR2YHd0t42wc14hFSOGS2Uud0nqMCbGSMwf-wQ7T3BlbkFJw_ryMndDLF3ceP48fWd_SUEhr8VOVVATUWgvV4VnUA" // Replace with your actual API key
-    }
     
     private func executeRequest(request: URLRequest) -> Data? {
-
+        
         let semaphore = DispatchSemaphore(value: 0)
         var requestData: Data?
         
@@ -37,6 +34,7 @@ class OpenAIManager: ObservableObject {
         let prompt = createPrompt(from: userInputModel)
         print(prompt)
         
+        let secureToken =  KeychainManager.shared.getStringFromKeychain(forKey: .secureToken)
         guard let url = openAIURL else {
             print("Invalid URL")
             completion(nil)
@@ -46,7 +44,7 @@ class OpenAIManager: ObservableObject {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(openAIKey)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(secureToken)", forHTTPHeaderField: "Authorization")
         
         let httpBody: [String: Any] = [
             "model": "gpt-3.5-turbo",
