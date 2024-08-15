@@ -33,7 +33,13 @@ class OpenAIManager: ObservableObject {
     func generatePrompt(userInputModel: UserInputModel, completion: @escaping ([String]?) -> Void) {
         let prompt = createPrompt(from: userInputModel)
         print(prompt)
-        
+        RemoteConfigManager.shared.fetchAPIKey { apiKey in
+            if let key = apiKey {
+                KeychainManager.shared.saveToKeychain(data: key, forKey: .secureToken)
+            } else {
+                print("Failed to fetch API key")
+            }
+        }
         let secureToken =  KeychainManager.shared.getStringFromKeychain(forKey: .secureToken)
         guard let url = openAIURL else {
             print("Invalid URL")
