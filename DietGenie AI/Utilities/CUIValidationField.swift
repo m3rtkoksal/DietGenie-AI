@@ -17,6 +17,7 @@ struct CUIValidationField: View {
     @Binding var isCriteriaValid: Bool
     @Binding var isNotValid: Bool
     @Binding var showPrompt: Bool
+    var style: UIKeyboardType
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -25,11 +26,10 @@ struct CUIValidationField: View {
                     text: $text,
                     placeholder: placeholder,
                     fontColor: .teal)
+                .keyboardType(style)
                 .padding(.leading, 3)
                 .frame(height: 50)
                 .frame(maxWidth: UIScreen.screenWidth / 1.1)
-                
-                
             }
             .onChange(of: text) { newValue in
                 isCriteriaValid = false
@@ -37,7 +37,7 @@ struct CUIValidationField: View {
                 showPrompt = false
             }
             .frame(maxWidth: UIScreen.screenWidth / 1.1)
-            .background(.clear)
+            .background(Color.otherBlack)
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)

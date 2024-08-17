@@ -29,28 +29,23 @@ struct CUIDropdownField: View {
                         
                         Text(choosenItem.text.isEmpty ? "Select From Menu" : choosenItem.text)
                             .font(.subtext4)
-                            .foregroundColor(.textColorsPrimary)
+                            .foregroundColor(.textColorsNeutral)
                     }
                 }
                 Spacer()
-                /*
-                Text(choosenItem.text.isEmpty ? String.localizedText("dropdownChoose") : String.localizedText("dropdownChange"))
-                    .font(.subtext5)
-                    .foregroundColor(.lightPurple)
-                    .hiddenConditionally(isHidden: isHiddenChangeText)*/
-                
+           
                 Image(systemName: "chevron.down")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 16, height: 16)
-                    .foregroundColor(.orange)
+                    .foregroundColor(.white)
             }
         }
         .padding(.horizontal, 10)
         .padding(.vertical)
         .frame(height: 48)
         .overlay(RoundedRectangle(cornerRadius: 8).strokeBorder(isExpanded ? Color.lightPurple : Color.lightGray200))
-        .background(Color.white)
+        .background(Color.clear)
     }
 }
 

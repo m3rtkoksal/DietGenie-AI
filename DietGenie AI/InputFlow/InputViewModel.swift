@@ -24,6 +24,9 @@ class InputViewModel: BaseViewModel {
     @Published var goToBMIInputPage = false
     @Published var goToRequestPage = false
     @Published var goToDietProgramView = false
+    @Published var goToSelectInputView = false
+    @Published var goToRegisterView = false
+    @Published var goToPasswordReset = false
     
     func fetchMenuItems() {
         self.menuPickerItems = [

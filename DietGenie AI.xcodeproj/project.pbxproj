@@ -72,6 +72,12 @@
 		8E02CFD72C6E20DE006E5B93 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8E02CFD62C6E20DE006E5B93 /* FirebaseStorage */; };
 		8E02CFD92C6E20DE006E5B93 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 8E02CFD82C6E20DE006E5B93 /* FirebaseStorageCombine-Community */; };
 		8E02CFDB2C6E20DE006E5B93 /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = 8E02CFDA2C6E20DE006E5B93 /* FirebaseVertexAI-Preview */; };
+		8E02CFDE2C70FFEA006E5B93 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CFDD2C70FFEA006E5B93 /* WelcomeView.swift */; };
+		8E02CFE02C71114B006E5B93 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CFDF2C71114B006E5B93 /* RegisterView.swift */; };
+		8E02CFE52C711A93006E5B93 /* SwiftUIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CFE42C711A93006E5B93 /* SwiftUIWrapper.swift */; };
+		8E02CFE72C711AC4006E5B93 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CFE62C711AC4006E5B93 /* Date+Ext.swift */; };
+		8EDFD1AB2C713E8D00CCA1C2 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AA2C713E8D00CCA1C2 /* PasswordResetView.swift */; };
+		8EDFD1AD2C714F4F00CCA1C2 /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +124,12 @@
 		8E02CF9C2C6E0FDC006E5B93 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		8E02CF9E2C6E1E4E006E5B93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E02CFAB2C6E1F47006E5B93 /* FirebaseRemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfigManager.swift; sourceTree = "<group>"; };
+		8E02CFDD2C70FFEA006E5B93 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		8E02CFDF2C71114B006E5B93 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		8E02CFE42C711A93006E5B93 /* SwiftUIWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIWrapper.swift; sourceTree = "<group>"; };
+		8E02CFE62C711AC4006E5B93 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		8EDFD1AA2C713E8D00CCA1C2 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
+		8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +170,7 @@
 		8E02CF2B2C6B8205006E5B93 = {
 			isa = PBXGroup;
 			children = (
+				8E02CFE12C7119FF006E5B93 /* Modifier */,
 				8E02CF9E2C6E1E4E006E5B93 /* GoogleService-Info.plist */,
 				8E02CF362C6B8205006E5B93 /* DietGenie AI */,
 				8E02CF352C6B8205006E5B93 /* Products */,
@@ -175,6 +188,7 @@
 		8E02CF362C6B8205006E5B93 /* DietGenie AI */ = {
 			isa = PBXGroup;
 			children = (
+				8E02CFDC2C70FFC2006E5B93 /* RegisterLogin */,
 				8E02CF842C6BB79E006E5B93 /* Manager */,
 				8E02CF832C6BB6F3006E5B93 /* DietGenie AI.entitlements */,
 				8E02CF642C6B889F006E5B93 /* Utilities */,
@@ -233,6 +247,7 @@
 				8E02CF5E2C6B8746006E5B93 /* Screen+Ext.swift */,
 				8E02CF602C6B87A3006E5B93 /* View+Ext.swift */,
 				8E02CF692C6B89B9006E5B93 /* String+Ext.swift */,
+				8E02CFE62C711AC4006E5B93 /* Date+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -269,6 +284,8 @@
 				8E02CF7D2C6BB0ED006E5B93 /* CUIValidationField.swift */,
 				8E02CF7F2C6BB137006E5B93 /* CUIDefaultTextField.swift */,
 				8E02CF9C2C6E0FDC006E5B93 /* Constant.swift */,
+				8E02CFE42C711A93006E5B93 /* SwiftUIWrapper.swift */,
+				8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -282,6 +299,23 @@
 				8E02CFAB2C6E1F47006E5B93 /* FirebaseRemoteConfigManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		8E02CFDC2C70FFC2006E5B93 /* RegisterLogin */ = {
+			isa = PBXGroup;
+			children = (
+				8E02CFDD2C70FFEA006E5B93 /* WelcomeView.swift */,
+				8E02CFDF2C71114B006E5B93 /* RegisterView.swift */,
+				8EDFD1AA2C713E8D00CCA1C2 /* PasswordResetView.swift */,
+			);
+			path = RegisterLogin;
+			sourceTree = "<group>";
+		};
+		8E02CFE12C7119FF006E5B93 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modifier;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -390,8 +424,11 @@
 				8E02CF682C6B8993006E5B93 /* CUIDropdownField.swift in Sources */,
 				8E02CF472C6B8331006E5B93 /* GenderInputView.swift in Sources */,
 				8E02CF3A2C6B8205006E5B93 /* ContentView.swift in Sources */,
+				8E02CFE72C711AC4006E5B93 /* Date+Ext.swift in Sources */,
+				8E02CFE52C711A93006E5B93 /* SwiftUIWrapper.swift in Sources */,
 				8E02CF9D2C6E0FDC006E5B93 /* Constant.swift in Sources */,
 				8E02CF662C6B88BB006E5B93 /* BackgroundBlurView.swift in Sources */,
+				8E02CFDE2C70FFEA006E5B93 /* WelcomeView.swift in Sources */,
 				8E02CF382C6B8205006E5B93 /* DietGenie_AIApp.swift in Sources */,
 				8E02CF882C6BF777006E5B93 /* SelectInputMethodView.swift in Sources */,
 				8E02CF802C6BB137006E5B93 /* CUIDefaultTextField.swift in Sources */,
@@ -401,11 +438,14 @@
 				8E02CF522C6B84B7006E5B93 /* BaseViewModel.swift in Sources */,
 				8E02CF5D2C6B86A9006E5B93 /* ItemHeightPreferenceKey.swift in Sources */,
 				8E02CF702C6B94C3006E5B93 /* SegmentedControlView.swift in Sources */,
+				8EDFD1AD2C714F4F00CCA1C2 /* LogoutButton.swift in Sources */,
 				8E02CF4A2C6B83FF006E5B93 /* BaseView.swift in Sources */,
 				8E02CF8C2C6C02E6006E5B93 /* OpenAIManager.swift in Sources */,
 				8E02CF762C6BA882006E5B93 /* PurposeInputView.swift in Sources */,
 				8E02CF822C6BB2D8006E5B93 /* ValidatorHelper.swift in Sources */,
+				8E02CFE02C71114B006E5B93 /* RegisterView.swift in Sources */,
 				8E02CF722C6B9F36006E5B93 /* CUILeftHeadline.swift in Sources */,
+				8EDFD1AB2C713E8D00CCA1C2 /* PasswordResetView.swift in Sources */,
 				8E02CF7E2C6BB0ED006E5B93 /* CUIValidationField.swift in Sources */,
 				8E02CF502C6B8486006E5B93 /* ColorScheme.swift in Sources */,
 				8E02CF782C6BA91C006E5B93 /* UserInputModel.swift in Sources */,
@@ -560,12 +600,15 @@
 				DEVELOPMENT_TEAM = QH2FS8GDVG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "DietGenie-AI";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app requires access to your health data to provide personalized insights and recommendations.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -591,12 +634,15 @@
 				DEVELOPMENT_TEAM = QH2FS8GDVG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "DietGenie-AI";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app requires access to your health data to provide personalized insights and recommendations.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

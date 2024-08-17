@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct SelectInputMethodView: View {
     @EnvironmentObject var userInputModel: UserInputModel
@@ -52,6 +53,9 @@ struct SelectInputMethodView: View {
         }
         .navigationBarTitle("DietGenie AI")
         .navigationBarBackButtonHidden()
+        .navigationBarItems(
+            trailing: LogoutButton()
+        )
         .alert(isPresented: $showAlert) {
             Alert(
                 title: Text("Authorization Required"),
@@ -89,6 +93,16 @@ struct SelectInputMethodView: View {
                 self.alertMessage = "HealthKit authorization is required to proceed. Please allow access in your device settings."
                 self.showAlert = true
             }
+        }
+    }
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+            presentationMode.wrappedValue.dismiss()
+            print("User signed out successfully!")
+        } catch let signOutError as NSError {
+            // Handle error if the sign-out fails
+            print("Error signing out: %@", signOutError)
         }
     }
 }

@@ -24,6 +24,7 @@ struct ValidatorHelper {
     static var emailPredicate = NSPredicate(format: "SELF MATCHES %@", "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$")
     static var passwordPredicate = NSPredicate(format: "SELF MATCHES %@","[0-9]{6,6}$")
     static var emptyPasswordPredicate = NSPredicate(format: "SELF MATCHES %@","^.{6,6}$")
+    static var datePredicate = NSPredicate(format: "SELF MATCHES %@","^(0?[1-9]|1\\d|2\\d|3[01])[\\.\\/](0?[1-9]|1[0-2])[\\.\\/](19|20)\\d{2}$")
     static var cityPredicate = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[\\x{00}-\\x{FF}\(turkishCharacterSet)][$\\w])\\s*[\\x{00}-\\x{FF}\(turkishCharacterSet)][$\\w\\s]{1,50}$")
     static var stateAndRegionPredicate = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[\\x{00}-\\x{FF}\(turkishCharacterSet)][$\\w])\\s*[\\x{00}-\\x{FF}\(turkishCharacterSet)][$\\w\\s]{1,50}$")
     static var addressIDPredicate = NSPredicate(format: "SELF MATCHES %@","[0-9]{1,10}$")

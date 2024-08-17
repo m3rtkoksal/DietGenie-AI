@@ -14,8 +14,7 @@ struct GenderInputView: View {
     @StateObject private var viewModel = InputViewModel()
     @StateObject private var healthKitManager = HealthKitManager()
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    @State private var choosenItem = CUIDropdownItemModel(text: "")
-    @State private var showGenderMenu = false
+   
     @State private var selectedGenderSegmentIndex = 0
     
     var body: some View {
@@ -37,8 +36,6 @@ struct GenderInputView: View {
                 Spacer()
                 SegmentedControlView(selectedIndex: $selectedGenderSegmentIndex, titles: viewModel.genderSegmentItems)
                 //                    SegmentedControlView(selectedIndex: $selectedPurposeSegmentIndex, titles: viewModel.purposeSegmentItems)
-                //                    CUIDropdownField(title: "filterViewTransactionType", isExpanded: $showGenderMenu,
-                //                        choosenItem: $choosenItem)
                 Spacer()
                 CUIButton(text: "Next") {
                     let selectedGender = viewModel.genderSegmentItems[selectedGenderSegmentIndex].title
@@ -57,9 +54,7 @@ struct GenderInputView: View {
                 healthKitManager.requestAuthorization()
             }
             // MARK: - Profile Photo Menu
-            .ndDropdownModifier(itemList: $viewModel.menuPickerItems,
-                                isExpanded: $showGenderMenu,
-                                choosenItem: $choosenItem)
+            
         }
                  .navigationBarTitle("DietGenie AI")
                  .navigationBarBackButtonHidden()

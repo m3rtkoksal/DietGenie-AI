@@ -33,21 +33,13 @@ struct BMIInputView: View {
                     bottomPadding: 0)
                 Spacer()
                 CUIValidationField(
-                    placeholder: "Please enter age in years",
-                    prompt: "Please enter valid age",
-                    text: $ageValidator.text,
-                    isCriteriaValid: $ageValidator.isCriteriaValid,
-                    isNotValid: $ageValidator.isNotValid,
-                    showPrompt: $ageValidator.showPrompt
-                )
-                .keyboardType(.numberPad)
-                CUIValidationField(
                     placeholder: "Please enter height in cm",
                     prompt: "Please enter valid height in cm",
                     text: $heightValidator.text,
                     isCriteriaValid: $heightValidator.isCriteriaValid,
                     isNotValid: $heightValidator.isNotValid,
-                    showPrompt: $heightValidator.showPrompt
+                    showPrompt: $heightValidator.showPrompt,
+                    style: .numberPad
                 )
                 .keyboardType(.numberPad)
                 CUIValidationField(
@@ -56,7 +48,8 @@ struct BMIInputView: View {
                     text: $weightValidator.text,
                     isCriteriaValid: $weightValidator.isCriteriaValid,
                     isNotValid: $weightValidator.isNotValid,
-                    showPrompt: $weightValidator.showPrompt
+                    showPrompt: $weightValidator.showPrompt,
+                    style: .numberPad
                 )
                 .keyboardType(.numberPad)
                 Spacer()
