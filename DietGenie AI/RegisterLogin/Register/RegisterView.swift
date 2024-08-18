@@ -156,7 +156,6 @@ struct RegisterView: View {
                     }
                 }
             }
-
         }
     }
     private func DatePickerView() -> some View {

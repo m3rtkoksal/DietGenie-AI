@@ -11,6 +11,7 @@ import SwiftUI
 class SelectInputMethodVM: BaseViewModel {
     @Published var goToGenderInputPage = false
     @Published var goToPurposeInputPage = false
+    
 }
 
 

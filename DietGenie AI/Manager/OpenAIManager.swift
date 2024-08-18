@@ -116,7 +116,7 @@ class OpenAIManager: ObservableObject {
         // Define the meal separator
         let mealSeparator = "***"
         // Define meal keywords for better segmentation
-        let mealKeywords = ["Breakfast", "Morning Snack", "Lunch", "Afternoon Snack", "Dinner", "Evening Snack","Meal 1", "Meal 2", "Meal 3", "Meal 4", "Meal 5"]
+        let mealKeywords = ["Breakfast", "Morning Snack", "Lunch", "Afternoon Snack", "Dinner", "Evening Snack","Meal 1", "Meal 2", "Meal 3", "Meal 4", "Meal 5", "Snack"]
 
         // Split the response by the meal separator
         let mealComponents = response.components(separatedBy: mealSeparator)

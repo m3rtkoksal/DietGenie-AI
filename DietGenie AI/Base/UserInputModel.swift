@@ -9,6 +9,7 @@ import Combine
 import HealthKit
 
 class UserInputModel: ObservableObject {
+    @Published var userId: String?
     @Published var activeEnergy: Double?
     @Published var restingEnergy: Double?
     @Published var bodyFatPercentage: Double?

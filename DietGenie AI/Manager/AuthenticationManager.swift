@@ -6,20 +6,20 @@
 //
 
 import Foundation
+import Combine
 
-class AuthenticationManager {
+class AuthenticationManager: ObservableObject {
     static let shared = AuthenticationManager()
     private let isLoggedInKey = "isLoggedIn"
     
-    private init() {}
+    @Published var isLoggedIn: Bool {
+        didSet {
+            UserDefaults.standard.set(isLoggedIn, forKey: isLoggedInKey)
+        }
+    }
     
-    var isLoggedIn: Bool {
-        get {
-            UserDefaults.standard.bool(forKey: isLoggedInKey)
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: isLoggedInKey)
-        }
+    private init() {
+        self.isLoggedIn = UserDefaults.standard.bool(forKey: isLoggedInKey)
     }
     
     func logIn() {

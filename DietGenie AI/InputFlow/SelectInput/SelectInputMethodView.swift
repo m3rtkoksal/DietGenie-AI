@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseFirestore
 
 struct SelectInputMethodView: View {
     @EnvironmentObject var userInputModel: UserInputModel
@@ -15,6 +16,7 @@ struct SelectInputMethodView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @State private var showAlert = false
     @State private var alertMessage = ""
+    private let db = Firestore.firestore()
     
     var body: some View {
             BaseView(currentViewModel: viewModel,
@@ -49,6 +51,16 @@ struct SelectInputMethodView: View {
                 .onAppear {
                     healthKitManager.requestAuthorization()
                     checkHealthKitAuthorization()
+                    checkIfDietPlanExists { exists in
+                        if exists {
+                            // Handle the case where a diet plan already exists
+                            print("Diet plan exists.")
+                        } else {
+                            // Handle the case where no diet plan exists
+                            print("No diet plan exists.")
+                        }
+                    }
+
                 }
             }
             .navigationBarTitle("DietGenie AI")
@@ -95,16 +107,26 @@ struct SelectInputMethodView: View {
             }
         }
     }
-    func signOut() {
-        do {
-            try Auth.auth().signOut()
-            presentationMode.wrappedValue.dismiss()
-            AuthenticationManager.shared.logOut()
-            print("User signed out successfully!")
-        } catch let signOutError as NSError {
-            // Handle error if the sign-out fails
-            print("Error signing out: %@", signOutError)
+    private func checkIfDietPlanExists(completion: @escaping (Bool) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(false)
+            return
         }
+
+        db.collection("dietPlans")
+            .whereField("userId", isEqualTo: userId)
+            .getDocuments { snapshot, error in
+                if let error = error {
+                    print("Error checking diet plan: \(error.localizedDescription)")
+                    completion(false)
+                } else if let snapshot = snapshot, !snapshot.isEmpty {
+                    // Diet plan exists
+                    completion(true)
+                } else {
+                    // No diet plan found
+                    completion(false)
+                }
+            }
     }
 }
 

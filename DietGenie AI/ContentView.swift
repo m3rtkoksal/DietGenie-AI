@@ -9,16 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var userInputModel = UserInputModel()
-    @State private var isShowingWelcomeView = true
+    @ObservedObject private var authManager = AuthenticationManager.shared
+    @State private var shouldShowRoot = true
+    
     var body: some View {
-        if AuthenticationManager.shared.isLoggedIn {
-            NavigationView {
-                SelectInputMethodView()
+        ZStack {
+            if authManager.isLoggedIn {
+                NavigationView {
+                    SelectInputMethodView()
+                        .environmentObject(userInputModel)
+                }
+            } else {
+                WelcomeView()
                     .environmentObject(userInputModel)
             }
-        } else {
-            WelcomeView()
-                .environmentObject(userInputModel)
         }
     }
 }
