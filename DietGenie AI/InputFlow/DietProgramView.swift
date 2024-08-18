@@ -27,7 +27,7 @@ struct DietProgramView: View {
                     title: "Your Daily Plan",
                     subtitle: "",
                     style: .red,
-                    bottomPadding: 20)
+                    bottomPadding: 50)
                 ScrollView {
                     VStack(alignment: .leading, spacing: 10) {
                         ForEach(meals, id: \.self) { meal in
@@ -55,6 +55,21 @@ struct DietProgramView: View {
         viewModel.showIndicator = true // Show indicator
         print("Generating diet plan...")
         
+        // Create a DietPlan instance
+        let dietPlan = DietPlan(
+            id: nil, // Will be set by Firestore if it’s a new document
+            createdAt: Date(),
+            meals: [], // You can initialize with an empty array or a default value
+            userId: userInputModel.userId ?? "unknown"
+        )
+        
+        // Save the diet plan entry
+        openAIManager.saveDietPlanEntry(userInputModel: userInputModel, dietPlan: dietPlan) {
+            // Assuming saveDietPlanEntry is updated to include a completion handler
+            print("Diet plan entry saved successfully.")
+        }
+
+        // Generate the diet plan
         openAIManager.generatePrompt(userInputModel: userInputModel) { responseMeals in
             DispatchQueue.main.async {
                 print("Received response.")
@@ -68,6 +83,7 @@ struct DietProgramView: View {
             }
         }
     }
+
     private func saveDietPlanToFirebase(meals: [String]) {
         guard let userId = Auth.auth().currentUser?.uid else {
             print("No user ID found")

@@ -180,6 +180,7 @@ struct SelectInputMethodView: View {
                         // Optionally decode createdAt if it's stored as a Timestamp
                         let createdAt = (data["createdAt"] as? Timestamp)?.dateValue()
                         
+                        // Create DietPlan instance
                         let dietPlan = DietPlan(id: document.documentID, createdAt: createdAt, meals: meals, userId: userId)
                         completion(true, dietPlan)
                     } else {
@@ -191,6 +192,7 @@ struct SelectInputMethodView: View {
                 }
             }
     }
+
 
 }
 

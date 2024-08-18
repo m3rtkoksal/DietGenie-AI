@@ -7,12 +7,13 @@
 
 import Foundation
 import HealthKit
+import FirebaseFirestore
 
 class OpenAIManager: ObservableObject {
     private let openAIURL = URL(string: "https://api.openai.com/v1/chat/completions")
+    private let db = Firestore.firestore()
     
     private func executeRequest(request: URLRequest) -> Data? {
-        
         let semaphore = DispatchSemaphore(value: 0)
         var requestData: Data?
         
@@ -29,6 +30,27 @@ class OpenAIManager: ObservableObject {
         _ = semaphore.wait(timeout: .now() + 20)
         return requestData
     }
+    
+    func saveDietPlanEntry(userInputModel: UserInputModel, dietPlan: DietPlan, completion: @escaping () -> Void) {
+        // Ensure the diet plan includes the userId from the UserInputModel
+        var updatedDietPlan = dietPlan
+        updatedDietPlan.userId = userInputModel.userId ?? ""  // Ensure userId is set
+        
+        do {
+            if let id = updatedDietPlan.id {
+                // Update existing document
+                try db.collection("dietPlans").document(id).setData(from: updatedDietPlan)
+            } else {
+                // Add new document
+                _ = try db.collection("dietPlans").addDocument(from: updatedDietPlan)
+            }
+            completion() // Call the completion handler after successful save
+            print("Diet plan entry saved successfully.")
+        } catch {
+            print("Error saving diet plan entry: \(error.localizedDescription)")
+        }
+    }
+
     
     func generatePrompt(userInputModel: UserInputModel, completion: @escaping ([String]?) -> Void) {
         let prompt = createPrompt(from: userInputModel)

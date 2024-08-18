@@ -139,6 +139,7 @@ struct RegisterView: View {
                 // User is successfully authenticated, now save additional information to Firestore
                 let db = Firestore.firestore()
                 db.collection("users").document(user.uid).setData([
+                    "userId": user.uid,
                     "name": name,
                     "surname": surname,
                     "birthday": birthday,
