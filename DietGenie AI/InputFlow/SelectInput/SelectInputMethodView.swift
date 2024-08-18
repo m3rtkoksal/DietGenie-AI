@@ -15,70 +15,115 @@ struct SelectInputMethodView: View {
     @StateObject private var healthKitManager = HealthKitManager()
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @State private var showAlert = false
+    @State private var showLimitAlert = false
+    @State private var showNoPlanAlert = false
     @State private var alertMessage = ""
     private let db = Firestore.firestore()
     
     var body: some View {
-            BaseView(currentViewModel: viewModel,
-                     background: .black,
-                     showIndicator: $viewModel.showIndicator
-            ) {
-                NavigationLink(
-                    destination: GenderInputView()
-                        .environmentObject(userInputModel),
-                    isActive: $viewModel.goToGenderInputPage
-                ) {}
-                NavigationLink(
-                    destination: PurposeInputView()
-                        .environmentObject(userInputModel),
-                    isActive: $viewModel.goToPurposeInputPage
-                ) {}
-                VStack(spacing: 50) {
-                    CUIButton(text: "Create Program with HealthKit") {
-                        if healthKitManager.isAuthorized {
-                            fetchAndNavigate()
+        BaseView(currentViewModel: viewModel,
+                 background: .black,
+                 showIndicator: $viewModel.showIndicator
+        ) {
+            NavigationLink(
+                destination: GenderInputView()
+                    .environmentObject(userInputModel),
+                isActive: $viewModel.goToGenderInputPage
+            ) {}
+            NavigationLink(
+                destination: PurposeInputView()
+                    .environmentObject(userInputModel),
+                isActive: $viewModel.goToPurposeInputPage
+            ) {}
+            NavigationLink(
+                destination: SavedPlanView()
+                    .environmentObject(userInputModel),
+                isActive: $viewModel.goToSavedPlan
+            ) {}
+            VStack(spacing: 50) {
+                CUIButton(text: "Create Program with HealthKit") {
+                    if healthKitManager.isAuthorized {
+                        checkIfDietPlanExists { exists, dietPlanData in
+                            if exists {
+                                // Handle the case where a diet plan already exists
+                                self.showLimitAlert = true
+                                self.alertMessage = "You need a premium account to be able to get another diet plan"
+                                print("Diet plan exists.")
+                            } else {
+                                // Handle the case where no diet plan exists
+                                fetchAndNavigate()
+                                print("No diet plan exists.")
+                            }
                         }
-                    }
-                    CUIButton(text: "Enter Manually") {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            self.viewModel.goToGenderInputPage = true
-                        }
+                        
                     }
                 }
-                .onDisappear {
-                    viewModel.showIndicator = false
+                CUIButton(text: "Enter Manually") {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.viewModel.goToGenderInputPage = true
+                    }
                 }
-                .onAppear {
-                    healthKitManager.requestAuthorization()
-                    checkHealthKitAuthorization()
-                    checkIfDietPlanExists { exists in
-                        if exists {
-                            // Handle the case where a diet plan already exists
-                            print("Diet plan exists.")
-                        } else {
-                            // Handle the case where no diet plan exists
-                            print("No diet plan exists.")
+                
+                CUIButton(text: "Saved Diet Plan") {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        checkIfDietPlanExists { exists, dietPlanData in
+                            if exists, let data = dietPlanData {
+                                // Pass the data to SavedPlanView
+                                self.userInputModel.dietPlanData = data
+                                self.viewModel.goToSavedPlan = true
+                                print("Diet plan exists.")
+                            } else {
+                                // Handle the case where no diet plan exists
+                                self.showNoPlanAlert = true
+                                self.alertMessage = "You don't have a saved diet plan"
+                                print("No diet plan exists.")
+                            }
                         }
                     }
-
                 }
             }
-            .navigationBarTitle("DietGenie AI")
-            .navigationBarItems(
-                trailing: LogoutButton()
+            .onDisappear {
+                viewModel.showIndicator = false
+            }
+            .onAppear {
+                healthKitManager.requestAuthorization()
+                checkHealthKitAuthorization()
+            }
+        }
+        .navigationBarTitle("DietGenie AI")
+        .navigationBarItems(
+            trailing: LogoutButton()
+        )
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Authorization Required"),
+                message: Text(alertMessage),
+                primaryButton: .default(Text("Allow")) {
+                    if !healthKitManager.isAuthorized {
+                        healthKitManager.requestAuthorization()
+                    }
+                },
+                secondaryButton: .cancel(Text("Cancel"))
             )
-            .alert(isPresented: $showAlert) {
-                Alert(
-                    title: Text("Authorization Required"),
-                    message: Text(alertMessage),
-                    primaryButton: .default(Text("Allow")) {
-                        if !healthKitManager.isAuthorized {
-                            healthKitManager.requestAuthorization()
-                        }
-                    },
-                    secondaryButton: .cancel(Text("Cancel"))
-                )
-            }
+        }
+        .alert(isPresented: $showLimitAlert) {
+            Alert(
+                title: Text("Premium Account Needed"),
+                message: Text(alertMessage),
+                primaryButton: .default(Text("Subscribe")) {
+                    
+                },
+                secondaryButton: .cancel(Text("Cancel"))
+            )
+        }
+        alert(isPresented: $showNoPlanAlert) {
+            Alert(
+                title: Text("No Diet Plan"),
+                message: Text(alertMessage),
+                dismissButton: .default(Text("OK")) {
+                }
+            )
+        }
         
     }
     private func fetchAndNavigate() {
@@ -107,9 +152,9 @@ struct SelectInputMethodView: View {
             }
         }
     }
-    private func checkIfDietPlanExists(completion: @escaping (Bool) -> Void) {
+    private func checkIfDietPlanExists(completion: @escaping (Bool, DietPlan?) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else {
-            completion(false)
+            completion(false, nil)
             return
         }
 
@@ -118,16 +163,35 @@ struct SelectInputMethodView: View {
             .getDocuments { snapshot, error in
                 if let error = error {
                     print("Error checking diet plan: \(error.localizedDescription)")
-                    completion(false)
+                    completion(false, nil)
                 } else if let snapshot = snapshot, !snapshot.isEmpty {
                     // Diet plan exists
-                    completion(true)
+                    if let document = snapshot.documents.first {
+                        let data = document.data()
+                        
+                        // Decode the document fields
+                        guard let meals = data["meals"] as? [String],
+                              let userId = data["userId"] as? String else {
+                            print("Error: Missing expected fields in diet plan document")
+                            completion(false, nil)
+                            return
+                        }
+                        
+                        // Optionally decode createdAt if it's stored as a Timestamp
+                        let createdAt = (data["createdAt"] as? Timestamp)?.dateValue()
+                        
+                        let dietPlan = DietPlan(id: document.documentID, createdAt: createdAt, meals: meals, userId: userId)
+                        completion(true, dietPlan)
+                    } else {
+                        completion(false, nil)
+                    }
                 } else {
                     // No diet plan found
-                    completion(false)
+                    completion(false, nil)
                 }
             }
     }
+
 }
 
 #Preview {

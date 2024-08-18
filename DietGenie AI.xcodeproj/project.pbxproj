@@ -79,6 +79,8 @@
 		8E0B2C092C717EB4004DFCD8 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C082C717EB4004DFCD8 /* NavigationUtil.swift */; };
 		8E0B2C0B2C71846E004DFCD8 /* BindingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C0A2C71846E004DFCD8 /* BindingRouter.swift */; };
 		8E0B2C0D2C71891C004DFCD8 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C0C2C71891C004DFCD8 /* AuthenticationManager.swift */; };
+		8E0B2C0F2C720B81004DFCD8 /* ConditionalOpacityAndDisableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C0E2C720B81004DFCD8 /* ConditionalOpacityAndDisableModifier.swift */; };
+		8E0B2C122C720F35004DFCD8 /* SavedPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C112C720F35004DFCD8 /* SavedPlanView.swift */; };
 		8EDFD1AB2C713E8D00CCA1C2 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AA2C713E8D00CCA1C2 /* PasswordResetView.swift */; };
 		8EDFD1AD2C714F4F00CCA1C2 /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */; };
 		8EDFD1AF2C7154D900CCA1C2 /* CUIPasswordValidationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AE2C7154D900CCA1C2 /* CUIPasswordValidationField.swift */; };
@@ -141,6 +143,8 @@
 		8E0B2C082C717EB4004DFCD8 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 		8E0B2C0A2C71846E004DFCD8 /* BindingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingRouter.swift; sourceTree = "<group>"; };
 		8E0B2C0C2C71891C004DFCD8 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		8E0B2C0E2C720B81004DFCD8 /* ConditionalOpacityAndDisableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalOpacityAndDisableModifier.swift; sourceTree = "<group>"; };
+		8E0B2C112C720F35004DFCD8 /* SavedPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPlanView.swift; sourceTree = "<group>"; };
 		8EDFD1AA2C713E8D00CCA1C2 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 		8EDFD1AE2C7154D900CCA1C2 /* CUIPasswordValidationField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIPasswordValidationField.swift; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 		8E02CF452C6B831D006E5B93 /* InputFlow */ = {
 			isa = PBXGroup;
 			children = (
+				8E0B2C102C720F25004DFCD8 /* SavedPlan */,
 				8EDFD1C22C7164BF00CCA1C2 /* SelectInput */,
 				8EDFD1BB2C7161E400CCA1C2 /* BMI */,
 				8EDFD1B82C71611300CCA1C2 /* Gender */,
@@ -336,8 +341,17 @@
 		8E02CFE12C7119FF006E5B93 /* Modifier */ = {
 			isa = PBXGroup;
 			children = (
+				8E0B2C0E2C720B81004DFCD8 /* ConditionalOpacityAndDisableModifier.swift */,
 			);
 			path = Modifier;
+			sourceTree = "<group>";
+		};
+		8E0B2C102C720F25004DFCD8 /* SavedPlan */ = {
+			isa = PBXGroup;
+			children = (
+				8E0B2C112C720F35004DFCD8 /* SavedPlanView.swift */,
+			);
+			name = SavedPlan;
 			sourceTree = "<group>";
 		};
 		8EDFD1B22C715FC200CCA1C2 /* Purpose */ = {
@@ -514,11 +528,13 @@
 				8E0B2C092C717EB4004DFCD8 /* NavigationUtil.swift in Sources */,
 				8E02CFE72C711AC4006E5B93 /* Date+Ext.swift in Sources */,
 				8EDFD1B12C715F2200CCA1C2 /* PurposeInputVM.swift in Sources */,
+				8E0B2C0F2C720B81004DFCD8 /* ConditionalOpacityAndDisableModifier.swift in Sources */,
 				8E02CFE52C711A93006E5B93 /* SwiftUIWrapper.swift in Sources */,
 				8E02CF9D2C6E0FDC006E5B93 /* Constant.swift in Sources */,
 				8E02CF662C6B88BB006E5B93 /* BackgroundBlurView.swift in Sources */,
 				8E02CFDE2C70FFEA006E5B93 /* WelcomeView.swift in Sources */,
 				8E02CF382C6B8205006E5B93 /* DietGenie_AIApp.swift in Sources */,
+				8E0B2C122C720F35004DFCD8 /* SavedPlanView.swift in Sources */,
 				8E02CF882C6BF777006E5B93 /* SelectInputMethodView.swift in Sources */,
 				8EDFD1B42C715FE800CCA1C2 /* DietProgramVM.swift in Sources */,
 				8EDFD1BA2C71613E00CCA1C2 /* BMIInputVM.swift in Sources */,
