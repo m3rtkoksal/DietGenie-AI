@@ -20,7 +20,7 @@ class UserInputModel: ObservableObject {
     @Published var gender: HKBiologicalSex?
     @Published var age: Int?
     @Published var purpose: String?
-    @Published var dietPlanData: DietPlan?
+    @Published var dietPlans: [DietPlan] = []
 }
 
 struct DietPlan: Identifiable, Codable {

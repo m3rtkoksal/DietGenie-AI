@@ -81,6 +81,10 @@
 		8E0B2C0D2C71891C004DFCD8 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C0C2C71891C004DFCD8 /* AuthenticationManager.swift */; };
 		8E0B2C0F2C720B81004DFCD8 /* ConditionalOpacityAndDisableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C0E2C720B81004DFCD8 /* ConditionalOpacityAndDisableModifier.swift */; };
 		8E0B2C122C720F35004DFCD8 /* SavedPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C112C720F35004DFCD8 /* SavedPlanView.swift */; };
+		8E0B2C142C722007004DFCD8 /* DietPlanDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C132C722007004DFCD8 /* DietPlanDetailView.swift */; };
+		8E0B2C162C722450004DFCD8 /* DietPlanElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C152C722450004DFCD8 /* DietPlanElement.swift */; };
+		8E0B2C192C722C04004DFCD8 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C182C722C04004DFCD8 /* MainTabView.swift */; };
+		8E0B2C1D2C722D2F004DFCD8 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C1C2C722D2F004DFCD8 /* TabButton.swift */; };
 		8EDFD1AB2C713E8D00CCA1C2 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AA2C713E8D00CCA1C2 /* PasswordResetView.swift */; };
 		8EDFD1AD2C714F4F00CCA1C2 /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */; };
 		8EDFD1AF2C7154D900CCA1C2 /* CUIPasswordValidationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AE2C7154D900CCA1C2 /* CUIPasswordValidationField.swift */; };
@@ -145,6 +149,10 @@
 		8E0B2C0C2C71891C004DFCD8 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		8E0B2C0E2C720B81004DFCD8 /* ConditionalOpacityAndDisableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalOpacityAndDisableModifier.swift; sourceTree = "<group>"; };
 		8E0B2C112C720F35004DFCD8 /* SavedPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPlanView.swift; sourceTree = "<group>"; };
+		8E0B2C132C722007004DFCD8 /* DietPlanDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietPlanDetailView.swift; sourceTree = "<group>"; };
+		8E0B2C152C722450004DFCD8 /* DietPlanElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietPlanElement.swift; sourceTree = "<group>"; };
+		8E0B2C182C722C04004DFCD8 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		8E0B2C1C2C722D2F004DFCD8 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
 		8EDFD1AA2C713E8D00CCA1C2 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 		8EDFD1AE2C7154D900CCA1C2 /* CUIPasswordValidationField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIPasswordValidationField.swift; sourceTree = "<group>"; };
@@ -194,6 +202,7 @@
 		8E02CF2B2C6B8205006E5B93 = {
 			isa = PBXGroup;
 			children = (
+				8E0B2C172C722BEC004DFCD8 /* Controller */,
 				8E02CFE12C7119FF006E5B93 /* Modifier */,
 				8E02CF9E2C6E1E4E006E5B93 /* GoogleService-Info.plist */,
 				8E02CF362C6B8205006E5B93 /* DietGenie AI */,
@@ -312,6 +321,7 @@
 				8E02CF9C2C6E0FDC006E5B93 /* Constant.swift */,
 				8E02CFE42C711A93006E5B93 /* SwiftUIWrapper.swift */,
 				8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */,
+				8E0B2C1C2C722D2F004DFCD8 /* TabButton.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -350,8 +360,18 @@
 			isa = PBXGroup;
 			children = (
 				8E0B2C112C720F35004DFCD8 /* SavedPlanView.swift */,
+				8E0B2C132C722007004DFCD8 /* DietPlanDetailView.swift */,
+				8E0B2C152C722450004DFCD8 /* DietPlanElement.swift */,
 			);
 			name = SavedPlan;
+			sourceTree = "<group>";
+		};
+		8E0B2C172C722BEC004DFCD8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8E0B2C182C722C04004DFCD8 /* MainTabView.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		8EDFD1B22C715FC200CCA1C2 /* Purpose */ = {
@@ -544,6 +564,7 @@
 				8E02CF742C6BA020006E5B93 /* CUIButton.swift in Sources */,
 				8E02CF522C6B84B7006E5B93 /* BaseViewModel.swift in Sources */,
 				8E02CF5D2C6B86A9006E5B93 /* ItemHeightPreferenceKey.swift in Sources */,
+				8E0B2C162C722450004DFCD8 /* DietPlanElement.swift in Sources */,
 				8E02CF702C6B94C3006E5B93 /* SegmentedControlView.swift in Sources */,
 				8EDFD1AD2C714F4F00CCA1C2 /* LogoutButton.swift in Sources */,
 				8E02CF4A2C6B83FF006E5B93 /* BaseView.swift in Sources */,
@@ -558,8 +579,10 @@
 				8EDFD1AF2C7154D900CCA1C2 /* CUIPasswordValidationField.swift in Sources */,
 				8EDFD1C02C7163C700CCA1C2 /* WelcomeVM.swift in Sources */,
 				8E02CF782C6BA91C006E5B93 /* UserInputModel.swift in Sources */,
+				8E0B2C192C722C04004DFCD8 /* MainTabView.swift in Sources */,
 				8E02CF7A2C6BAAB4006E5B93 /* BMIInputView.swift in Sources */,
 				8E02CF632C6B8885006E5B93 /* NdDropdownModifier.swift in Sources */,
+				8E0B2C1D2C722D2F004DFCD8 /* TabButton.swift in Sources */,
 				8E0B2C0D2C71891C004DFCD8 /* AuthenticationManager.swift in Sources */,
 				8E02CFAC2C6E1F47006E5B93 /* FirebaseRemoteConfigManager.swift in Sources */,
 				8E02CF5F2C6B8746006E5B93 /* Screen+Ext.swift in Sources */,
@@ -573,6 +596,7 @@
 				8E02CF982C6E0D79006E5B93 /* KeychainManager.swift in Sources */,
 				8E02CF7C2C6BACD6006E5B93 /* CUIBackButton.swift in Sources */,
 				8E02CF592C6B856B006E5B93 /* Font+Ext.swift in Sources */,
+				8E0B2C142C722007004DFCD8 /* DietPlanDetailView.swift in Sources */,
 				8E02CF552C6B8506006E5B93 /* CUIDropDownElement.swift in Sources */,
 				8E02CF5B2C6B860B006E5B93 /* SelectInputMethodVM.swift in Sources */,
 			);

@@ -9,15 +9,30 @@ import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 
+enum AlertType: Identifiable {
+    case authorizationRequired
+    case premiumAccountNeeded
+    case noDietPlan
+    
+    var id: UUID {
+        switch self {
+        case .authorizationRequired:
+            return UUID(uuidString: "00000000-0000-0000-0000-000000000001")!
+        case .premiumAccountNeeded:
+            return UUID(uuidString: "00000000-0000-0000-0000-000000000002")!
+        case .noDietPlan:
+            return UUID(uuidString: "00000000-0000-0000-0000-000000000003")!
+        }
+    }
+}
+
 struct SelectInputMethodView: View {
     @EnvironmentObject var userInputModel: UserInputModel
     @StateObject private var viewModel = SelectInputMethodVM()
     @StateObject private var healthKitManager = HealthKitManager()
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    @State private var showAlert = false
-    @State private var showLimitAlert = false
-    @State private var showNoPlanAlert = false
-    @State private var alertMessage = ""
+    @State private var activeAlert: AlertType?
+    
     private let db = Firestore.firestore()
     
     var body: some View {
@@ -46,16 +61,16 @@ struct SelectInputMethodView: View {
                         checkIfDietPlanExists { exists, dietPlanData in
                             if exists {
                                 // Handle the case where a diet plan already exists
-                                self.showLimitAlert = true
-                                self.alertMessage = "You need a premium account to be able to get another diet plan"
                                 print("Diet plan exists.")
+                                activeAlert = .premiumAccountNeeded
                             } else {
                                 // Handle the case where no diet plan exists
                                 fetchAndNavigate()
                                 print("No diet plan exists.")
                             }
                         }
-                        
+                    } else {
+                        activeAlert = .authorizationRequired
                     }
                 }
                 CUIButton(text: "Enter Manually") {
@@ -68,14 +83,17 @@ struct SelectInputMethodView: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         checkIfDietPlanExists { exists, dietPlanData in
                             if exists, let data = dietPlanData {
-                                // Pass the data to SavedPlanView
-                                self.userInputModel.dietPlanData = data
+                                // Add the diet plan to the list
+                                if let index = self.userInputModel.dietPlans.firstIndex(where: { $0.id == data.id }) {
+                                    self.userInputModel.dietPlans[index] = data
+                                } else {
+                                    self.userInputModel.dietPlans.append(data)
+                                }
                                 self.viewModel.goToSavedPlan = true
                                 print("Diet plan exists.")
                             } else {
                                 // Handle the case where no diet plan exists
-                                self.showNoPlanAlert = true
-                                self.alertMessage = "You don't have a saved diet plan"
+                                activeAlert = .noDietPlan
                                 print("No diet plan exists.")
                             }
                         }
@@ -94,43 +112,51 @@ struct SelectInputMethodView: View {
         .navigationBarItems(
             trailing: LogoutButton()
         )
-        .alert(isPresented: $showAlert) {
-            Alert(
-                title: Text("Authorization Required"),
-                message: Text(alertMessage),
-                primaryButton: .default(Text("Allow")) {
-                    if !healthKitManager.isAuthorized {
-                        healthKitManager.requestAuthorization()
-                    }
-                },
-                secondaryButton: .cancel(Text("Cancel"))
-            )
+        
+        .alert(item: $activeAlert) { alertType in
+            switch alertType {
+            case .authorizationRequired:
+                return Alert(
+                    title: Text("Authorization Required"),
+                    message: Text("You need to authorize access."),
+                    primaryButton: .default(Text("Allow")) {
+                        // Handle authorization
+                    },
+                    secondaryButton: .cancel(Text("Cancel"))
+                )
+            case .premiumAccountNeeded:
+                return Alert(
+                    title: Text("Premium Account Needed"),
+                    message: Text("You need a premium account to access this feature."),
+                    primaryButton: .default(Text("Subscribe")) {
+                        // Handle subscription
+                    },
+                    secondaryButton: .cancel(Text("Cancel"))
+                )
+            case .noDietPlan:
+                return Alert(
+                    title: Text("No Diet Plan"),
+                    message: Text("You don't have a saved diet plan."),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
-        .alert(isPresented: $showLimitAlert) {
-            Alert(
-                title: Text("Premium Account Needed"),
-                message: Text(alertMessage),
-                primaryButton: .default(Text("Subscribe")) {
-                    
-                },
-                secondaryButton: .cancel(Text("Cancel"))
-            )
-        }
-        alert(isPresented: $showNoPlanAlert) {
-            Alert(
-                title: Text("No Diet Plan"),
-                message: Text(alertMessage),
-                dismissButton: .default(Text("OK")) {
-                }
-            )
+    }
+    
+    private func fetchAndNavigate() {
+        // Replace "yourUserId" with the actual user ID
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("User not logged in")
+            return
         }
         
-    }
-    private func fetchAndNavigate() {
-        healthKitManager.fetchYearlyData { activeEnergyData, restingEnergyData, bodyFatPercentageData, leanBodyMassData, weightData, genderData, heightData, ageData  in
+        healthKitManager.fetchYearlyData(userId: userId) { (activeEnergyData, restingEnergyData, bodyFatPercentageData, leanBodyMassData, weightData, genderData, heightData, ageData) in
+            // Calculate daily values
             let daysInYear = 365.0
             let dailyActiveEnergy = (activeEnergyData ?? 0.0) / daysInYear
             let dailyRestingEnergy = (restingEnergyData ?? 0.0) / daysInYear
+            
+            // Update user input model
             self.userInputModel.activeEnergy = dailyActiveEnergy
             self.userInputModel.restingEnergy = dailyRestingEnergy
             self.userInputModel.bodyFatPercentage = bodyFatPercentageData
@@ -139,16 +165,17 @@ struct SelectInputMethodView: View {
             self.userInputModel.height = heightData
             self.userInputModel.gender = genderData
             self.userInputModel.age = ageData
-            // Ensure navigation only happens after data is fetched
+            
+            // Ensure navigation only happens after data is fetched and saved
             self.viewModel.goToPurposeInputPage = true
         }
     }
+
     private func checkHealthKitAuthorization() {
         // Perform the authorization check after a brief delay to allow isAuthorized to update
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if !self.healthKitManager.isAuthorized {
-                self.alertMessage = "HealthKit authorization is required to proceed. Please allow access in your device settings."
-                self.showAlert = true
+                activeAlert = .authorizationRequired
             }
         }
     }
@@ -157,7 +184,7 @@ struct SelectInputMethodView: View {
             completion(false, nil)
             return
         }
-
+        
         db.collection("dietPlans")
             .whereField("userId", isEqualTo: userId)
             .getDocuments { snapshot, error in

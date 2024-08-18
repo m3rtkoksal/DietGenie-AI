@@ -7,11 +7,23 @@
 
 import Foundation
 
+import Foundation
+
 extension Date {
+    // Method to format the date with a given format string
     func getFormattedDate(format: String) -> String {
-        let dateformat = DateFormatter()
-        dateformat.dateFormat = format
-        return dateformat.string(from: self)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
+
+    // Default formatter for short date style without time
+    func getShortDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        return formatter.string(from: self)
     }
 }
+
 

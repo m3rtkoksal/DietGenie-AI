@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
+import FirebaseAuth
 
 struct SavedPlanView: View {
     @EnvironmentObject var userInputModel: UserInputModel
@@ -18,43 +20,63 @@ struct SavedPlanView: View {
                  background: .black,
                  showIndicator: $viewModel.showIndicator
         ) {
-            if let dietPlan = userInputModel.dietPlanData {
-                // Display the diet plan data
-                VStack {
-                    CUILeftHeadline(
-                        title: "Your Saved Diet Plan",
-                        subtitle: "",
-                        style: .red,
-                        bottomPadding: 50)
-                    ScrollView {
-                        if let createdAt = dietPlan.createdAt {
-                            Text("Created At: \(createdAt, formatter: dateFormatter)")
-                        } else {
-                            Text("Created At: N/A")
-                        }
-                        // Display other properties of dietPlan as needed
-                        ForEach(dietPlan.meals, id: \.self) { meal in
-                            MealCardElementView(meal: meal)
+            VStack {
+                CUILeftHeadline(
+                    title: "Your Saved Diet Plans",
+                    subtitle: "You can see details of your previous meal plans from this list",
+                    style: .red,
+                    bottomPadding: 50)
+                ForEach(userInputModel.dietPlans) { dietPlan in
+                    NavigationLink(destination: DietPlanDetailView(dietPlan: dietPlan)) {
+                        ScrollView {
+                            VStack(alignment: .leading) {
+                                DietPlanElement(date: dietPlan.createdAt?.getShortDate() ?? "N/A")
+                                    .padding(.top)
+                            }
                         }
                     }
                 }
-            } else {
-                Text("No saved diet plan available.")
-                    .padding()
+            }
+            .onAppear {
+                // Fetch diet plans or update the list if necessary
+                fetchDietPlans()
             }
         }
         .navigationBarTitle("DietGenie AI")
         .navigationBarBackButtonHidden()
         .navigationBarItems(
-           leading:
-               CUIBackButton()
+            leading:
+                CUIBackButton()
         )
+    }
+    private func fetchDietPlans() {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("User not logged in")
+            return
+        }
+        
+        let db = Firestore.firestore()
+        db.collection("dietPlans")
+            .whereField("userId", isEqualTo: userId)
+            .getDocuments { (querySnapshot, error) in
+                if let error = error {
+                    print("Error fetching diet plans: \(error.localizedDescription)")
+                } else {
+                    var fetchedDietPlans: [DietPlan] = []
+                    for document in querySnapshot!.documents {
+                        do {
+                            let dietPlan = try document.data(as: DietPlan.self)
+                            fetchedDietPlans.append(dietPlan)
+                        } catch {
+                            print("Error decoding diet plan: \(error.localizedDescription)")
+                        }
+                    }
+                    // Update userInputModel.dietPlans on the main thread
+                    DispatchQueue.main.async {
+                        self.userInputModel.dietPlans = fetchedDietPlans
+                    }
+                }
+            }
     }
 }
 
-private let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .none
-    return formatter
-}()
