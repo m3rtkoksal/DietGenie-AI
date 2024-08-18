@@ -75,10 +75,6 @@ struct WelcomeView: View {
                     signIn()
                 }
             }
-            .onAppear {
-                emailValidator.text = ""
-                passwordValidator.text = ""
-            }
             .fullScreenCover(isPresented: $viewModel.goToSelectInputView) {
                 NavigationView {
                     SelectInputMethodView()
@@ -127,6 +123,8 @@ struct WelcomeView: View {
             } else {
                 errorMessage = "User signed in successfully!"
                 viewModel.goToSelectInputView = true
+                emailValidator.text = ""
+                passwordValidator.text = ""
             }
         }
     }
