@@ -99,6 +99,7 @@ struct SelectInputMethodView: View {
         do {
             try Auth.auth().signOut()
             presentationMode.wrappedValue.dismiss()
+            AuthenticationManager.shared.logOut()
             print("User signed out successfully!")
         } catch let signOutError as NSError {
             // Handle error if the sign-out fails

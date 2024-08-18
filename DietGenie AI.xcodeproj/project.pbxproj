@@ -78,6 +78,7 @@
 		8E0B2C072C71710C004DFCD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF392C6B8205006E5B93 /* ContentView.swift */; };
 		8E0B2C092C717EB4004DFCD8 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C082C717EB4004DFCD8 /* NavigationUtil.swift */; };
 		8E0B2C0B2C71846E004DFCD8 /* BindingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C0A2C71846E004DFCD8 /* BindingRouter.swift */; };
+		8E0B2C0D2C71891C004DFCD8 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C0C2C71891C004DFCD8 /* AuthenticationManager.swift */; };
 		8EDFD1AB2C713E8D00CCA1C2 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AA2C713E8D00CCA1C2 /* PasswordResetView.swift */; };
 		8EDFD1AD2C714F4F00CCA1C2 /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */; };
 		8EDFD1AF2C7154D900CCA1C2 /* CUIPasswordValidationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AE2C7154D900CCA1C2 /* CUIPasswordValidationField.swift */; };
@@ -139,6 +140,7 @@
 		8E02CFE62C711AC4006E5B93 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		8E0B2C082C717EB4004DFCD8 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 		8E0B2C0A2C71846E004DFCD8 /* BindingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingRouter.swift; sourceTree = "<group>"; };
+		8E0B2C0C2C71891C004DFCD8 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		8EDFD1AA2C713E8D00CCA1C2 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 		8EDFD1AE2C7154D900CCA1C2 /* CUIPasswordValidationField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIPasswordValidationField.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				8E02CF8B2C6C02E6006E5B93 /* OpenAIManager.swift */,
 				8E02CF972C6E0D79006E5B93 /* KeychainManager.swift */,
 				8E02CFAB2C6E1F47006E5B93 /* FirebaseRemoteConfigManager.swift */,
+				8E0B2C0C2C71891C004DFCD8 /* AuthenticationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				8E02CF782C6BA91C006E5B93 /* UserInputModel.swift in Sources */,
 				8E02CF7A2C6BAAB4006E5B93 /* BMIInputView.swift in Sources */,
 				8E02CF632C6B8885006E5B93 /* NdDropdownModifier.swift in Sources */,
+				8E0B2C0D2C71891C004DFCD8 /* AuthenticationManager.swift in Sources */,
 				8E02CFAC2C6E1F47006E5B93 /* FirebaseRemoteConfigManager.swift in Sources */,
 				8E02CF5F2C6B8746006E5B93 /* Screen+Ext.swift in Sources */,
 				8E02CF6C2C6B8A8D006E5B93 /* CUISearchBar.swift in Sources */,

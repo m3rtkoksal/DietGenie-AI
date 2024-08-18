@@ -102,6 +102,11 @@ struct WelcomeView: View {
                     BindingRouter($viewModel.goToPasswordReset)
                 )
             }
+            .onAppear {
+                if AuthenticationManager.shared.isLoggedIn {
+                    viewModel.goToSelectInputView = true
+                }
+            }
             .navigationBarTitle("DietGenie AI")
             .navigationBarBackButtonHidden(true)
             .alert(isPresented: $showAlert) {
@@ -123,6 +128,7 @@ struct WelcomeView: View {
             } else {
                 errorMessage = "User signed in successfully!"
                 viewModel.goToSelectInputView = true
+                AuthenticationManager.shared.logIn()
                 emailValidator.text = ""
                 passwordValidator.text = ""
             }

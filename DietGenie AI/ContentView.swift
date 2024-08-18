@@ -11,10 +11,12 @@ struct ContentView: View {
     @StateObject private var userInputModel = UserInputModel()
     @State private var isShowingWelcomeView = true
     var body: some View {
-        EmptyView()
-            .fullScreenCover(isPresented: $isShowingWelcomeView) {
-                WelcomeView()
-                    .environmentObject(userInputModel)
-            }
+        if AuthenticationManager.shared.isLoggedIn {
+            SelectInputMethodView()
+                .environmentObject(userInputModel)
+        } else {
+            WelcomeView()
+                .environmentObject(userInputModel)
+        }
     }
 }
