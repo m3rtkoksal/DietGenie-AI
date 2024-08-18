@@ -29,6 +29,21 @@ class HealthKitManager: ObservableObject {
         }
     }
     
+    func hkBiologicalSexToGenderString(_ biologicalSex: HKBiologicalSex) -> String {
+        switch biologicalSex {
+        case .male:
+            return "Male"
+        case .female:
+            return "Female"
+        case .other:
+            return "Other"
+        case .notSet:
+            return "Not Set"
+        @unknown default:
+            return "Unknown"
+        }
+    }
+
     func fetchYearlyData(userId: String, completion: @escaping (Double?, Double?, Double?, Double?, Double?, HKBiologicalSex?, Double?, Int?) -> Void) {
         guard isAuthorized else {
             completion(nil, nil, nil, nil, nil, nil, nil, nil)
@@ -150,7 +165,10 @@ class HealthKitManager: ObservableObject {
         
         dispatchGroup.notify(queue: .main) {
             // Save data to Firestore
-            self.saveHealthDataToFirestore(activeEnergy: activeEnergy, restingEnergy: restingEnergy, bodyFatPercentage: bodyFatPercentage, leanBodyMass: leanBodyMass, weight: weight, gender: gender, height: height, age: age, userId: userId) {
+            let daysInYear = 365.0
+            let dailyActiveEnergy = (activeEnergy ?? 0.0) / daysInYear
+            let dailyRestingEnergy = (restingEnergy ?? 0.0) / daysInYear
+            self.saveHealthDataToFirestore(activeEnergy: dailyActiveEnergy, restingEnergy: dailyRestingEnergy, bodyFatPercentage: bodyFatPercentage, leanBodyMass: leanBodyMass, weight: weight, gender: gender, height: height, age: age, userId: userId) {
                 // Pass all fetched data to the completion handler
                 completion(activeEnergy, restingEnergy, bodyFatPercentage, leanBodyMass, weight, gender, height, age)
             }
@@ -242,6 +260,7 @@ class HealthKitManager: ObservableObject {
         userId: String,
         completion: @escaping () -> Void
     ) {
+        let genderString = hkBiologicalSexToGenderString(gender ?? .notSet)
         let data: [String: Any] = [
             "activeEnergy": activeEnergy ?? 0.0,
             "restingEnergy": restingEnergy ?? 0.0,
@@ -249,7 +268,7 @@ class HealthKitManager: ObservableObject {
             "leanBodyMass": leanBodyMass ?? 0.0,
             "weight": weight ?? 0.0,
             "height": height ?? 0.0,
-            "gender": gender?.rawValue ?? -1,
+            "gender": genderString,
             "age": age ?? 0
         ]
         

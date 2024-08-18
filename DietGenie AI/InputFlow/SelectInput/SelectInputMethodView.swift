@@ -99,6 +99,7 @@ struct SelectInputMethodView: View {
                         }
                     }
                 }
+                LogoutButton()
             }
             .onDisappear {
                 viewModel.showIndicator = false
