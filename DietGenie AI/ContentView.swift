@@ -12,8 +12,10 @@ struct ContentView: View {
     @State private var isShowingWelcomeView = true
     var body: some View {
         if AuthenticationManager.shared.isLoggedIn {
-            SelectInputMethodView()
-                .environmentObject(userInputModel)
+            NavigationView {
+                SelectInputMethodView()
+                    .environmentObject(userInputModel)
+            }
         } else {
             WelcomeView()
                 .environmentObject(userInputModel)
