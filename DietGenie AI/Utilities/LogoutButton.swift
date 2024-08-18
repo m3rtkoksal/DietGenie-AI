@@ -9,10 +9,10 @@ import SwiftUI
 
 struct LogoutButton: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    
+    @EnvironmentObject private var router: BindingRouter
     var body: some View {
         Button {
-            self.presentationMode.wrappedValue.dismiss()
+            router.popToRoot()
         } label: {
             Text("Sign out")
                 .font(.system(size: 16, weight: .semibold))

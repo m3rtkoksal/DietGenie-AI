@@ -17,7 +17,7 @@ struct CUIDefaultTextField: View {
             TextField("", text: $text)
                 .placeholder(when: text.isEmpty, placeholder: {
                     Text(placeholder)
-                        .foregroundColor(.CCCCCCC)
+                        .foregroundColor(.solidGray)
                         .font(.poppins(.regular, size: 16))
                 })
                 .font(.heading3)

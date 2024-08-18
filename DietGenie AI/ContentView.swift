@@ -9,11 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var userInputModel = UserInputModel()
-
+    @State private var isShowingWelcomeView = true
     var body: some View {
-        NavigationView {
-            WelcomeView()
-                .environmentObject(userInputModel)
-        }
+        EmptyView()
+            .fullScreenCover(isPresented: $isShowingWelcomeView) {
+                WelcomeView()
+                    .environmentObject(userInputModel)
+            }
     }
 }

@@ -10,7 +10,7 @@ import FirebaseAuth
 
 struct PasswordResetView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    @StateObject private var viewModel = InputViewModel()
+    @StateObject private var viewModel = BaseViewModel()
     @State private var errorMessage = ""
     @State private var showAlert = false
     @StateObject private var emailValidator = DefaultTextValidator(predicate: ValidatorHelper.emailPredicate)
@@ -43,7 +43,7 @@ struct PasswordResetView: View {
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(
                 leading:
-                   CUIBackButton()
+                    CUIBackButton(toRoot: true)
             )
             .alert(isPresented: $showAlert) {
                 Alert(

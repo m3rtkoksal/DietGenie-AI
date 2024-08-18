@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DietProgramView: View {
     @EnvironmentObject var userInputModel: UserInputModel
-    @StateObject private var viewModel = InputViewModel()
+    @StateObject private var viewModel = DietProgramVM()
     @StateObject private var healthKitManager = HealthKitManager()
     @StateObject private var openAIManager = OpenAIManager()
     @State private var dietPlan: String? = nil
@@ -39,6 +39,7 @@ struct DietProgramView: View {
                 generateDietPlan()
             }
         }
+                 
                  .navigationBarTitle("DietGenie AI")
                  .navigationBarBackButtonHidden()
                  .navigationBarItems(

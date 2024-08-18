@@ -11,8 +11,8 @@ import FirebaseAuth
 struct WelcomeView: View {
     @EnvironmentObject var userInputModel: UserInputModel
     @StateObject private var emailValidator = DefaultTextValidator(predicate: ValidatorHelper.emailPredicate)
-    @StateObject private var passwordValidator = DefaultTextValidator(predicate: ValidatorHelper.emptyPasswordPredicate)
-    @StateObject private var viewModel = InputViewModel()
+    @StateObject private var passwordValidator = DefaultTextValidator(predicate: ValidatorHelper.passwordPredicate)
+    @StateObject private var viewModel = WelcomeVM()
     @State private var errorMessage = ""
     @State private var showAlert = false
     
@@ -20,21 +20,6 @@ struct WelcomeView: View {
         BaseView(currentViewModel: viewModel,
                  background: .black,
                  showIndicator: $viewModel.showIndicator) {
-            NavigationLink(
-                destination: SelectInputMethodView()
-                    .environmentObject(userInputModel),
-                isActive: $viewModel.goToSelectInputView
-            ) {}
-            NavigationLink(
-                destination: RegisterView()
-                    .environmentObject(userInputModel),
-                isActive: $viewModel.goToRegisterView
-            ) {}
-            NavigationLink(
-                destination: PasswordResetView()
-                    .environmentObject(userInputModel),
-                isActive: $viewModel.goToPasswordReset
-            ) {}
             VStack {
                 CUILeftHeadline(
                     title: "Welcome",
@@ -51,15 +36,16 @@ struct WelcomeView: View {
                     showPrompt: $emailValidator.showPrompt,
                     style: .emailAddress
                 )
-                CUIValidationField(
+                
+                CUIPasswordValidationField(
                     placeholder: "Please enter password",
-                    prompt: "Wrong password format",
+                    prompt: "Password must be 1 capital 1 small letter and 6 numbers",
+                    willShowPrompt: true,
                     text: $passwordValidator.text,
                     isCriteriaValid: $passwordValidator.isCriteriaValid,
                     isNotValid: $passwordValidator.isNotValid,
-                    showPrompt: $passwordValidator.showPrompt,
-                    style: .numberPad
-                )
+                    showPrompt: $passwordValidator.showPrompt)
+                
                 HStack {
                     Button {
                         viewModel.goToRegisterView = true
@@ -73,31 +59,54 @@ struct WelcomeView: View {
                     }
                     Spacer()
                     Button {
-                        signIn()
+                        viewModel.goToPasswordReset = true
                     } label: {
-                        Text("Login")
+                        Text("Forgot Password")
                             .foregroundColor(.lightGray200)
                             .padding()
                             .background(
                                 RoundedRectangle(cornerRadius: 8)
                                     .stroke(Color.teal, lineWidth: 2))
-                        
-                        
                     }
                 }
                 .padding()
                 Spacer()
-                CUIButton(text: "Forgot Password") {
-                    viewModel.goToPasswordReset = true
+                CUIButton(text: "Login") {
+                    signIn()
                 }
-                
             }
             .onAppear {
                 emailValidator.text = ""
                 passwordValidator.text = ""
             }
+            .fullScreenCover(isPresented: $viewModel.goToSelectInputView) {
+                NavigationView {
+                    SelectInputMethodView()
+                        .environmentObject(userInputModel)
+                }
+                .environmentObject(
+                    BindingRouter($viewModel.goToSelectInputView)
+                )
+            }
+            .fullScreenCover(isPresented: $viewModel.goToRegisterView) {
+                NavigationView {
+                    RegisterView()
+                        .environmentObject(userInputModel)
+                }
+                .environmentObject(
+                    BindingRouter($viewModel.goToRegisterView)
+                )
+            }
+            .fullScreenCover(isPresented: $viewModel.goToPasswordReset) {
+                NavigationView {
+                    PasswordResetView()
+                        .environmentObject(userInputModel)
+                }
+                .environmentObject(
+                    BindingRouter($viewModel.goToPasswordReset)
+                )
+            }
             .navigationBarTitle("DietGenie AI")
-            .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
             .alert(isPresented: $showAlert) {
                 Alert(

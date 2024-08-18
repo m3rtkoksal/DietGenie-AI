@@ -10,64 +10,64 @@ import FirebaseAuth
 
 struct SelectInputMethodView: View {
     @EnvironmentObject var userInputModel: UserInputModel
-    @StateObject private var viewModel = InputViewModel()
+    @StateObject private var viewModel = SelectInputMethodVM()
     @StateObject private var healthKitManager = HealthKitManager()
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @State private var showAlert = false
     @State private var alertMessage = ""
     
     var body: some View {
-        BaseView(currentViewModel: viewModel,
-                 background: .black,
-                 showIndicator: $viewModel.showIndicator
-        ) {
-            NavigationLink(
-                destination: GenderInputView()
-                    .environmentObject(userInputModel),
-                isActive: $viewModel.goToGenderInputPage
-            ) {}
-            NavigationLink(
-                destination: PurposeInputView()
-                    .environmentObject(userInputModel),
-                isActive: $viewModel.goToPurposeInputPage
-            ) {}
-            VStack(spacing: 50) {
-                CUIButton(text: "Create Program with HealthKit") {
-                    if healthKitManager.isAuthorized {
-                        fetchAndNavigate()
+            BaseView(currentViewModel: viewModel,
+                     background: .black,
+                     showIndicator: $viewModel.showIndicator
+            ) {
+                NavigationLink(
+                    destination: GenderInputView()
+                        .environmentObject(userInputModel),
+                    isActive: $viewModel.goToGenderInputPage
+                ) {}
+                NavigationLink(
+                    destination: PurposeInputView()
+                        .environmentObject(userInputModel),
+                    isActive: $viewModel.goToPurposeInputPage
+                ) {}
+                VStack(spacing: 50) {
+                    CUIButton(text: "Create Program with HealthKit") {
+                        if healthKitManager.isAuthorized {
+                            fetchAndNavigate()
+                        }
+                    }
+                    CUIButton(text: "Enter Manually") {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            self.viewModel.goToGenderInputPage = true
+                        }
                     }
                 }
-                CUIButton(text: "Enter Manually") {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.viewModel.goToGenderInputPage = true
-                    }
+                .onDisappear {
+                    viewModel.showIndicator = false
+                }
+                .onAppear {
+                    healthKitManager.requestAuthorization()
+                    checkHealthKitAuthorization()
                 }
             }
-            .onDisappear {
-                viewModel.showIndicator = false
-            }
-            .onAppear {
-                healthKitManager.requestAuthorization()
-                checkHealthKitAuthorization()
-            }
-        }
-        .navigationBarTitle("DietGenie AI")
-        .navigationBarBackButtonHidden()
-        .navigationBarItems(
-            trailing: LogoutButton()
-        )
-        .alert(isPresented: $showAlert) {
-            Alert(
-                title: Text("Authorization Required"),
-                message: Text(alertMessage),
-                primaryButton: .default(Text("Allow")) {
-                    if !healthKitManager.isAuthorized {
-                        healthKitManager.requestAuthorization()
-                    }
-                },
-                secondaryButton: .cancel(Text("Cancel"))
+            .navigationBarTitle("DietGenie AI")
+            .navigationBarItems(
+                trailing: LogoutButton()
             )
-        }
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Authorization Required"),
+                    message: Text(alertMessage),
+                    primaryButton: .default(Text("Allow")) {
+                        if !healthKitManager.isAuthorized {
+                            healthKitManager.requestAuthorization()
+                        }
+                    },
+                    secondaryButton: .cancel(Text("Cancel"))
+                )
+            }
+        
     }
     private func fetchAndNavigate() {
         healthKitManager.fetchYearlyData { activeEnergyData, restingEnergyData, bodyFatPercentageData, leanBodyMassData, weightData, genderData, heightData, ageData  in

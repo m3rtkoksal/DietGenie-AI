@@ -13,7 +13,7 @@ struct BMIInputView: View {
     @StateObject private var ageValidator = DefaultTextValidator(predicate: ValidatorHelper.agePredicate)
     @StateObject private var heightValidator = DefaultTextValidator(predicate: ValidatorHelper.heightPredicate)
     @StateObject private var weightValidator = DefaultTextValidator(predicate: ValidatorHelper.weightPredicate)
-    @StateObject private var viewModel = InputViewModel()
+    @StateObject private var viewModel = BMIInputVM()
     @State private var selectedPurposeSegmentIndex = 0
     var body: some View {
         BaseView(currentViewModel: viewModel,
@@ -66,15 +66,6 @@ struct BMIInputView: View {
                     self.viewModel.goToPurposeInputPage = true
                 }
             }
-            
-            
-            .onAppear {
-                viewModel.fetchMenuItems()
-            }
-            // MARK: - Profile Photo Menu
-//            .ndDropdownModifier(itemList: $viewModel.menuPickerItems,
-//                                isExpanded: $showGenderMenu,
-//                                choosenItem: $choosenItem)
         }
                  .navigationBarTitle("DietGenie AI")
                  .navigationBarBackButtonHidden()

@@ -9,10 +9,15 @@ import SwiftUI
 
 struct CUIBackButton: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    
+    @EnvironmentObject private var router: BindingRouter
+    var toRoot = false
     var body: some View {
         Button {
-            self.presentationMode.wrappedValue.dismiss()
+            if toRoot {
+                router.popToRoot()
+            } else {
+                self.presentationMode.wrappedValue.dismiss()
+            }
         } label: {
             Image(systemName: "chevron.backward")
                 .font(.system(size: 16, weight: .semibold))

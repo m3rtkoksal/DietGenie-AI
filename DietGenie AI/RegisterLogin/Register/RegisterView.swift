@@ -15,10 +15,10 @@ struct RegisterView: View {
     @StateObject private var nameValidator = DefaultTextValidator(predicate: ValidatorHelper.firstNamePredicate)
     @StateObject private var surnameValidator = DefaultTextValidator(predicate: ValidatorHelper.lastNamePredicate)
     @StateObject private var emailValidator = DefaultTextValidator(predicate: ValidatorHelper.emailPredicate)
-    @StateObject private var passwordValidator = DefaultTextValidator(predicate: ValidatorHelper.emptyPasswordPredicate)
+    @StateObject private var passwordValidator = DefaultTextValidator(predicate: ValidatorHelper.passwordPredicate)
     @StateObject private var birthdayValidator = DefaultTextValidator(predicate: ValidatorHelper.datePredicate)
     @State private var birthday: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date())!
-    @StateObject private var viewModel = InputViewModel()
+    @StateObject private var viewModel = RegisterVM()
     @State private var errorMessage = ""
     @State private var errorTitle = ""
     @State private var showAlert = false
@@ -63,15 +63,16 @@ struct RegisterView: View {
                         isNotValid: $emailValidator.isNotValid,
                         showPrompt: $emailValidator.showPrompt, style: .emailAddress
                     )
-                    .keyboardType(.emailAddress)
-                    CUIValidationField(
+                    
+                    CUIPasswordValidationField(
                         placeholder: "Please enter password",
-                        prompt: "Wrong password format",
+                        prompt: "Password does not meet criteria",
+                        willShowPrompt: true,
                         text: $passwordValidator.text,
                         isCriteriaValid: $passwordValidator.isCriteriaValid,
                         isNotValid: $passwordValidator.isNotValid,
-                        showPrompt: $passwordValidator.showPrompt, style: .numberPad
-                    )
+                        showPrompt: $passwordValidator.showPrompt)
+                    
                     ZStack(alignment: .top) {
                         CUIValidationField(
                             placeholder: "Please select birthday",
@@ -114,6 +115,12 @@ struct RegisterView: View {
                     }
                 )
             }
+            .navigationBarTitle("DietGenie AI")
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(
+                leading:
+                   CUIBackButton(toRoot: true)
+            )
             .ndDropdownModifier(
                 itemList: $viewModel.menuPickerItems,
                 isExpanded: $showGenderMenu,

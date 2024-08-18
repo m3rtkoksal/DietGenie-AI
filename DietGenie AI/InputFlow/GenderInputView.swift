@@ -11,10 +11,10 @@ import HealthKit
 struct GenderInputView: View {
     // MARK: - Properties
     @EnvironmentObject var userInputModel: UserInputModel
-    @StateObject private var viewModel = InputViewModel()
+    @StateObject private var viewModel = GenderInputVM()
     @StateObject private var healthKitManager = HealthKitManager()
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-   
+    
     @State private var selectedGenderSegmentIndex = 0
     
     var body: some View {
@@ -53,8 +53,6 @@ struct GenderInputView: View {
                 viewModel.fetchMenuItems()
                 healthKitManager.requestAuthorization()
             }
-            // MARK: - Profile Photo Menu
-            
         }
                  .navigationBarTitle("DietGenie AI")
                  .navigationBarBackButtonHidden()
