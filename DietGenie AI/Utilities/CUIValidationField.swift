@@ -25,25 +25,25 @@ struct CUIValidationField: View {
                 CUIDefaultTextField(
                     text: $text,
                     placeholder: placeholder,
-                    fontColor: .teal)
+                    fontColor: .black)
                 .keyboardType(style)
                 .padding(.leading, 3)
                 .frame(height: 50)
-                .frame(maxWidth: UIScreen.screenWidth / 1.1)
+                .frame(maxWidth: UIScreen.screenWidth / 1.2)
             }
             .onChange(of: text) { newValue in
                 isCriteriaValid = false
                 isNotValid = false
                 showPrompt = false
             }
-            .frame(maxWidth: UIScreen.screenWidth / 1.1)
-            .background(Color.otherBlack)
-            .cornerRadius(10)
+            .frame(maxWidth: UIScreen.screenWidth / 1.2)
+            .background(Color.white)
+            .cornerRadius(38)
             .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .strokeBorder(isNotValid ? Color.red : .lightGray200, lineWidth: 1)
+                RoundedRectangle(cornerRadius: 38)
+                    .strokeBorder(isNotValid ? Color.red : .lightGray200, lineWidth: 0.4)
             )
-            
+            .shadow(color: Color(red: 0.51, green: 0.74, blue: 0.62, opacity: 0.3), radius: 20, x: 0, y: 0)
             
             if  showPrompt && willShowPrompt {
                 Text(prompt)
@@ -53,5 +53,31 @@ struct CUIValidationField: View {
             }
         }.padding(.vertical, 5)
         
+    }
+}
+
+struct CUIValidationField_Previews: PreviewProvider {
+    @State static var text = ""
+    @State static var isCriteriaValid = false
+    @State static var isNotValid = false
+    @State static var showPrompt = true
+
+    static var previews: some View {
+        ZStack {
+            Color.lightTeal
+            CUIValidationField(
+                placeholder: "Enter text",
+                prompt: "This is a validation prompt.",
+                willShowPrompt: true,
+                text: $text,
+                isCriteriaValid: $isCriteriaValid,
+                isNotValid: $isNotValid,
+                showPrompt: $showPrompt,
+                style: .default
+            )
+        }
+      
+        
+        .previewLayout(.sizeThatFits)
     }
 }

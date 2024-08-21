@@ -19,11 +19,9 @@ struct CUIBackButton: View {
                 self.presentationMode.wrappedValue.dismiss()
             }
         } label: {
-            Image(systemName: "chevron.backward")
-                .font(.system(size: 16, weight: .semibold))
-                .foregroundColor(.teal)
-                .padding(5)
+            Image("backButton")
+                .foregroundColor(.black)
+                .padding(.leading,16)
         }
-        .frame(width: 50)
     }
 }

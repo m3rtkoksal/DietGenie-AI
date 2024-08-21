@@ -10,6 +10,9 @@ import Foundation
 class RegisterVM: BaseViewModel {
     @Published var goToBMIInputPage = false
     @Published var menuPickerItems:[CUIDropdownItemModel] = []
+    @Published var goToHealthPermission = false
+    @Published var goToLogin = false
+    @Published var goToPrivacyPolicy = false
     
     func fetchMenuItems() {
         self.menuPickerItems = [

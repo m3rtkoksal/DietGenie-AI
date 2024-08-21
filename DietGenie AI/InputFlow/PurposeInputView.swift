@@ -27,7 +27,7 @@ struct PurposeInputView: View {
                 CUILeftHeadline(
                     title: "Details About You",
                     subtitle: "Please select your purpose",
-                    style: .red,
+                    style: .black,
                     bottomPadding: 0)
                 Spacer()
                 

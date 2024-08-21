@@ -7,8 +7,9 @@
 
 import Foundation
 
-class WelcomeVM: BaseViewModel {
+class LoginVM: BaseViewModel {
     @Published var goToSelectInputView = false
     @Published var goToRegisterView = false
     @Published var goToPasswordReset = false
+    @Published var goToRegister = false
 }

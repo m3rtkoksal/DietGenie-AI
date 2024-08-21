@@ -8,6 +8,30 @@
 import SwiftUI
 
 extension Font {
+    enum MontserratFont {
+        case medium
+        case bold
+        case semiBold
+        
+        var name: String {
+            switch self {
+            case .medium:
+                return "Montserrat-Medium"
+            case .bold:
+                return "Montserrat-Bold"
+            case .semiBold:
+                return "Montserrat-SemiBold"
+            }
+        }
+    }
+    
+    static func montserrat(_ type: MontserratFont, size: CGFloat = 24) -> Font {
+        .custom(type.name, size: size)
+    }
+}
+
+
+extension Font {
     enum RobotoFont {
         case thin           // weight: 100
         case thinItalic
@@ -143,7 +167,6 @@ extension Font {
         UIFont(name: type.value, size: size) ?? .systemFont(ofSize: size)
     }
 }
-
 
 extension UIFont {
     static let heading1 = Font.poppinsUIFont(.semiBold, size: 32)

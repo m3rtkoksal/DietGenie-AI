@@ -26,7 +26,7 @@ struct DietProgramView: View {
                 CUILeftHeadline(
                     title: "Your Daily Plan",
                     subtitle: "",
-                    style: .red,
+                    style: .black,
                     bottomPadding: 50)
                 ScrollView {
                     VStack(alignment: .leading, spacing: 10) {

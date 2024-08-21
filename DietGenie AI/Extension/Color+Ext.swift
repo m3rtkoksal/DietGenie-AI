@@ -51,7 +51,6 @@ extension Color {
     static let CF6EFFA = Color(hex: "#F6EFFA") ?? Color("#F6EFFA")
     
     //NEW DESIGN
-    static let passionPlum = Color(ColorScheme.passionPlum)
     static let solidDarkPurple = Color(ColorScheme.solidDarkPurple)
     static let solidGray = Color(ColorScheme.solidGray)
     static let solidWhite = Color(ColorScheme.solidWhite)
@@ -61,12 +60,10 @@ extension Color {
     static let lightPurple50 = Color(ColorScheme.lightPurple50)
     static let lightPurple100 = Color(ColorScheme.lightPurple100)
     static let lightPurple200 = Color(ColorScheme.lightPurple200)
-    static let warningYellow = Color(ColorScheme.warningYellow)
-    static let darkPurple = Color(ColorScheme.darkPurple)
-    static let actionError = Color(ColorScheme.actionError)
-    static let actionWarning = Color(ColorScheme.actionWarning)
-    static let actionSuccess = Color(ColorScheme.actionSuccess)
-    static let otherPurple = Color(UIColor(named: "otherPurple") ?? UIColor.init(hex: "#9747FF")) //Figmada isimlendirilmemiş
+    static let topGreen = Color(ColorScheme.topGreen)
+    static let bottomBlue = Color(ColorScheme.bottomBlue)
+    static let lightTeal = Color(ColorScheme.lightTeal)
+    static let otherPurple = Color(UIColor(named: "otherPurple") ?? UIColor.init(hex: "#9747FF"))
 
     //Text Colors
     static let textColorsPrimary = Color(ColorScheme.textColorsPrimary)

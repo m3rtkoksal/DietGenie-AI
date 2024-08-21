@@ -14,16 +14,21 @@ struct PasswordResetView: View {
     @State private var errorMessage = ""
     @State private var showAlert = false
     @StateObject private var emailValidator = DefaultTextValidator(predicate: ValidatorHelper.emailPredicate)
+    @State private var scrollViewContentOffset: CGFloat = 0
+    
     var body: some View {
         BaseView(currentViewModel: viewModel,
-                 background: .black,
-                 showIndicator: $viewModel.showIndicator) {
-            VStack{
+                 background: .lightTeal,
+                 showIndicator: $viewModel.showIndicator,
+                 scrollViewOffset: scrollViewContentOffset) {
+            TrackableScrollView(.vertical,
+                                showIndicators: false,
+                                contentOffset: $scrollViewContentOffset) {
                 CUILeftHeadline(
-                    title: "New Password",
-                    subtitle: "Please enter your email address to recieve password",
-                    style: .red,
-                    bottomPadding: 20)
+                    title: "Forgot Password",
+                    subtitle: "Please enter your email address to recieve your password reset code",
+                    style: .black,
+                    bottomPadding: 0)
                 CUIValidationField(
                     placeholder: "Please enter your email",
                     prompt: "Wrong email format",
@@ -34,12 +39,16 @@ struct PasswordResetView: View {
                     style: .emailAddress)
                 .padding(.top)
                 Spacer()
-                CUIButton(text: "Send Email") {
+                CUIButton(text: "Reset Password") {
                     sendPasswordReset()
                     self.showAlert = true
                 }
+                .padding(.top,110)
+                LottieView(lottieFile: "forgotPass_animation", loopMode: .loop)
+                    .frame(width: UIScreen.screenWidth * 0.8)
+                    .padding(.top)
             }
-            .navigationBarTitle("DietGenie AI")
+            .navigationBarTitle("Forgot Password")
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(
                 leading:

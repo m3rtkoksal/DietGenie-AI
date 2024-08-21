@@ -18,9 +18,9 @@ struct CUIDefaultTextField: View {
                 .placeholder(when: text.isEmpty, placeholder: {
                     Text(placeholder)
                         .foregroundColor(.solidGray)
-                        .font(.poppins(.regular, size: 16))
+                        .font(.montserrat(.medium, size: 14))
                 })
-                .font(.heading3)
+                .font(.montserrat(.medium, size: 14))
                 .foregroundColor(fontColor)
                 .disableAutocorrection(true)
                 .padding(.horizontal, 10)

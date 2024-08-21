@@ -25,84 +25,118 @@ struct RegisterView: View {
     @State private var choosenItem = CUIDropdownItemModel(text: "")
     @State private var showGenderMenu = false
     @State private var isDatePickerVisible = true
+    @State private var scrollViewContentOffset: CGFloat = 0
     
     var body: some View {
         BaseView(currentViewModel: viewModel,
-                 background: .black,
-                 showIndicator: $viewModel.showIndicator) {
-            VStack {
-                CUILeftHeadline(
-                    title: "Registiration",
-                    subtitle: "Please enter your information to create account",
-                    style: .red,
-                    bottomPadding: 20)
-                ScrollView {
-                    CUIValidationField(
-                        placeholder: "first name",
-                        prompt: "Wrong name format",
-                        text: $nameValidator.text,
-                        isCriteriaValid: $nameValidator.isCriteriaValid,
-                        isNotValid: $nameValidator.isNotValid,
-                        showPrompt: $nameValidator.showPrompt,
-                        style: .emailAddress
-                    )
-                    CUIValidationField(
-                        placeholder: "last name",
-                        prompt: "Wrong name format",
-                        text: $surnameValidator.text,
-                        isCriteriaValid: $surnameValidator.isCriteriaValid,
-                        isNotValid: $surnameValidator.isNotValid,
-                        showPrompt: $surnameValidator.showPrompt,
-                        style: .emailAddress
-                    )
-                    CUIValidationField(
-                        placeholder: "Please enter email",
-                        prompt: "Wrong email format",
-                        text: $emailValidator.text,
-                        isCriteriaValid: $emailValidator.isCriteriaValid,
-                        isNotValid: $emailValidator.isNotValid,
-                        showPrompt: $emailValidator.showPrompt, style: .emailAddress
-                    )
-                    
-                    CUIPasswordValidationField(
-                        placeholder: "Please enter password",
-                        prompt: "Password does not meet criteria",
-                        willShowPrompt: true,
-                        text: $passwordValidator.text,
-                        isCriteriaValid: $passwordValidator.isCriteriaValid,
-                        isNotValid: $passwordValidator.isNotValid,
-                        showPrompt: $passwordValidator.showPrompt)
-                    
-                    ZStack(alignment: .top) {
+                 background: .lightTeal,
+                 showIndicator: $viewModel.showIndicator,
+                 scrollViewOffset: scrollViewContentOffset) {
+                TrackableScrollView(.vertical,
+                                    showIndicators: false,
+                                    contentOffset: $scrollViewContentOffset) {
+                    CUILeftHeadline(
+                        title: "Registiration",
+                        subtitle: "Please enter your information to create account",
+                        style: .black,
+                        bottomPadding: 0)
+                    VStack(spacing: 10){
                         CUIValidationField(
-                            placeholder: "Please select birthday",
-                            prompt: "",
-                            text: $birthdayValidator.text,
-                            isCriteriaValid: $birthdayValidator.isCriteriaValid,
-                            isNotValid: $birthdayValidator.isNotValid,
-                            showPrompt: .constant(false), style: .default)
-                        .disabled(true)
-                        .background(Color.clear)
-                        DatePickerView()
+                            placeholder: "First name",
+                            prompt: "Wrong name format",
+                            text: $nameValidator.text,
+                            isCriteriaValid: $nameValidator.isCriteriaValid,
+                            isNotValid: $nameValidator.isNotValid,
+                            showPrompt: $nameValidator.showPrompt,
+                            style: .emailAddress
+                        )
+                        CUIValidationField(
+                            placeholder: "Last name",
+                            prompt: "Wrong name format",
+                            text: $surnameValidator.text,
+                            isCriteriaValid: $surnameValidator.isCriteriaValid,
+                            isNotValid: $surnameValidator.isNotValid,
+                            showPrompt: $surnameValidator.showPrompt,
+                            style: .emailAddress
+                        )
+                        CUIValidationField(
+                            placeholder: "Email address",
+                            prompt: "Wrong email format",
+                            text: $emailValidator.text,
+                            isCriteriaValid: $emailValidator.isCriteriaValid,
+                            isNotValid: $emailValidator.isNotValid,
+                            showPrompt: $emailValidator.showPrompt, style: .emailAddress
+                        )
+                        
+                        CUIPasswordValidationField(
+                            placeholder: "Password",
+                            prompt: "Password does not meet criteria",
+                            willShowPrompt: true,
+                            text: $passwordValidator.text,
+                            isCriteriaValid: $passwordValidator.isCriteriaValid,
+                            isNotValid: $passwordValidator.isNotValid,
+                            showPrompt: $passwordValidator.showPrompt)
+                        VStack(spacing: 50) {
+                            CUIButton(text: "Create Account") {
+                                self.signUp(
+                                    email: emailValidator.text,
+                                    password: passwordValidator.text,
+                                    name: nameValidator.text,
+                                    surname: surnameValidator.text
+                                )
+                            }
+                            CUIDivider(title: "or Register with")
+                            VStack(spacing: 10) {
+                                CUIButton(
+                                    image: "google-icon",
+                                    text: "Connect with Google",
+                                    backgroundColor: .white) {
+                                        
+                                    }
+                                CUIButton(
+                                    image: "apple_icon",
+                                    text: "Connect with Apple",
+                                    backgroundColor: .black,
+                                    textColor: .white) {
+                                        
+                                    }
+                            }
+                            Spacer()
+                            Button(action: {
+                                viewModel.goToLogin = true
+                            }) {
+                                Text("Already have an account? ")
+                                    .font(.montserrat(.medium, size: 15)) +
+                                Text("Login!")
+                                    .font(.montserrat(.bold, size: 15))
+                            }
+                            .foregroundColor(.black)
+                        }
+                        .padding(.top, 40)
+                        
+                        //                    ZStack(alignment: .top) {
+                        //                        CUIValidationField(
+                        //                            placeholder: "Please select birthday",
+                        //                            prompt: "",
+                        //                            text: $birthdayValidator.text,
+                        //                            isCriteriaValid: $birthdayValidator.isCriteriaValid,
+                        //                            isNotValid: $birthdayValidator.isNotValid,
+                        //                            showPrompt: .constant(false), style: .default)
+                        //                        .disabled(true)
+                        //                        .background(Color.clear)
+                        //                        DatePickerView()
+                        //                    }
+                        //                    CUIDropdownField(
+                        //                        title: "Please select gender",
+                        //                        isExpanded: $showGenderMenu,
+                        //                        choosenItem: $choosenItem)
+                        //                    .padding(.horizontal, 20)
                     }
-                    CUIDropdownField(
-                        title: "Please select gender",
-                        isExpanded: $showGenderMenu,
-                        choosenItem: $choosenItem)
-                    .padding(.horizontal, 20)
+                    .frame(width: UIScreen.screenWidth)
+                    .padding(.top)
                 }
-               Spacer()
-                CUIButton(text: "Confirm") {
-                    self.signUp(
-                        email: emailValidator.text,
-                        password: passwordValidator.text,
-                        name: nameValidator.text,
-                        surname: surnameValidator.text,
-                        birthday: birthday.getFormattedDate(format: "dd.MM.yyyy"),
-                        gender: choosenItem.text)
-                }
-
-            }
+                
+            
             .alert(isPresented: $showAlert) {
                 Alert(
                     title: Text(errorTitle),
@@ -110,17 +144,36 @@ struct RegisterView: View {
                     dismissButton: .default(Text("OK")) {
                         showAlert = false
                         if errorTitle.contains("success") {
-                            presentationMode.wrappedValue.dismiss()
+                            viewModel.goToHealthPermission = true
                         }
                     }
                 )
             }
-            .navigationBarTitle("DietGenie AI")
+            .navigationBarTitle("Registiration")
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(
                 leading:
-                   CUIBackButton(toRoot: true)
+                    CUIBackButton(toRoot: true)
             )
+            .fullScreenCover(isPresented: $viewModel.goToLogin) {
+                NavigationView {
+                   LoginView()
+                        .environmentObject(userInputModel)
+                }
+                .environmentObject(
+                    BindingRouter($viewModel.goToLogin)
+                )
+            }
+            .fullScreenCover(isPresented: $viewModel.goToHealthPermission) {
+                NavigationView {
+                   HealthKitPermissionView()
+                        .environmentObject(userInputModel)
+                }
+                .environmentObject(
+                    BindingRouter($viewModel.goToHealthPermission)
+                )
+            }
+           
             .ndDropdownModifier(
                 itemList: $viewModel.menuPickerItems,
                 isExpanded: $showGenderMenu,
@@ -130,7 +183,7 @@ struct RegisterView: View {
             }
         }
     }
-    func signUp(email: String, password: String, name: String, surname: String, birthday: String, gender: String) {
+    func signUp(email: String, password: String, name: String, surname: String) {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 self.errorMessage = error.localizedDescription
@@ -142,8 +195,6 @@ struct RegisterView: View {
                     "userId": user.uid,
                     "name": name,
                     "surname": surname,
-                    "birthday": birthday,
-                    "gender": gender,
                     "email": email
                 ]) { err in
                     if let err = err {

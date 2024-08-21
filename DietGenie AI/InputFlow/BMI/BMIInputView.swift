@@ -29,7 +29,7 @@ struct BMIInputView: View {
                 CUILeftHeadline(
                     title: "Details About You",
                     subtitle: "Please enter below fields",
-                    style: .red,
+                    style: .black,
                     bottomPadding: 0)
                 Spacer()
                 CUIValidationField(

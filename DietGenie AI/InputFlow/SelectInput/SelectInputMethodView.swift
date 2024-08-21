@@ -9,23 +9,6 @@ import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 
-enum AlertType: Identifiable {
-    case authorizationRequired
-    case premiumAccountNeeded
-    case noDietPlan
-    
-    var id: UUID {
-        switch self {
-        case .authorizationRequired:
-            return UUID(uuidString: "00000000-0000-0000-0000-000000000001")!
-        case .premiumAccountNeeded:
-            return UUID(uuidString: "00000000-0000-0000-0000-000000000002")!
-        case .noDietPlan:
-            return UUID(uuidString: "00000000-0000-0000-0000-000000000003")!
-        }
-    }
-}
-
 struct SelectInputMethodView: View {
     @EnvironmentObject var userInputModel: UserInputModel
     @StateObject private var viewModel = SelectInputMethodVM()
@@ -56,6 +39,34 @@ struct SelectInputMethodView: View {
                 isActive: $viewModel.goToSavedPlan
             ) {}
             VStack(spacing: 50) {
+                CUIButton(text: "Save") {
+                    if healthKitManager.isAuthorized {
+                        // Fetch health data once
+                        fetchHealthData()
+                        
+                        // Save to Firestore once data has been fetched
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // Delay to ensure fetch completion
+                            guard let userId = userInputModel.userId, !userId.isEmpty else {
+                                print("User ID is not available.")
+                                return
+                            }
+                            healthKitManager.saveHealthDataToFirestore(
+                                userId: userInputModel.userId ?? "",
+                                activeEnergy: userInputModel.activeEnergy,
+                                restingEnergy: userInputModel.restingEnergy,
+                                bodyFatPercentage: userInputModel.bodyFatPercentage,
+                                leanBodyMass: userInputModel.leanBodyMass,
+                                weight: userInputModel.weight,
+                                gender: userInputModel.gender,
+                                height: userInputModel.height,
+                                age: userInputModel.age
+                            ) {
+                                print("Health data saved successfully.")
+                            }
+                        }
+                    }
+                }
+
                 CUIButton(text: "Create Program with HealthKit") {
                     if healthKitManager.isAuthorized {
                         checkIfDietPlanExists { exists, dietPlanData in
@@ -65,7 +76,8 @@ struct SelectInputMethodView: View {
                                 activeAlert = .premiumAccountNeeded
                             } else {
                                 // Handle the case where no diet plan exists
-                                fetchAndNavigate()
+                                fetchHealthData()
+                                self.viewModel.goToPurposeInputPage = true
                                 print("No diet plan exists.")
                             }
                         }
@@ -106,7 +118,7 @@ struct SelectInputMethodView: View {
             }
             .onAppear {
                 healthKitManager.requestAuthorization()
-                checkHealthKitAuthorization()
+              
             }
         }
         .navigationBarTitle("DietGenie AI")
@@ -144,42 +156,31 @@ struct SelectInputMethodView: View {
         }
     }
     
-    private func fetchAndNavigate() {
-        // Replace "yourUserId" with the actual user ID
-        guard let userId = Auth.auth().currentUser?.uid else {
-            print("User not logged in")
-            return
-        }
-        
-        healthKitManager.fetchYearlyData(userId: userId) { (activeEnergyData, restingEnergyData, bodyFatPercentageData, leanBodyMassData, weightData, genderData, heightData, ageData) in
-            // Calculate daily values
-            let daysInYear = 365.0
-            let dailyActiveEnergy = (activeEnergyData ?? 0.0) / daysInYear
-            let dailyRestingEnergy = (restingEnergyData ?? 0.0) / daysInYear
-            
-            // Update user input model
-            self.userInputModel.activeEnergy = dailyActiveEnergy
-            self.userInputModel.restingEnergy = dailyRestingEnergy
-            self.userInputModel.bodyFatPercentage = bodyFatPercentageData
-            self.userInputModel.leanBodyMass = leanBodyMassData
-            self.userInputModel.weight = weightData
-            self.userInputModel.height = heightData
-            self.userInputModel.gender = genderData
-            self.userInputModel.age = ageData
-            
-            // Ensure navigation only happens after data is fetched and saved
-            self.viewModel.goToPurposeInputPage = true
-        }
-    }
+    func fetchHealthData() {
+           guard let userId = Auth.auth().currentUser?.uid else {
+               print("No user ID found.")
+               return
+           }
+           
+           healthKitManager.fetchYearlyData(userId: userId) { activeEnergyData, restingEnergyData, bodyFatPercentageData, leanBodyMassData, weightData, genderData, heightData, ageData in
+               self.userInputModel.userId = userId
+               // Calculate daily values
+               let daysInYear = 365.0
+               let dailyActiveEnergy = (activeEnergyData ?? 0.0) / daysInYear
+               let dailyRestingEnergy = (restingEnergyData ?? 0.0) / daysInYear
+               // Update user input model
+               self.userInputModel.activeEnergy = dailyActiveEnergy
+               self.userInputModel.restingEnergy = dailyRestingEnergy
+               self.userInputModel.bodyFatPercentage = bodyFatPercentageData
+               self.userInputModel.leanBodyMass = leanBodyMassData
+               self.userInputModel.weight = weightData
+               self.userInputModel.height = heightData
+               self.userInputModel.gender = genderData
+               self.userInputModel.age = ageData
+           }
+       }
 
-    private func checkHealthKitAuthorization() {
-        // Perform the authorization check after a brief delay to allow isAuthorized to update
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            if !self.healthKitManager.isAuthorized {
-                activeAlert = .authorizationRequired
-            }
-        }
-    }
+   
     private func checkIfDietPlanExists(completion: @escaping (Bool, DietPlan?) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else {
             completion(false, nil)

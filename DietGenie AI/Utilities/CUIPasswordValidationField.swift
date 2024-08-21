@@ -27,20 +27,21 @@ struct CUIPasswordValidationField: View {
                         .placeholder(when: text.isEmpty, placeholder: {
                             Text(placeholder)
                                 .foregroundColor(.solidGray)
-                                .font(.poppins(.regular, size: 16))
+                                .font(.montserrat(.medium, size: 14))
                         })
-                        .font(.poppins(.regular, size: 16))
-                        .padding(.leading, 10)
+                        .font(.montserrat(.medium, size: 14))
+                        .foregroundColor(.black)
+                        .padding(.leading, 16)
                         .padding(.trailing, 3)
                         .frame(height: 50)
-                        .frame(maxWidth: UIScreen.screenWidth / 1.1)
+                        .frame(maxWidth: UIScreen.screenWidth / 1.2)
                 } else {
                     TextField(placeholder, text: $text)
-                        .foregroundColor(.solidGray)
-                        .font(.poppins(.regular, size: 16))
+                        .foregroundColor(.black)
+                        .font(.montserrat(.medium, size: 14))
                         .padding(.leading, 10)
                         .frame(height: 50)
-                        .frame(maxWidth: UIScreen.screenWidth / 1.1)
+                        .frame(maxWidth: UIScreen.screenWidth / 1.2)
                 }
                 
                 Button(action: {
@@ -49,20 +50,21 @@ struct CUIPasswordValidationField: View {
                     Image(systemName: isSecureField ? "eye.slash" : "eye")
                         .foregroundColor(.gray)
                 }
-                .padding(.trailing, 8)
+                .padding(.trailing, 16)
             }
             .onChange(of: text) { newValue in
                 isCriteriaValid = false
                 isNotValid = false
                 showPrompt = false
             }
-            .frame(maxWidth: UIScreen.screenWidth / 1.1)
-            .background(Color.otherBlack)
-            .cornerRadius(10)
+            .frame(maxWidth: UIScreen.screenWidth / 1.2)
+            .background(Color.white)
+            .cornerRadius(38)
             .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .strokeBorder(isNotValid ? Color.red : .lightGray200, lineWidth: 1)
+                RoundedRectangle(cornerRadius: 38)
+                    .strokeBorder(isNotValid ? Color.red : .lightGray200, lineWidth: 0.4)
             )
+            .shadow(color: Color(red: 0.51, green: 0.74, blue: 0.62, opacity: 0.3), radius: 20, x: 0, y: 0)
             
             if showPrompt && willShowPrompt {
                 Text(prompt)

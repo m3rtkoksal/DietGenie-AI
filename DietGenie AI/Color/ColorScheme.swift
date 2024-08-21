@@ -12,9 +12,7 @@ struct ColorScheme {
     static func color(light: UIColor, dark: UIColor) -> UIColor {
         return UIColor.dynamicColor(light: light, dark: dark)
     }
-    static var passionPlum: UIColor {
-        return color(light: UIColor.init(hex: "#753BBD"), dark: UIColor.init(hex: "#753BBD"))
-    }
+   
     static var solidDarkPurple: UIColor {
         return color(light:UIColor.init(hex: "#351E52"),
                      dark: UIColor.init(hex: "#351E52"))
@@ -57,32 +55,20 @@ struct ColorScheme {
                      dark: UIColor.init(hex: "#AD9AC4"))
     }
     
-    static var warningYellow: UIColor {
-        return color(light:UIColor.init(hex: "#F7CF46"),
-                     dark: UIColor.init(hex: "#F7CF46"))
+    static var topGreen: UIColor {
+        return color(light: UIColor.init(hex: "#98FFC7"),
+                     dark: UIColor.init(hex: "#98FFC7"))
+    }
+    static var bottomBlue: UIColor {
+        return color(light: UIColor.init(hex: "#87EBFA"),
+                     dark: UIColor.init(hex: "#87EBFA"))
     }
     
-    static var darkPurple: UIColor {
-        return color(light:UIColor.init(hex: "#583387"),
-                     dark: UIColor.init(hex: "#583387"))
-    }
-    
-    static var actionError: UIColor {
-        return color(light:UIColor.init(hex: "#DC5252"),
-                     dark: UIColor.init(hex: "#DC5252"))
-    }
-    
-    static var actionWarning: UIColor {
-        return color(light:UIColor.init(hex: "#EEAE39"),
-                     dark: UIColor.init(hex: "#EEAE39"))
-    }
-    
-    static var actionSuccess: UIColor {
-        return color(light:UIColor.init(hex: "#5AC55A"),
-                     dark: UIColor.init(hex: "#5AC55A"))
+    static var lightTeal: UIColor {
+        return color(light: UIColor.init(hex: "#F8FFFC"),
+                     dark: UIColor.init(hex: "#F8FFFC"))
     }
 
-    
     static var textColorsPrimary: UIColor {
         return color(light:UIColor.init(hex: "#351E52"),
                      dark: UIColor.init(hex: "#351E52"))

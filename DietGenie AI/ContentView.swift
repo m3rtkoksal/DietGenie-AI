@@ -22,7 +22,7 @@ struct ContentView: View {
                         .environmentObject(userInputModel)
                 }
             } else {
-                WelcomeView()
+                OnboardingView()
                     .environmentObject(userInputModel)
             }
         }

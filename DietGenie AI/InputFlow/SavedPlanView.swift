@@ -24,7 +24,7 @@ struct SavedPlanView: View {
                 CUILeftHeadline(
                     title: "Your Saved Diet Plans",
                     subtitle: "You can see details of your previous meal plans from this list",
-                    style: .red,
+                    style: .black,
                     bottomPadding: 50)
                 ForEach(userInputModel.dietPlans) { dietPlan in
                     NavigationLink(destination: DietPlanDetailView(dietPlan: dietPlan)) {

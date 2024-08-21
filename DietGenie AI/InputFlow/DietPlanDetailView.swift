@@ -20,7 +20,7 @@ struct DietPlanDetailView: View {
                 CUILeftHeadline(
                     title: "Your Saved Diet Plans",
                     subtitle: "",
-                    style: .red,
+                    style: .black,
                     bottomPadding: 50)
                 ScrollView {
                     ForEach(dietPlan.meals, id: \.self) { meal in

@@ -71,7 +71,7 @@
 		8E02CFD72C6E20DE006E5B93 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8E02CFD62C6E20DE006E5B93 /* FirebaseStorage */; };
 		8E02CFD92C6E20DE006E5B93 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 8E02CFD82C6E20DE006E5B93 /* FirebaseStorageCombine-Community */; };
 		8E02CFDB2C6E20DE006E5B93 /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = 8E02CFDA2C6E20DE006E5B93 /* FirebaseVertexAI-Preview */; };
-		8E02CFDE2C70FFEA006E5B93 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CFDD2C70FFEA006E5B93 /* WelcomeView.swift */; };
+		8E02CFDE2C70FFEA006E5B93 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CFDD2C70FFEA006E5B93 /* LoginView.swift */; };
 		8E02CFE02C71114B006E5B93 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CFDF2C71114B006E5B93 /* RegisterView.swift */; };
 		8E02CFE52C711A93006E5B93 /* SwiftUIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CFE42C711A93006E5B93 /* SwiftUIWrapper.swift */; };
 		8E02CFE72C711AC4006E5B93 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CFE62C711AC4006E5B93 /* Date+Ext.swift */; };
@@ -85,6 +85,23 @@
 		8E0B2C162C722450004DFCD8 /* DietPlanElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C152C722450004DFCD8 /* DietPlanElement.swift */; };
 		8E0B2C192C722C04004DFCD8 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C182C722C04004DFCD8 /* MainTabView.swift */; };
 		8E0B2C1D2C722D2F004DFCD8 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0B2C1C2C722D2F004DFCD8 /* TabButton.swift */; };
+		8E36DC4D2C73F5A2005F58E4 /* CUIDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E36DC4C2C73F5A2005F58E4 /* CUIDivider.swift */; };
+		8E36DC4F2C750119005F58E4 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E36DC4E2C750119005F58E4 /* KeyboardObserver.swift */; };
+		8E36DC512C7503F4005F58E4 /* TrackableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E36DC502C7503F4005F58E4 /* TrackableScrollView.swift */; };
+		8E36DC532C750B67005F58E4 /* forgotPass_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E36DC522C750B67005F58E4 /* forgotPass_animation.json */; };
+		8E36DC572C750C64005F58E4 /* HealthKitPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E36DC562C750C64005F58E4 /* HealthKitPermissionView.swift */; };
+		8E47D1842C76887500A8C4B3 /* HealthKitPermissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E47D1832C76887500A8C4B3 /* HealthKitPermissionVM.swift */; };
+		8E47D1862C768B7E00A8C4B3 /* CUIDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E47D1852C768B7E00A8C4B3 /* CUIDismissButton.swift */; };
+		8EAEB05E2C73B6C500FD9713 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAEB05D2C73B6C500FD9713 /* LottieView.swift */; };
+		8EAEB0612C73B79800FD9713 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 8EAEB0602C73B79800FD9713 /* Lottie */; };
+		8EAEB0632C73B7B000FD9713 /* DietGenie_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EAEB0622C73B7B000FD9713 /* DietGenie_animation.json */; };
+		8EAEB0652C73B7E300FD9713 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAEB0642C73B7E300FD9713 /* OnboardingView.swift */; };
+		8EAEB0682C73B83100FD9713 /* OnboardingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAEB0672C73B83100FD9713 /* OnboardingVM.swift */; };
+		8EAEB06C2C73C60A00FD9713 /* CustomEllipseShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAEB06B2C73C60A00FD9713 /* CustomEllipseShape.swift */; };
+		8EAEB0702C73CC4800FD9713 /* Montserrat-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EAEB06F2C73CC4800FD9713 /* Montserrat-VariableFont_wght.ttf */; };
+		8EAEB0732C73CF6D00FD9713 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EAEB0722C73CF6D00FD9713 /* Montserrat-Medium.ttf */; };
+		8EAEB0752C73CF7700FD9713 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EAEB0742C73CF7700FD9713 /* Montserrat-Bold.ttf */; };
+		8EAEB0772C73CF7E00FD9713 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EAEB0762C73CF7E00FD9713 /* Montserrat-SemiBold.ttf */; };
 		8EDFD1AB2C713E8D00CCA1C2 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AA2C713E8D00CCA1C2 /* PasswordResetView.swift */; };
 		8EDFD1AD2C714F4F00CCA1C2 /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */; };
 		8EDFD1AF2C7154D900CCA1C2 /* CUIPasswordValidationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AE2C7154D900CCA1C2 /* CUIPasswordValidationField.swift */; };
@@ -93,7 +110,7 @@
 		8EDFD1B72C71607A00CCA1C2 /* GenderInputVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1B62C71607A00CCA1C2 /* GenderInputVM.swift */; };
 		8EDFD1BA2C71613E00CCA1C2 /* BMIInputVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1B92C71613E00CCA1C2 /* BMIInputVM.swift */; };
 		8EDFD1BD2C7162A800CCA1C2 /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1BC2C7162A800CCA1C2 /* RegisterVM.swift */; };
-		8EDFD1C02C7163C700CCA1C2 /* WelcomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1BF2C7163C700CCA1C2 /* WelcomeVM.swift */; };
+		8EDFD1C02C7163C700CCA1C2 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1BF2C7163C700CCA1C2 /* LoginVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,7 +157,7 @@
 		8E02CF9C2C6E0FDC006E5B93 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		8E02CF9E2C6E1E4E006E5B93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E02CFAB2C6E1F47006E5B93 /* FirebaseRemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfigManager.swift; sourceTree = "<group>"; };
-		8E02CFDD2C70FFEA006E5B93 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		8E02CFDD2C70FFEA006E5B93 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8E02CFDF2C71114B006E5B93 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		8E02CFE42C711A93006E5B93 /* SwiftUIWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIWrapper.swift; sourceTree = "<group>"; };
 		8E02CFE62C711AC4006E5B93 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
@@ -153,6 +170,23 @@
 		8E0B2C152C722450004DFCD8 /* DietPlanElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietPlanElement.swift; sourceTree = "<group>"; };
 		8E0B2C182C722C04004DFCD8 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		8E0B2C1C2C722D2F004DFCD8 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
+		8E36DC4C2C73F5A2005F58E4 /* CUIDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIDivider.swift; sourceTree = "<group>"; };
+		8E36DC4E2C750119005F58E4 /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
+		8E36DC502C7503F4005F58E4 /* TrackableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackableScrollView.swift; sourceTree = "<group>"; };
+		8E36DC522C750B67005F58E4 /* forgotPass_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forgotPass_animation.json; sourceTree = "<group>"; };
+		8E36DC562C750C64005F58E4 /* HealthKitPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitPermissionView.swift; sourceTree = "<group>"; };
+		8E47D1832C76887500A8C4B3 /* HealthKitPermissionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitPermissionVM.swift; sourceTree = "<group>"; };
+		8E47D1852C768B7E00A8C4B3 /* CUIDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIDismissButton.swift; sourceTree = "<group>"; };
+		8EAEB05D2C73B6C500FD9713 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		8EAEB0622C73B7B000FD9713 /* DietGenie_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DietGenie_animation.json; sourceTree = "<group>"; };
+		8EAEB0642C73B7E300FD9713 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		8EAEB0672C73B83100FD9713 /* OnboardingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVM.swift; sourceTree = "<group>"; };
+		8EAEB06B2C73C60A00FD9713 /* CustomEllipseShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEllipseShape.swift; sourceTree = "<group>"; };
+		8EAEB06F2C73CC4800FD9713 /* Montserrat-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		8EAEB0712C73CC6900FD9713 /* DietGenie-AI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "DietGenie-AI-Info.plist"; sourceTree = SOURCE_ROOT; };
+		8EAEB0722C73CF6D00FD9713 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		8EAEB0742C73CF7700FD9713 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		8EAEB0762C73CF7E00FD9713 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		8EDFD1AA2C713E8D00CCA1C2 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 		8EDFD1AE2C7154D900CCA1C2 /* CUIPasswordValidationField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIPasswordValidationField.swift; sourceTree = "<group>"; };
@@ -161,7 +195,7 @@
 		8EDFD1B62C71607A00CCA1C2 /* GenderInputVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderInputVM.swift; sourceTree = "<group>"; };
 		8EDFD1B92C71613E00CCA1C2 /* BMIInputVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIInputVM.swift; sourceTree = "<group>"; };
 		8EDFD1BC2C7162A800CCA1C2 /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
-		8EDFD1BF2C7163C700CCA1C2 /* WelcomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVM.swift; sourceTree = "<group>"; };
+		8EDFD1BF2C7163C700CCA1C2 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +218,7 @@
 				8E02CFD12C6E20DE006E5B93 /* FirebaseMessaging in Frameworks */,
 				8E02CFCD2C6E20DE006E5B93 /* FirebaseInstallations in Frameworks */,
 				8E02CFC92C6E20DE006E5B93 /* FirebaseFunctionsCombine-Community in Frameworks */,
+				8EAEB0612C73B79800FD9713 /* Lottie in Frameworks */,
 				8E02CFB52C6E20DE006E5B93 /* FirebaseAppCheck in Frameworks */,
 				8E02CFB32C6E20DE006E5B93 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				8E02CFCB2C6E20DE006E5B93 /* FirebaseInAppMessaging-Beta in Frameworks */,
@@ -221,6 +256,7 @@
 		8E02CF362C6B8205006E5B93 /* DietGenie AI */ = {
 			isa = PBXGroup;
 			children = (
+				8EAEB0712C73CC6900FD9713 /* DietGenie-AI-Info.plist */,
 				8E02CFDC2C70FFC2006E5B93 /* RegisterLogin */,
 				8E02CF842C6BB79E006E5B93 /* Manager */,
 				8E02CF832C6BB6F3006E5B93 /* DietGenie AI.entitlements */,
@@ -249,6 +285,7 @@
 		8E02CF452C6B831D006E5B93 /* InputFlow */ = {
 			isa = PBXGroup;
 			children = (
+				8E36DC552C750C3D005F58E4 /* HealthKitPermission */,
 				8E0B2C102C720F25004DFCD8 /* SavedPlan */,
 				8EDFD1C22C7164BF00CCA1C2 /* SelectInput */,
 				8EDFD1BB2C7161E400CCA1C2 /* BMI */,
@@ -290,6 +327,10 @@
 			isa = PBXGroup;
 			children = (
 				8E02CF4F2C6B8486006E5B93 /* ColorScheme.swift */,
+				8EAEB0762C73CF7E00FD9713 /* Montserrat-SemiBold.ttf */,
+				8EAEB0742C73CF7700FD9713 /* Montserrat-Bold.ttf */,
+				8EAEB0722C73CF6D00FD9713 /* Montserrat-Medium.ttf */,
+				8EAEB06F2C73CC4800FD9713 /* Montserrat-VariableFont_wght.ttf */,
 			);
 			path = Color;
 			sourceTree = "<group>";
@@ -310,6 +351,8 @@
 		8E02CF642C6B889F006E5B93 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				8E36DC522C750B67005F58E4 /* forgotPass_animation.json */,
+				8EAEB0622C73B7B000FD9713 /* DietGenie_animation.json */,
 				8E02CF652C6B88BB006E5B93 /* BackgroundBlurView.swift */,
 				8E02CF6F2C6B94C3006E5B93 /* SegmentedControlView.swift */,
 				8E02CF712C6B9F36006E5B93 /* CUILeftHeadline.swift */,
@@ -322,6 +365,12 @@
 				8E02CFE42C711A93006E5B93 /* SwiftUIWrapper.swift */,
 				8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */,
 				8E0B2C1C2C722D2F004DFCD8 /* TabButton.swift */,
+				8EAEB05D2C73B6C500FD9713 /* LottieView.swift */,
+				8EAEB06B2C73C60A00FD9713 /* CustomEllipseShape.swift */,
+				8E36DC4C2C73F5A2005F58E4 /* CUIDivider.swift */,
+				8E36DC4E2C750119005F58E4 /* KeyboardObserver.swift */,
+				8E36DC502C7503F4005F58E4 /* TrackableScrollView.swift */,
+				8E47D1852C768B7E00A8C4B3 /* CUIDismissButton.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -341,6 +390,7 @@
 		8E02CFDC2C70FFC2006E5B93 /* RegisterLogin */ = {
 			isa = PBXGroup;
 			children = (
+				8EAEB0662C73B81D00FD9713 /* Onboarding */,
 				8EDFD1C12C71642500CCA1C2 /* Welcome */,
 				8EDFD1BE2C71633400CCA1C2 /* Register */,
 				8EDFD1AA2C713E8D00CCA1C2 /* PasswordResetView.swift */,
@@ -372,6 +422,24 @@
 				8E0B2C182C722C04004DFCD8 /* MainTabView.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		8E36DC552C750C3D005F58E4 /* HealthKitPermission */ = {
+			isa = PBXGroup;
+			children = (
+				8E36DC562C750C64005F58E4 /* HealthKitPermissionView.swift */,
+				8E47D1832C76887500A8C4B3 /* HealthKitPermissionVM.swift */,
+			);
+			name = HealthKitPermission;
+			sourceTree = "<group>";
+		};
+		8EAEB0662C73B81D00FD9713 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				8EAEB0642C73B7E300FD9713 /* OnboardingView.swift */,
+				8EAEB0672C73B83100FD9713 /* OnboardingVM.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		8EDFD1B22C715FC200CCA1C2 /* Purpose */ = {
@@ -423,8 +491,8 @@
 		8EDFD1C12C71642500CCA1C2 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
-				8E02CFDD2C70FFEA006E5B93 /* WelcomeView.swift */,
-				8EDFD1BF2C7163C700CCA1C2 /* WelcomeVM.swift */,
+				8E02CFDD2C70FFEA006E5B93 /* LoginView.swift */,
+				8EDFD1BF2C7163C700CCA1C2 /* LoginVM.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -479,6 +547,7 @@
 				8E02CFD62C6E20DE006E5B93 /* FirebaseStorage */,
 				8E02CFD82C6E20DE006E5B93 /* FirebaseStorageCombine-Community */,
 				8E02CFDA2C6E20DE006E5B93 /* FirebaseVertexAI-Preview */,
+				8EAEB0602C73B79800FD9713 /* Lottie */,
 			);
 			productName = "DietGenie AI";
 			productReference = 8E02CF342C6B8205006E5B93 /* DietGenie AI.app */;
@@ -511,6 +580,7 @@
 			packageReferences = (
 				8E02CF992C6E0E67006E5B93 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 				8E02CFAD2C6E20DE006E5B93 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				8EAEB05F2C73B79800FD9713 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 8E02CF352C6B8205006E5B93 /* Products */;
 			projectDirPath = "";
@@ -527,8 +597,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E02CF3F2C6B8207006E5B93 /* Preview Assets.xcassets in Resources */,
+				8EAEB0632C73B7B000FD9713 /* DietGenie_animation.json in Resources */,
 				8E02CF3C2C6B8207006E5B93 /* Assets.xcassets in Resources */,
 				8E02CF9F2C6E1E4E006E5B93 /* GoogleService-Info.plist in Resources */,
+				8EAEB0732C73CF6D00FD9713 /* Montserrat-Medium.ttf in Resources */,
+				8E36DC532C750B67005F58E4 /* forgotPass_animation.json in Resources */,
+				8EAEB0702C73CC4800FD9713 /* Montserrat-VariableFont_wght.ttf in Resources */,
+				8EAEB0772C73CF7E00FD9713 /* Montserrat-SemiBold.ttf in Resources */,
+				8EAEB0752C73CF7700FD9713 /* Montserrat-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,9 +626,11 @@
 				8EDFD1B12C715F2200CCA1C2 /* PurposeInputVM.swift in Sources */,
 				8E0B2C0F2C720B81004DFCD8 /* ConditionalOpacityAndDisableModifier.swift in Sources */,
 				8E02CFE52C711A93006E5B93 /* SwiftUIWrapper.swift in Sources */,
+				8E47D1842C76887500A8C4B3 /* HealthKitPermissionVM.swift in Sources */,
 				8E02CF9D2C6E0FDC006E5B93 /* Constant.swift in Sources */,
+				8EAEB0682C73B83100FD9713 /* OnboardingVM.swift in Sources */,
 				8E02CF662C6B88BB006E5B93 /* BackgroundBlurView.swift in Sources */,
-				8E02CFDE2C70FFEA006E5B93 /* WelcomeView.swift in Sources */,
+				8E02CFDE2C70FFEA006E5B93 /* LoginView.swift in Sources */,
 				8E02CF382C6B8205006E5B93 /* DietGenie_AIApp.swift in Sources */,
 				8E0B2C122C720F35004DFCD8 /* SavedPlanView.swift in Sources */,
 				8E02CF882C6BF777006E5B93 /* SelectInputMethodView.swift in Sources */,
@@ -563,6 +641,9 @@
 				8E02CF862C6BB7B1006E5B93 /* HealthKitManager.swift in Sources */,
 				8E02CF742C6BA020006E5B93 /* CUIButton.swift in Sources */,
 				8E02CF522C6B84B7006E5B93 /* BaseViewModel.swift in Sources */,
+				8E36DC512C7503F4005F58E4 /* TrackableScrollView.swift in Sources */,
+				8E36DC572C750C64005F58E4 /* HealthKitPermissionView.swift in Sources */,
+				8EAEB05E2C73B6C500FD9713 /* LottieView.swift in Sources */,
 				8E02CF5D2C6B86A9006E5B93 /* ItemHeightPreferenceKey.swift in Sources */,
 				8E0B2C162C722450004DFCD8 /* DietPlanElement.swift in Sources */,
 				8E02CF702C6B94C3006E5B93 /* SegmentedControlView.swift in Sources */,
@@ -577,18 +658,22 @@
 				8E02CF7E2C6BB0ED006E5B93 /* CUIValidationField.swift in Sources */,
 				8E02CF502C6B8486006E5B93 /* ColorScheme.swift in Sources */,
 				8EDFD1AF2C7154D900CCA1C2 /* CUIPasswordValidationField.swift in Sources */,
-				8EDFD1C02C7163C700CCA1C2 /* WelcomeVM.swift in Sources */,
+				8EDFD1C02C7163C700CCA1C2 /* LoginVM.swift in Sources */,
 				8E02CF782C6BA91C006E5B93 /* UserInputModel.swift in Sources */,
 				8E0B2C192C722C04004DFCD8 /* MainTabView.swift in Sources */,
 				8E02CF7A2C6BAAB4006E5B93 /* BMIInputView.swift in Sources */,
 				8E02CF632C6B8885006E5B93 /* NdDropdownModifier.swift in Sources */,
+				8EAEB06C2C73C60A00FD9713 /* CustomEllipseShape.swift in Sources */,
+				8E36DC4F2C750119005F58E4 /* KeyboardObserver.swift in Sources */,
 				8E0B2C1D2C722D2F004DFCD8 /* TabButton.swift in Sources */,
 				8E0B2C0D2C71891C004DFCD8 /* AuthenticationManager.swift in Sources */,
 				8E02CFAC2C6E1F47006E5B93 /* FirebaseRemoteConfigManager.swift in Sources */,
 				8E02CF5F2C6B8746006E5B93 /* Screen+Ext.swift in Sources */,
 				8E02CF6C2C6B8A8D006E5B93 /* CUISearchBar.swift in Sources */,
 				8EDFD1B72C71607A00CCA1C2 /* GenderInputVM.swift in Sources */,
+				8E47D1862C768B7E00A8C4B3 /* CUIDismissButton.swift in Sources */,
 				8E0B2C072C71710C004DFCD8 /* ContentView.swift in Sources */,
+				8EAEB0652C73B7E300FD9713 /* OnboardingView.swift in Sources */,
 				8E02CF4D2C6B8440006E5B93 /* Color+Ext.swift in Sources */,
 				8E02CF942C6C7671006E5B93 /* MealCardElementView.swift in Sources */,
 				8E02CF572C6B8542006E5B93 /* CUIDropDown.swift in Sources */,
@@ -596,6 +681,7 @@
 				8E02CF982C6E0D79006E5B93 /* KeychainManager.swift in Sources */,
 				8E02CF7C2C6BACD6006E5B93 /* CUIBackButton.swift in Sources */,
 				8E02CF592C6B856B006E5B93 /* Font+Ext.swift in Sources */,
+				8E36DC4D2C73F5A2005F58E4 /* CUIDivider.swift in Sources */,
 				8E0B2C142C722007004DFCD8 /* DietPlanDetailView.swift in Sources */,
 				8E02CF552C6B8506006E5B93 /* CUIDropDownElement.swift in Sources */,
 				8E02CF5B2C6B860B006E5B93 /* SelectInputMethodVM.swift in Sources */,
@@ -730,15 +816,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "DietGenie AI/DietGenie AI.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DietGenie AI/Preview Content\"";
-				DEVELOPMENT_TEAM = QH2FS8GDVG;
+				DEVELOPMENT_TEAM = 79G38KD48M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DietGenie-AI-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "DietGenie-AI";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app requires access to your health data to provide personalized insights and recommendations.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This app requires access to your health data to provide personalized insights and recommendations.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -750,8 +839,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.aodeme.DietGenie-AI";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mika.DietGenie-AI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -764,15 +854,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "DietGenie AI/DietGenie AI.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DietGenie AI/Preview Content\"";
-				DEVELOPMENT_TEAM = QH2FS8GDVG;
+				DEVELOPMENT_TEAM = 79G38KD48M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DietGenie-AI-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "DietGenie-AI";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app requires access to your health data to provide personalized insights and recommendations.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This app requires access to your health data to provide personalized insights and recommendations.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -784,8 +877,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.aodeme.DietGenie-AI";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mika.DietGenie-AI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -830,6 +924,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 11.0.0;
+			};
+		};
+		8EAEB05F2C73B79800FD9713 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -954,6 +1056,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8E02CFAD2C6E20DE006E5B93 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseVertexAI-Preview";
+		};
+		8EAEB0602C73B79800FD9713 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8EAEB05F2C73B79800FD9713 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

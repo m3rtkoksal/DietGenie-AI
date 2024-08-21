@@ -8,14 +8,14 @@
 import SwiftUI
 
 enum HeadLineStyleType{
-    case red
+    case black
     case purple
     case solidDarkPurple
     
     var titleColor: Color{
         switch self {
-        case .red:
-            return .red
+        case .black:
+            return .black
         case .purple:
             return .textColorsPrimary
         case .solidDarkPurple:
@@ -24,8 +24,8 @@ enum HeadLineStyleType{
     }
     var subtitleColor: Color{
         switch self {
-        case .red:
-            return .lightGray100
+        case .black:
+            return .black
         case .purple:
             return .textColorsPrimary
         case .solidDarkPurple:
@@ -42,27 +42,25 @@ struct CUILeftHeadline: View {
     var bottomPadding: CGFloat?
 
     var body: some View {
-        LinearGradient(gradient: Gradient(colors: [.red, .blue, .teal]), startPoint: .leading, endPoint: .trailing)
-            .frame(height: 100)
-        .mask(VStack(spacing: 0){
+       VStack(spacing: 0){
             HStack {
                 Text(title)
                     .foregroundColor(style.titleColor)
-                    .font(.heading1)
+                    .font(.montserrat(.bold, size: 24))
                 Spacer()
             }.padding(.top, 24)
             HStack {
                 if !subtitle.isEmpty {
                     Text(subtitle)
                         .foregroundColor(style.subtitleColor)
-                        .font(.subtext4)
+                        .font(.montserrat(.medium, size: 14))
                         .multilineTextAlignment(.leading)
-                        .padding(.top,24)
+                        .padding(.top,10)
                     Spacer()
                 }
             }.padding(.bottom, bottomPadding ?? 40)
-        })
-        .padding(.horizontal, 16)
+        }
+        .padding(.leading, 33)
     }
 }
 

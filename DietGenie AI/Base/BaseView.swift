@@ -11,6 +11,7 @@ enum BaseViewBackgroundType{
     case black
     case solidWhite
     case transparent
+    case lightTeal
 }
 
 struct BaseView<Content: View>: View {
@@ -21,24 +22,42 @@ struct BaseView<Content: View>: View {
     var hideBackButton: Bool
     let content: Content
     @Binding var showIndicator: Bool
+    var scrollViewOffset: CGFloat?
     
     init(
          currentViewModel: BaseViewModel,
          background: BaseViewBackgroundType? = nil,
          hideBackButton: Bool? = false,
          showIndicator: Binding<Bool>,
+         scrollViewOffset: CGFloat? = nil,
          @ViewBuilder content: () -> Content)
     {
         self.currentViewModel = currentViewModel
         self.background = background ?? .solidWhite
         self.hideBackButton = hideBackButton ?? false
         self.content = content()
+        self.scrollViewOffset = scrollViewOffset
         self._showIndicator = showIndicator
+    }
+    
+    var cRadius: CGFloat {
+        if let scrollViewOffset = scrollViewOffset {
+            if scrollViewOffset > 31 {
+                return 0
+            }
+            else if scrollViewOffset >= 0 {
+                return 31 - scrollViewOffset
+            } else {
+                return 31
+            }
+        } else {
+            return 31
+        }
     }
     
     var body: some View {
         ZStack {
-            Color.darkPurple
+            Color.purple
                 .ignoresSafeArea()
             switch background {
             case .solidWhite:
@@ -48,9 +67,11 @@ struct BaseView<Content: View>: View {
                 Color.otherBlack
                     .ignoresSafeArea()
             case .transparent:
-                    Color.clear
-                        .ignoresSafeArea()
-                
+                Color.clear
+                    .ignoresSafeArea()
+            case .lightTeal:
+                Color.lightTeal
+                    .ignoresSafeArea()
             }
             
             // CONTENT

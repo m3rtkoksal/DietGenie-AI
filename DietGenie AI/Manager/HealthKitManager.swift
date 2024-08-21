@@ -4,7 +4,6 @@ import FirebaseFirestore
 class HealthKitManager: ObservableObject {
     private var healthStore = HKHealthStore()
     private let db = Firestore.firestore()  // Add Firestore instance
-    
     @Published var isAuthorized = false
     
     func requestAuthorization() {
@@ -43,7 +42,7 @@ class HealthKitManager: ObservableObject {
             return "Unknown"
         }
     }
-
+    
     func fetchYearlyData(userId: String, completion: @escaping (Double?, Double?, Double?, Double?, Double?, HKBiologicalSex?, Double?, Int?) -> Void) {
         guard isAuthorized else {
             completion(nil, nil, nil, nil, nil, nil, nil, nil)
@@ -164,17 +163,21 @@ class HealthKitManager: ObservableObject {
         }
         
         dispatchGroup.notify(queue: .main) {
-            // Save data to Firestore
-            let daysInYear = 365.0
-            let dailyActiveEnergy = (activeEnergy ?? 0.0) / daysInYear
-            let dailyRestingEnergy = (restingEnergy ?? 0.0) / daysInYear
-            self.saveHealthDataToFirestore(activeEnergy: dailyActiveEnergy, restingEnergy: dailyRestingEnergy, bodyFatPercentage: bodyFatPercentage, leanBodyMass: leanBodyMass, weight: weight, gender: gender, height: height, age: age, userId: userId) {
-                // Pass all fetched data to the completion handler
+            self.saveHealthDataToFirestore(
+                userId: userId,
+                activeEnergy: activeEnergy,
+                restingEnergy: restingEnergy,
+                bodyFatPercentage: bodyFatPercentage,
+                leanBodyMass: leanBodyMass,
+                weight: weight,
+                gender: gender,
+                height: height,
+                age: age
+            ) {
                 completion(activeEnergy, restingEnergy, bodyFatPercentage, leanBodyMass, weight, gender, height, age)
             }
         }
     }
-
     
     func fetchMostRecentWeight(completion: @escaping (Double?) -> Void) {
         let weightType = HKObjectType.quantityType(forIdentifier: .bodyMass)!
@@ -217,13 +220,13 @@ class HealthKitManager: ObservableObject {
         }
         healthStore.execute(query)
     }
-
+    
     func fetchGender(completion: @escaping (HKBiologicalSex?) -> Void) {
         guard HKHealthStore.isHealthDataAvailable() else {
             completion(nil)
             return
         }
-
+        
         do {
             let biologicalSex = try healthStore.biologicalSex().biologicalSex
             completion(biologicalSex)
@@ -232,13 +235,13 @@ class HealthKitManager: ObservableObject {
             completion(nil)
         }
     }
-
+    
     func fetchDateOfBirth(completion: @escaping (Date?) -> Void) {
         guard HKHealthStore.isHealthDataAvailable() else {
             completion(nil)
             return
         }
-
+        
         do {
             let dateOfBirth = try healthStore.dateOfBirth()
             completion(dateOfBirth)
@@ -247,8 +250,9 @@ class HealthKitManager: ObservableObject {
             completion(nil)
         }
     }
-
+    
     func saveHealthDataToFirestore(
+        userId: String,
         activeEnergy: Double?,
         restingEnergy: Double?,
         bodyFatPercentage: Double?,
@@ -257,28 +261,30 @@ class HealthKitManager: ObservableObject {
         gender: HKBiologicalSex?,
         height: Double?,
         age: Int?,
-        userId: String,
         completion: @escaping () -> Void
     ) {
-        let genderString = hkBiologicalSexToGenderString(gender ?? .notSet)
-        let data: [String: Any] = [
-            "activeEnergy": activeEnergy ?? 0.0,
-            "restingEnergy": restingEnergy ?? 0.0,
-            "bodyFatPercentage": bodyFatPercentage ?? 0.0,
-            "leanBodyMass": leanBodyMass ?? 0.0,
-            "weight": weight ?? 0.0,
-            "height": height ?? 0.0,
-            "gender": genderString,
-            "age": age ?? 0
+        // Prepare health data as a dictionary
+        let healthData = [
+            "activeEnergyBurned": activeEnergy as Any,
+            "restingEnergyBurned": restingEnergy as Any,
+            "bodyFatPercentage": bodyFatPercentage as Any,
+            "leanBodyMass": leanBodyMass as Any,
+            "weight": weight as Any,
+            "height": height as Any,
+            "gender": hkBiologicalSexToGenderString(gender ?? .notSet),
+            "age": age as Any,
+            "timestamp": Timestamp(date: Date())  // Include a timestamp for ordering
         ]
         
-        db.collection("healthData").document(userId).setData(data) { error in
+        // Add new document to the healthData collection
+        db.collection("users").document(userId).collection("healthData").addDocument(data: healthData) { error in
             if let error = error {
                 print("Error saving health data to Firestore: \(error.localizedDescription)")
             } else {
-                print("Health data successfully saved.")
+                print("Health data successfully saved to Firestore")
+                completion() // Call the completion handler after successful save
             }
-            completion()
         }
     }
 }
+

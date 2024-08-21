@@ -31,7 +31,7 @@ struct GenderInputView: View {
                 CUILeftHeadline(
                     title: "Details About You",
                     subtitle: "Please select your gender",
-                    style: .red,
+                    style: .black,
                     bottomPadding: 0)
                 Spacer()
                 SegmentedControlView(selectedIndex: $selectedGenderSegmentIndex, titles: viewModel.genderSegmentItems)
