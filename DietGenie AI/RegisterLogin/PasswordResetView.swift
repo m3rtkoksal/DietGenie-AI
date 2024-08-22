@@ -27,8 +27,8 @@ struct PasswordResetView: View {
                 CUILeftHeadline(
                     title: "Forgot Password",
                     subtitle: "Please enter your email address to recieve your password reset code",
-                    style: .black,
-                    bottomPadding: 0)
+                    style: .black)
+                
                 CUIValidationField(
                     placeholder: "Please enter your email",
                     prompt: "Wrong email format",
@@ -37,15 +37,13 @@ struct PasswordResetView: View {
                     isNotValid: $emailValidator.isNotValid,
                     showPrompt: $emailValidator.showPrompt,
                     style: .emailAddress)
-                .padding(.top)
-                Spacer()
+                
                 CUIButton(text: "Reset Password") {
                     sendPasswordReset()
                     self.showAlert = true
                 }
                 .padding(.top,110)
                 LottieView(lottieFile: "forgotPass_animation", loopMode: .loop)
-                    .frame(width: UIScreen.screenWidth * 0.8)
                     .padding(.top)
             }
             .navigationBarTitle("Forgot Password")

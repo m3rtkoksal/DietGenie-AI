@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GenderInputVM: BaseViewModel {
+class DetailsAboutMeVM: BaseViewModel {
     
     @Published var genderSegmentItems: [SegmentTitle] = []
     @Published var goToBMIInputPage = false

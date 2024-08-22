@@ -1,23 +1,24 @@
 //
-//  NdDropdownModifier.swift
+//  NdHeightPickerModifier.swift
 //  DietGenie AI
 //
-//  Created by Mert Köksal on 13.08.2024.
+//  Created by Mert Köksal on 22.08.2024.
 //
 
 import SwiftUI
 
-struct NDDropdownModifier: ViewModifier {
+enum LengthUnit: String, CaseIterable {
+    case cm = "cm"
+    case ft = "ft"
+}
+
+struct NdHeightPickerModifier: ViewModifier {
     @Binding var itemList: [CUIDropdownItemModel]
     @Binding var isExpanded: Bool
     @Binding var choosenItem: CUIDropdownItemModel
-    var isSearchBarEnabled: Bool = false
-    var searchText: String = ""
-    var isLength: Bool = false
     var buttonAction: (() -> Void)?
-    var selectedLengthUnit: LengthUnit = .cm
-    var selectedWeightUnit: WeightUnit = .kg
-    
+    @Binding var selectedLengthUnit: LengthUnit // Use LengthUnit enum
+
     func body(content: Content) -> some View {
         ZStack {
             content
@@ -31,18 +32,19 @@ struct NDDropdownModifier: ViewModifier {
                         }
                     }
             }
+            
             if isExpanded {
-                VStack {
+                VStack(spacing: 0) {
                     Spacer()
                     CUIDropdown(
                         itemList: $itemList,
                         choosenItem: $choosenItem,
                         isExpanded: $isExpanded,
-                        isSearchBarEnabled: isSearchBarEnabled,
-                        isLength: isLength,
-                        searchText: searchText,
+                        isSearchBarEnabled: false,
+                        isLength: true,
+                        searchText: "",
                         selectedLengthUnit: selectedLengthUnit,
-                        selectedWeightUnit: selectedWeightUnit
+                        selectedWeightUnit: WeightUnit.kg
                     )
                 }
                 .ignoresSafeArea()
@@ -53,21 +55,21 @@ struct NDDropdownModifier: ViewModifier {
 }
 
 extension View {
-    func ndDropdownModifier(
+    func ndHeightPickerModifier(
         itemList: Binding<[CUIDropdownItemModel]>,
         isExpanded: Binding<Bool>,
         choosenItem: Binding<CUIDropdownItemModel>,
         isSearchBarEnabled: Bool = false,
         searchText: String = "",
-        buttonAction: (() -> Void)? = nil
+        buttonAction: (() -> Void)? = nil,
+        selectedUnit: Binding<LengthUnit> // Use LengthUnit enum
     ) -> some View {
-        modifier(NDDropdownModifier(
+        modifier(NdHeightPickerModifier(
             itemList: itemList,
             isExpanded: isExpanded,
             choosenItem: choosenItem,
-            isSearchBarEnabled: isSearchBarEnabled,
-            searchText: searchText
+            buttonAction: buttonAction,
+            selectedLengthUnit: selectedUnit
         ))
     }
 }
-

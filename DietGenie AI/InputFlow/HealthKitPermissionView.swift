@@ -60,7 +60,7 @@ struct HealthKitPermissionView: View {
                  showIndicator: $viewModel.showIndicator,
                  scrollViewOffset: scrollViewContentOffset) {
             NavigationLink(
-                destination: BMIInputView()
+                destination: DetailsAboutMeView()
                     .environmentObject(userInputModel),
                 isActive: $viewModel.goToBMIInputPage
             ) {}

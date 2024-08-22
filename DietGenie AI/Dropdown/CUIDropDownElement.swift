@@ -13,30 +13,9 @@ struct CUIDropdownElement: View {
     
     var body: some View {
         HStack {
-            if let iconName = item.icon {
-                if !iconName.isEmpty {
-                    Image(iconName)
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(choosenItem ? .lightPurple : .textColorsPrimary)
-                        .frame(width: 20, height: 20)
-                        .padding(.trailing, 16)
-                    
-                }
-            }
-            
             Text(item.text)
                 .font(.subtext4)
                 .foregroundColor(choosenItem ? .lightPurple : .textColorsPrimary)
-                
-            Spacer()
-            if item.hasArrow.unsafelyUnwrapped {
-                Image("simple-arrow-right")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 16, height: 16)
-                
-            }
         }
         .background(Color.solidWhite)
         .padding(.horizontal)

@@ -31,8 +31,9 @@ struct PurposeInputView: View {
                     bottomPadding: 0)
                 Spacer()
                 
-                SegmentedControlView(selectedIndex: $selectedPurposeSegmentIndex,
-                                     titles: viewModel.purposeSegmentItems)
+                SegmentedControlView(segmentTitle: "",
+                                     selectedIndex: $selectedPurposeSegmentIndex,
+                                     segmentNames: viewModel.purposeSegmentItems)
                 Spacer()
                 
                 CUIButton(text: "NEXT") {

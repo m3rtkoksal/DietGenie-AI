@@ -64,6 +64,7 @@ extension Color {
     static let bottomBlue = Color(ColorScheme.bottomBlue)
     static let lightTeal = Color(ColorScheme.lightTeal)
     static let otherPurple = Color(UIColor(named: "otherPurple") ?? UIColor.init(hex: "#9747FF"))
+    static let progressBarPassive = Color(ColorScheme.progressBarPassive)
 
     //Text Colors
     static let textColorsPrimary = Color(ColorScheme.textColorsPrimary)

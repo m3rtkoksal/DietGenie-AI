@@ -18,13 +18,13 @@ struct CUIDropdownField: View {
                     isExpanded.toggle()
                 } label: {
                 if !isExpanded && choosenItem.text.isEmpty {
-                    Text(choosenItem.text.isEmpty ? title : choosenItem.text)
-                        .font(.subtext4)
+                    Text(title)
+                        .font(.montserrat(.medium, size: 14))
                         .foregroundColor(.textColorsNeutral)
                 }else {
                     VStack(alignment: .leading) {
                         Text(title)
-                            .font(.subtext6)
+                            .font(.montserrat(.medium, size: 14))
                             .foregroundColor(.textColorsNeutral)
                         
                         Text(choosenItem.text.isEmpty ? "Select From Menu" : choosenItem.text)
@@ -33,25 +33,35 @@ struct CUIDropdownField: View {
                     }
                 }
                 Spacer()
-           
                 Image(systemName: "chevron.down")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 16, height: 16)
                     .foregroundColor(.white)
             }
+            .padding(.leading, 16)
+            .padding(.trailing, 16)
+            .frame(height: 50)
+            .background(Color.white)
+            .cornerRadius(38)
+            .overlay(
+                RoundedRectangle(cornerRadius: 38)
+                    .strokeBorder(isExpanded ? Color.lightPurple : Color.lightGray200, lineWidth: 0.4)
+            )
+            .shadow(color: Color(red: 0.51, green: 0.74, blue: 0.62, opacity: 0.3), radius: 20, x: 0, y: 0)
         }
-        .padding(.horizontal, 10)
-        .padding(.vertical)
-        .frame(height: 48)
-        .overlay(RoundedRectangle(cornerRadius: 8).strokeBorder(isExpanded ? Color.lightPurple : Color.lightGray200))
-        .background(Color.clear)
+        .padding(.vertical, 5)
+        .padding(.horizontal, 33)
     }
 }
 
 struct CUIDropdownField_Previews: PreviewProvider {
     static var previews: some View {
-        CUIDropdownField(title: "Title", isExpanded: .constant(true), choosenItem: .constant(CUIDropdownItemModel(icon: "", text: "")))
+        CUIDropdownField(
+            title: "Title",
+            isExpanded: .constant(false),
+            choosenItem: .constant(CUIDropdownItemModel(icon: "", text: ""))
+        )
+       
     }
 }
-

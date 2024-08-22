@@ -1,23 +1,24 @@
 //
-//  NdDropdownModifier.swift
+//  NdWeightPickerModifier.swift
 //  DietGenie AI
 //
-//  Created by Mert Köksal on 13.08.2024.
+//  Created by Mert Köksal on 22.08.2024.
 //
 
 import SwiftUI
 
-struct NDDropdownModifier: ViewModifier {
+enum WeightUnit: String, CaseIterable {
+    case kg = "kg"
+    case lbs = "lbs"
+}
+
+struct NdWeightPickerModifier: ViewModifier {
     @Binding var itemList: [CUIDropdownItemModel]
     @Binding var isExpanded: Bool
     @Binding var choosenItem: CUIDropdownItemModel
-    var isSearchBarEnabled: Bool = false
-    var searchText: String = ""
-    var isLength: Bool = false
     var buttonAction: (() -> Void)?
-    var selectedLengthUnit: LengthUnit = .cm
-    var selectedWeightUnit: WeightUnit = .kg
-    
+    @Binding var selectedWeightUnit: WeightUnit
+
     func body(content: Content) -> some View {
         ZStack {
             content
@@ -31,17 +32,18 @@ struct NDDropdownModifier: ViewModifier {
                         }
                     }
             }
+            
             if isExpanded {
-                VStack {
+                VStack(spacing: 0) {
                     Spacer()
                     CUIDropdown(
                         itemList: $itemList,
                         choosenItem: $choosenItem,
                         isExpanded: $isExpanded,
-                        isSearchBarEnabled: isSearchBarEnabled,
-                        isLength: isLength,
-                        searchText: searchText,
-                        selectedLengthUnit: selectedLengthUnit,
+                        isSearchBarEnabled: false,
+                        isLength: false,
+                        searchText: "",
+                        selectedLengthUnit: LengthUnit.cm,
                         selectedWeightUnit: selectedWeightUnit
                     )
                 }
@@ -53,21 +55,21 @@ struct NDDropdownModifier: ViewModifier {
 }
 
 extension View {
-    func ndDropdownModifier(
+    func ndWeightPickerModifier(
         itemList: Binding<[CUIDropdownItemModel]>,
         isExpanded: Binding<Bool>,
         choosenItem: Binding<CUIDropdownItemModel>,
         isSearchBarEnabled: Bool = false,
         searchText: String = "",
-        buttonAction: (() -> Void)? = nil
+        buttonAction: (() -> Void)? = nil,
+        selectedWeightUnit: Binding<WeightUnit>
     ) -> some View {
-        modifier(NDDropdownModifier(
+        modifier(NdWeightPickerModifier(
             itemList: itemList,
             isExpanded: isExpanded,
             choosenItem: choosenItem,
-            isSearchBarEnabled: isSearchBarEnabled,
-            searchText: searchText
+            buttonAction: buttonAction,
+            selectedWeightUnit: selectedWeightUnit
         ))
     }
 }
-

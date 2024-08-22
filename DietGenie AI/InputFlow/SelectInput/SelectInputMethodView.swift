@@ -24,7 +24,7 @@ struct SelectInputMethodView: View {
                  showIndicator: $viewModel.showIndicator
         ) {
             NavigationLink(
-                destination: GenderInputView()
+                destination: DetailsAboutMeView()
                     .environmentObject(userInputModel),
                 isActive: $viewModel.goToGenderInputPage
             ) {}

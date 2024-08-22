@@ -16,15 +16,12 @@ struct RegisterView: View {
     @StateObject private var surnameValidator = DefaultTextValidator(predicate: ValidatorHelper.lastNamePredicate)
     @StateObject private var emailValidator = DefaultTextValidator(predicate: ValidatorHelper.emailPredicate)
     @StateObject private var passwordValidator = DefaultTextValidator(predicate: ValidatorHelper.passwordPredicate)
-    @StateObject private var birthdayValidator = DefaultTextValidator(predicate: ValidatorHelper.datePredicate)
-    @State private var birthday: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date())!
     @StateObject private var viewModel = RegisterVM()
     @State private var errorMessage = ""
     @State private var errorTitle = ""
     @State private var showAlert = false
     @State private var choosenItem = CUIDropdownItemModel(text: "")
     @State private var showGenderMenu = false
-    @State private var isDatePickerVisible = true
     @State private var scrollViewContentOffset: CGFloat = 0
     
     var body: some View {
@@ -149,7 +146,7 @@ struct RegisterView: View {
                     }
                 )
             }
-            .navigationBarTitle("Registiration")
+//            .navigationBarTitle("Registiration")
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(
                 leading:
@@ -173,11 +170,6 @@ struct RegisterView: View {
                     BindingRouter($viewModel.goToHealthPermission)
                 )
             }
-           
-            .ndDropdownModifier(
-                itemList: $viewModel.menuPickerItems,
-                isExpanded: $showGenderMenu,
-                choosenItem: $choosenItem)
             .onAppear {
                 viewModel.fetchMenuItems()
             }
@@ -209,40 +201,6 @@ struct RegisterView: View {
                 }
             }
         }
-    }
-    private func DatePickerView() -> some View {
-        HStack{
-            Spacer()
-            ZStack{
-                DatePicker("",
-                           selection: $birthday,
-                           in: ...Calendar.current.date(byAdding: .year, value: -18, to: Date())!,
-                           displayedComponents: .date
-                )
-                .frame(width: 25, height: 25)
-                .offset(x: 80, y: 0)
-                .labelsHidden()
-                .clipped()
-                .background(Color.clear)
-                Image(systemName: "calendar")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    .foregroundColor(.textColorsNeutral)
-                    .offset(x: 45, y: 0)
-                    .onTapGesture {
-                        isDatePickerVisible.toggle()
-                    }
-                    .onChange(of: birthday) { newValue in
-                        birthdayValidator.text = newValue.getFormattedDate(format: "dd.MM.yyyy")
-                    }
-            }
-            .offset(x: -10)
-            .frame(width: 50, height: 32)
-            .background(Color.clear)
-        }
-        .frame(width: UIScreen.screenWidth / 1.2)
-        .offset(x: -20, y: 15)
-        .background(Color.clear)
     }
 }
 
