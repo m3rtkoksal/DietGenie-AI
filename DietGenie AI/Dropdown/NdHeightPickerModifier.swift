@@ -12,17 +12,18 @@ enum LengthUnit: String, CaseIterable {
     case ft = "ft"
 }
 
-struct NdHeightPickerModifier: ViewModifier {
-    @Binding var itemList: [CUIDropdownItemModel]
+struct HeightPickerModifier: ViewModifier {
+    @Binding var lengthOptions: [CUIDropdownItemModel]
     @Binding var isExpanded: Bool
-    @Binding var choosenItem: CUIDropdownItemModel
+    @Binding var selectedItem: CUIDropdownItemModel
+    @Binding var selectedUnit: LengthUnit
     var buttonAction: (() -> Void)?
-    @Binding var selectedLengthUnit: LengthUnit // Use LengthUnit enum
-
+    
     func body(content: Content) -> some View {
         ZStack {
             content
                 .disabled(isExpanded)
+            
             if isExpanded {
                 BackgroundBlurView(style: .dark)
                     .ignoresSafeArea()
@@ -34,42 +35,41 @@ struct NdHeightPickerModifier: ViewModifier {
             }
             
             if isExpanded {
-                VStack(spacing: 0) {
+                VStack {
                     Spacer()
-                    CUIDropdown(
-                        itemList: $itemList,
-                        choosenItem: $choosenItem,
-                        isExpanded: $isExpanded,
-                        isSearchBarEnabled: false,
-                        isLength: true,
-                        searchText: "",
-                        selectedLengthUnit: selectedLengthUnit,
-                        selectedWeightUnit: WeightUnit.kg
+                    HeightPickerView(
+                        lengthOptions: $lengthOptions,
+                        selectedUnit: $selectedUnit,
+                        selectedItem: $selectedItem,
+                        isExpanded: $isExpanded
                     )
+                    .frame(width: UIScreen.main.bounds.width)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
+                    .transition(.move(edge: .bottom))
+                    .offset(y: 30)
                 }
                 .ignoresSafeArea()
-                .transition(.move(edge: .bottom))
             }
         }
     }
 }
 
 extension View {
-    func ndHeightPickerModifier(
-        itemList: Binding<[CUIDropdownItemModel]>,
+    func heightPickerModifier(
+        lengthOptions: Binding<[CUIDropdownItemModel]>,
         isExpanded: Binding<Bool>,
-        choosenItem: Binding<CUIDropdownItemModel>,
-        isSearchBarEnabled: Bool = false,
-        searchText: String = "",
-        buttonAction: (() -> Void)? = nil,
-        selectedUnit: Binding<LengthUnit> // Use LengthUnit enum
+        selectedItem: Binding<CUIDropdownItemModel>,
+        selectedUnit: Binding<LengthUnit>,
+        buttonAction: (() -> Void)? = nil
     ) -> some View {
-        modifier(NdHeightPickerModifier(
-            itemList: itemList,
+        modifier(HeightPickerModifier(
+            lengthOptions: lengthOptions,
             isExpanded: isExpanded,
-            choosenItem: choosenItem,
-            buttonAction: buttonAction,
-            selectedLengthUnit: selectedUnit
+            selectedItem: selectedItem,
+            selectedUnit: selectedUnit,
+            buttonAction: buttonAction
         ))
     }
 }

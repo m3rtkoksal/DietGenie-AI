@@ -39,10 +39,7 @@ struct NDDropdownModifier: ViewModifier {
                         choosenItem: $choosenItem,
                         isExpanded: $isExpanded,
                         isSearchBarEnabled: isSearchBarEnabled,
-                        isLength: isLength,
-                        searchText: searchText,
-                        selectedLengthUnit: selectedLengthUnit,
-                        selectedWeightUnit: selectedWeightUnit
+                        searchText: searchText
                     )
                 }
                 .ignoresSafeArea()

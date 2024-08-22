@@ -16,17 +16,16 @@ struct DetailsAboutMeView: View {
     @StateObject private var birthdayValidator = DefaultTextValidator(predicate: ValidatorHelper.datePredicate)
     @State private var birthday: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date())!
     @StateObject private var viewModel = DetailsAboutMeVM()
-    @State private var lengthOptions: [CUIDropdownItemModel] = []
     @State private var selectedLengthItem = CUIDropdownItemModel(id: "", text: "")
     @State private var selectedLengthUnit: LengthUnit = .cm
     @State private var selectedPurposeSegmentIndex = 0
     @State private var selectedGenderSegmentIndex = 0
     @State private var isDatePickerVisible = true
     @State private var isLengthExpanded = false
-    @State private var weightOptions: [CUIDropdownItemModel] = []
     @State private var selectedWeightItem = CUIDropdownItemModel(id: "", text: "")
     @State private var selectedWeightUnit: WeightUnit = .kg
     @State private var isWeightExpanded = false
+    
     var body: some View {
         ZStack {
             BaseView(currentViewModel: viewModel,
@@ -59,17 +58,24 @@ struct DetailsAboutMeView: View {
                             .background(Color.clear)
                             DatePickerView()
                         }
+                        
                         CUIDropdownField(
                             title: "How tall are you?",
                             isExpanded: $isLengthExpanded,
                             choosenItem: $selectedLengthItem
                         )
+                        .onTapGesture {
+                            isLengthExpanded = true
+                        }
                         
                         CUIDropdownField(
                             title: "How much do you weight?",
                             isExpanded: $isWeightExpanded,
                             choosenItem: $selectedWeightItem
                         )
+                        .onTapGesture {
+                            isWeightExpanded = true
+                        }
                         Spacer()
                         CUIButton(text: "NEXT") {
                             let selectedGender = viewModel.genderSegmentItems[selectedGenderSegmentIndex].title
@@ -91,6 +97,14 @@ struct DetailsAboutMeView: View {
                 }
                 .onAppear {
                     viewModel.fetchMenuItems()
+                    viewModel.fetchLengthItems()
+                    viewModel.fetchWeightItems()
+                }
+                .onChange(of: selectedLengthUnit) { _ in
+                    viewModel.loadLengthItems(for: selectedLengthUnit)
+                }
+                .onChange(of: selectedLengthUnit) { _ in
+                    viewModel.loadWeightItems(for: selectedWeightUnit)
                 }
             }
                      .navigationBarBackButtonHidden()
@@ -98,22 +112,18 @@ struct DetailsAboutMeView: View {
                         leading:
                             CUIBackButton()
                      )
-                     .ndHeightPickerModifier(
-                        itemList: $lengthOptions,
+            
+                     .heightPickerModifier(
+                        lengthOptions: $viewModel.lengthOptions,
                         isExpanded: $isLengthExpanded,
-                        choosenItem: $selectedLengthItem,
-                        isSearchBarEnabled: false,
-                        searchText: "",
+                        selectedItem: $selectedLengthItem,
                         selectedUnit: $selectedLengthUnit
                      )
-            
-                     .ndWeightPickerModifier(
-                        itemList: $weightOptions,
+                     .weightPickerModifier(
+                        weightOptions: $viewModel.weightOptions,
                         isExpanded: $isWeightExpanded,
-                        choosenItem: $selectedWeightItem,
-                        isSearchBarEnabled: false,
-                        searchText: "",
-                        selectedWeightUnit: $selectedWeightUnit
+                        selectedItem: $selectedWeightItem,
+                        selectedUnit: $selectedWeightUnit
                      )
                      .toolbar {
                          ToolbarItem(placement: .navigationBarTrailing) {
@@ -133,33 +143,20 @@ struct DetailsAboutMeView: View {
             ZStack{
                 DatePicker("",
                            selection: $birthday,
-                           in: ...Calendar.current.date(byAdding: .year, value: -18, to: Date())!,
+                           in: ...Calendar.current.date(byAdding: .year, value: -70, to: Date())!,
                            displayedComponents: .date
                 )
-                .frame(width: 25, height: 25)
-                .offset(x: 80, y: 0)
                 .labelsHidden()
                 .clipped()
                 .background(Color.clear)
-                Image(systemName: "calendar")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    .foregroundColor(.textColorsNeutral)
-                    .offset(x: 25, y: 0)
-                    .onTapGesture {
-                        isDatePickerVisible.toggle()
-                    }
-                    .onChange(of: birthday) { newValue in
-                        birthdayValidator.text = newValue.getFormattedDate(format: "dd.MM.yyyy")
-                    }
+                .onChange(of: birthday) { newValue in
+                    birthdayValidator.text = newValue.getFormattedDate(format: "dd.MM.yyyy")
+                }
             }
-            .offset(x: -10)
+            .offset(x: -80, y: 15)
             .frame(width: 50, height: 32)
             .background(Color.clear)
         }
-        .frame(width: UIScreen.screenWidth / 1.2)
-        .offset(x: -20, y: 15)
-        .background(Color.clear)
     }
 }
 

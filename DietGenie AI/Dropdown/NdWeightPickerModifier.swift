@@ -12,17 +12,18 @@ enum WeightUnit: String, CaseIterable {
     case lbs = "lbs"
 }
 
-struct NdWeightPickerModifier: ViewModifier {
-    @Binding var itemList: [CUIDropdownItemModel]
+struct WeightPickerModifier: ViewModifier {
+    @Binding var weightOptions: [CUIDropdownItemModel]
     @Binding var isExpanded: Bool
-    @Binding var choosenItem: CUIDropdownItemModel
+    @Binding var selectedItem: CUIDropdownItemModel
+    @Binding var selectedUnit: WeightUnit
     var buttonAction: (() -> Void)?
-    @Binding var selectedWeightUnit: WeightUnit
-
+    
     func body(content: Content) -> some View {
         ZStack {
             content
                 .disabled(isExpanded)
+            
             if isExpanded {
                 BackgroundBlurView(style: .dark)
                     .ignoresSafeArea()
@@ -34,42 +35,41 @@ struct NdWeightPickerModifier: ViewModifier {
             }
             
             if isExpanded {
-                VStack(spacing: 0) {
+                VStack {
                     Spacer()
-                    CUIDropdown(
-                        itemList: $itemList,
-                        choosenItem: $choosenItem,
-                        isExpanded: $isExpanded,
-                        isSearchBarEnabled: false,
-                        isLength: false,
-                        searchText: "",
-                        selectedLengthUnit: LengthUnit.cm,
-                        selectedWeightUnit: selectedWeightUnit
+                    WeightPickerView(
+                        weightOptions: $weightOptions,
+                        selectedUnit: $selectedUnit,
+                        selectedItem: $selectedItem,
+                        isExpanded: $isExpanded
                     )
+                    .frame(width: UIScreen.main.bounds.width)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
+                    .transition(.move(edge: .bottom))
+                    .offset(y: 30)
                 }
                 .ignoresSafeArea()
-                .transition(.move(edge: .bottom))
             }
         }
     }
 }
 
 extension View {
-    func ndWeightPickerModifier(
-        itemList: Binding<[CUIDropdownItemModel]>,
+    func weightPickerModifier(
+        weightOptions: Binding<[CUIDropdownItemModel]>,
         isExpanded: Binding<Bool>,
-        choosenItem: Binding<CUIDropdownItemModel>,
-        isSearchBarEnabled: Bool = false,
-        searchText: String = "",
-        buttonAction: (() -> Void)? = nil,
-        selectedWeightUnit: Binding<WeightUnit>
+        selectedItem: Binding<CUIDropdownItemModel>,
+        selectedUnit: Binding<WeightUnit>,
+        buttonAction: (() -> Void)? = nil
     ) -> some View {
-        modifier(NdWeightPickerModifier(
-            itemList: itemList,
+        modifier(WeightPickerModifier(
+            weightOptions: weightOptions,
             isExpanded: isExpanded,
-            choosenItem: choosenItem,
-            buttonAction: buttonAction,
-            selectedWeightUnit: selectedWeightUnit
+            selectedItem: selectedItem,
+            selectedUnit: selectedUnit,
+            buttonAction: buttonAction
         ))
     }
 }
