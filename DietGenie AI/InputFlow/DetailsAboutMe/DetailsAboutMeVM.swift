@@ -9,7 +9,7 @@ import SwiftUI
 import HealthKit
 
 class DetailsAboutMeVM: BaseViewModel {
-    @Published var goToPurposeInputPage = false
+    @Published var goToHowActivePage = false
     @Published var genderSegmentItems: [SegmentTitle] = []
     @Published var goToBMIInputPage = false
     @StateObject private var healthKitManager = HealthKitManager()

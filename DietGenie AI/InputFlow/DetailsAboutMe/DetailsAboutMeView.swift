@@ -32,9 +32,9 @@ struct DetailsAboutMeView: View {
                      background: .lightTeal,
                      showIndicator: $viewModel.showIndicator) {
                 NavigationLink(
-                    destination: PurposeInputView()
+                    destination: HowActiveYouView()
                         .environmentObject(userInputModel),
-                    isActive: $viewModel.goToPurposeInputPage
+                    isActive: $viewModel.goToHowActivePage
                 ) {}
                 
                 VStack {
@@ -91,7 +91,7 @@ struct DetailsAboutMeView: View {
                             if let weight = Double(weightValidator.text) {
                                 self.userInputModel.weight = weight
                             }
-                            self.viewModel.goToPurposeInputPage = true
+                            self.viewModel.goToHowActivePage = true
                         }
                     }
                 }
@@ -143,7 +143,7 @@ struct DetailsAboutMeView: View {
             ZStack{
                 DatePicker("",
                            selection: $birthday,
-                           in: ...Calendar.current.date(byAdding: .year, value: -70, to: Date())!,
+                           in: ...Calendar.current.date(byAdding: .year, value: -18, to: Date())!,
                            displayedComponents: .date
                 )
                 .labelsHidden()

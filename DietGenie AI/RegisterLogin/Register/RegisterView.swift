@@ -75,6 +75,7 @@ struct RegisterView: View {
                             showPrompt: $passwordValidator.showPrompt)
                         VStack(spacing: 50) {
                             CUIButton(text: "Create Account") {
+                                self.viewModel.showIndicator = true
                                 self.signUp(
                                     email: emailValidator.text,
                                     password: passwordValidator.text,
@@ -141,6 +142,7 @@ struct RegisterView: View {
                     dismissButton: .default(Text("OK")) {
                         showAlert = false
                         if errorTitle.contains("success") {
+                            self.viewModel.showIndicator = false
                             viewModel.goToHealthPermission = true
                         }
                     }

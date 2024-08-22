@@ -97,6 +97,10 @@
 		8E47D1902C77592C00A8C4B3 /* NdHeightPickerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E47D18F2C77592C00A8C4B3 /* NdHeightPickerModifier.swift */; };
 		8E47D1922C776AA300A8C4B3 /* NdWeightPickerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E47D1912C776AA300A8C4B3 /* NdWeightPickerModifier.swift */; };
 		8E47D1952C77C1F300A8C4B3 /* WeightPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E47D1942C77C1F300A8C4B3 /* WeightPickerView.swift */; };
+		8E47D1992C77C80100A8C4B3 /* HowActiveYouView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E47D1982C77C80100A8C4B3 /* HowActiveYouView.swift */; };
+		8E47D19B2C77C81200A8C4B3 /* HowActiveYouVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E47D19A2C77C81200A8C4B3 /* HowActiveYouVM.swift */; };
+		8E47D19D2C77C9E800A8C4B3 /* ActivityItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E47D19C2C77C9E800A8C4B3 /* ActivityItems.swift */; };
+		8E47D19F2C77CBE500A8C4B3 /* ActivityElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E47D19E2C77CBE500A8C4B3 /* ActivityElement.swift */; };
 		8EAEB05E2C73B6C500FD9713 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAEB05D2C73B6C500FD9713 /* LottieView.swift */; };
 		8EAEB0612C73B79800FD9713 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 8EAEB0602C73B79800FD9713 /* Lottie */; };
 		8EAEB0632C73B7B000FD9713 /* DietGenie_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EAEB0622C73B7B000FD9713 /* DietGenie_animation.json */; };
@@ -186,6 +190,10 @@
 		8E47D18F2C77592C00A8C4B3 /* NdHeightPickerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NdHeightPickerModifier.swift; sourceTree = "<group>"; };
 		8E47D1912C776AA300A8C4B3 /* NdWeightPickerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NdWeightPickerModifier.swift; sourceTree = "<group>"; };
 		8E47D1942C77C1F300A8C4B3 /* WeightPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightPickerView.swift; sourceTree = "<group>"; };
+		8E47D1982C77C80100A8C4B3 /* HowActiveYouView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowActiveYouView.swift; sourceTree = "<group>"; };
+		8E47D19A2C77C81200A8C4B3 /* HowActiveYouVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowActiveYouVM.swift; sourceTree = "<group>"; };
+		8E47D19C2C77C9E800A8C4B3 /* ActivityItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityItems.swift; sourceTree = "<group>"; };
+		8E47D19E2C77CBE500A8C4B3 /* ActivityElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityElement.swift; sourceTree = "<group>"; };
 		8EAEB05D2C73B6C500FD9713 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		8EAEB0622C73B7B000FD9713 /* DietGenie_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DietGenie_animation.json; sourceTree = "<group>"; };
 		8EAEB0642C73B7E300FD9713 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -294,9 +302,10 @@
 			isa = PBXGroup;
 			children = (
 				8E36DC552C750C3D005F58E4 /* HealthKitPermission */,
+				8EDFD1BB2C7161E400CCA1C2 /* DetailsAboutMe */,
+				8E47D1972C77C7E600A8C4B3 /* HowActive */,
 				8E0B2C102C720F25004DFCD8 /* SavedPlan */,
 				8EDFD1C22C7164BF00CCA1C2 /* SelectInput */,
-				8EDFD1BB2C7161E400CCA1C2 /* DetailsAboutMe */,
 				8EDFD1B22C715FC200CCA1C2 /* Purpose */,
 				8EDFD1B52C71601900CCA1C2 /* DietProgram */,
 			);
@@ -348,11 +357,8 @@
 				8E02CF542C6B8506006E5B93 /* CUIDropDownElement.swift */,
 				8E02CF562C6B8542006E5B93 /* CUIDropDown.swift */,
 				8E02CF5C2C6B86A9006E5B93 /* ItemHeightPreferenceKey.swift */,
-				8E02CF622C6B8885006E5B93 /* NdDropdownModifier.swift */,
 				8E02CF672C6B8993006E5B93 /* CUIDropdownField.swift */,
 				8E02CF6B2C6B8A8D006E5B93 /* CUISearchBar.swift */,
-				8E47D18F2C77592C00A8C4B3 /* NdHeightPickerModifier.swift */,
-				8E47D1912C776AA300A8C4B3 /* NdWeightPickerModifier.swift */,
 			);
 			path = Dropdown;
 			sourceTree = "<group>";
@@ -458,8 +464,22 @@
 		8E47D1962C77C24300A8C4B3 /* Modifier */ = {
 			isa = PBXGroup;
 			children = (
+				8E47D1912C776AA300A8C4B3 /* NdWeightPickerModifier.swift */,
+				8E47D18F2C77592C00A8C4B3 /* NdHeightPickerModifier.swift */,
+				8E02CF622C6B8885006E5B93 /* NdDropdownModifier.swift */,
 			);
 			path = Modifier;
+			sourceTree = "<group>";
+		};
+		8E47D1972C77C7E600A8C4B3 /* HowActive */ = {
+			isa = PBXGroup;
+			children = (
+				8E47D1982C77C80100A8C4B3 /* HowActiveYouView.swift */,
+				8E47D19A2C77C81200A8C4B3 /* HowActiveYouVM.swift */,
+				8E47D19C2C77C9E800A8C4B3 /* ActivityItems.swift */,
+				8E47D19E2C77CBE500A8C4B3 /* ActivityElement.swift */,
+			);
+			name = HowActive;
 			sourceTree = "<group>";
 		};
 		8EAEB0662C73B81D00FD9713 /* Onboarding */ = {
@@ -638,6 +658,7 @@
 				8E02CF6A2C6B89B9006E5B93 /* String+Ext.swift in Sources */,
 				8E02CF612C6B87A3006E5B93 /* View+Ext.swift in Sources */,
 				8E02CF682C6B8993006E5B93 /* CUIDropdownField.swift in Sources */,
+				8E47D1992C77C80100A8C4B3 /* HowActiveYouView.swift in Sources */,
 				8E0B2C0B2C71846E004DFCD8 /* BindingRouter.swift in Sources */,
 				8E47D18E2C7748B000A8C4B3 /* VisualEffectBlur.swift in Sources */,
 				8EDFD1BD2C7162A800CCA1C2 /* RegisterVM.swift in Sources */,
@@ -675,7 +696,9 @@
 				8E02CF762C6BA882006E5B93 /* PurposeInputView.swift in Sources */,
 				8E02CF822C6BB2D8006E5B93 /* ValidatorHelper.swift in Sources */,
 				8E02CFE02C71114B006E5B93 /* RegisterView.swift in Sources */,
+				8E47D19B2C77C81200A8C4B3 /* HowActiveYouVM.swift in Sources */,
 				8E02CF722C6B9F36006E5B93 /* CUILeftHeadline.swift in Sources */,
+				8E47D19D2C77C9E800A8C4B3 /* ActivityItems.swift in Sources */,
 				8EDFD1AB2C713E8D00CCA1C2 /* PasswordResetView.swift in Sources */,
 				8E02CF7E2C6BB0ED006E5B93 /* CUIValidationField.swift in Sources */,
 				8E02CF502C6B8486006E5B93 /* ColorScheme.swift in Sources */,
@@ -691,6 +714,7 @@
 				8E0B2C0D2C71891C004DFCD8 /* AuthenticationManager.swift in Sources */,
 				8E02CFAC2C6E1F47006E5B93 /* FirebaseRemoteConfigManager.swift in Sources */,
 				8E47D1902C77592C00A8C4B3 /* NdHeightPickerModifier.swift in Sources */,
+				8E47D19F2C77CBE500A8C4B3 /* ActivityElement.swift in Sources */,
 				8E02CF5F2C6B8746006E5B93 /* Screen+Ext.swift in Sources */,
 				8E47D1922C776AA300A8C4B3 /* NdWeightPickerModifier.swift in Sources */,
 				8E47D1952C77C1F300A8C4B3 /* WeightPickerView.swift in Sources */,
