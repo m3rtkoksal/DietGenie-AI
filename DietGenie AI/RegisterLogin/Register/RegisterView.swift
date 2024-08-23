@@ -111,24 +111,6 @@ struct RegisterView: View {
                             .foregroundColor(.black)
                         }
                         .padding(.top, 40)
-                        
-                        //                    ZStack(alignment: .top) {
-                        //                        CUIValidationField(
-                        //                            placeholder: "Please select birthday",
-                        //                            prompt: "",
-                        //                            text: $birthdayValidator.text,
-                        //                            isCriteriaValid: $birthdayValidator.isCriteriaValid,
-                        //                            isNotValid: $birthdayValidator.isNotValid,
-                        //                            showPrompt: .constant(false), style: .default)
-                        //                        .disabled(true)
-                        //                        .background(Color.clear)
-                        //                        DatePickerView()
-                        //                    }
-                        //                    CUIDropdownField(
-                        //                        title: "Please select gender",
-                        //                        isExpanded: $showGenderMenu,
-                        //                        choosenItem: $choosenItem)
-                        //                    .padding(.horizontal, 20)
                     }
                     .frame(width: UIScreen.screenWidth)
                     .padding(.top)

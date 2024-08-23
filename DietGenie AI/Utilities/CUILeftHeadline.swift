@@ -48,7 +48,9 @@ struct CUILeftHeadline: View {
                     .foregroundColor(style.titleColor)
                     .font(.montserrat(.bold, size: 24))
                 Spacer()
-            }.padding(.top, 24)
+            }
+            .padding(.top, 24)
+            .padding(.trailing,33)
             HStack {
                 if !subtitle.isEmpty {
                     Text(subtitle)
@@ -58,7 +60,9 @@ struct CUILeftHeadline: View {
                         .padding(.top,10)
                     Spacer()
                 }
-            }.padding(.bottom, bottomPadding ?? 40)
+            }
+            .padding(.bottom, bottomPadding ?? 40)
+            .padding(.trailing,33)
         }
         .padding(.leading, 33)
     }

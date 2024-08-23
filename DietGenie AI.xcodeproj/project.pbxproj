@@ -119,6 +119,8 @@
 		8EDFD1BA2C71613E00CCA1C2 /* DetailsAboutMeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1B92C71613E00CCA1C2 /* DetailsAboutMeVM.swift */; };
 		8EDFD1BD2C7162A800CCA1C2 /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1BC2C7162A800CCA1C2 /* RegisterVM.swift */; };
 		8EDFD1C02C7163C700CCA1C2 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1BF2C7163C700CCA1C2 /* LoginVM.swift */; };
+		8EE8D94E2C78CDB8000EC49B /* PurposeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE8D94D2C78CDB8000EC49B /* PurposeElement.swift */; };
+		8EE8D9502C78CDC8000EC49B /* PurposeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE8D94F2C78CDC8000EC49B /* PurposeItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,6 +214,8 @@
 		8EDFD1B92C71613E00CCA1C2 /* DetailsAboutMeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsAboutMeVM.swift; sourceTree = "<group>"; };
 		8EDFD1BC2C7162A800CCA1C2 /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
 		8EDFD1BF2C7163C700CCA1C2 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
+		8EE8D94D2C78CDB8000EC49B /* PurposeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurposeElement.swift; sourceTree = "<group>"; };
+		8EE8D94F2C78CDC8000EC49B /* PurposeItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurposeItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -496,6 +500,8 @@
 			children = (
 				8E02CF752C6BA882006E5B93 /* PurposeInputView.swift */,
 				8EDFD1B02C715F2200CCA1C2 /* PurposeInputVM.swift */,
+				8EE8D94D2C78CDB8000EC49B /* PurposeElement.swift */,
+				8EE8D94F2C78CDC8000EC49B /* PurposeItems.swift */,
 			);
 			name = Purpose;
 			sourceTree = "<group>";
@@ -690,6 +696,7 @@
 				8E0B2C162C722450004DFCD8 /* DietPlanElement.swift in Sources */,
 				8E47D18C2C77455E00A8C4B3 /* HeightPickerView.swift in Sources */,
 				8E02CF702C6B94C3006E5B93 /* SegmentedControlView.swift in Sources */,
+				8EE8D94E2C78CDB8000EC49B /* PurposeElement.swift in Sources */,
 				8EDFD1AD2C714F4F00CCA1C2 /* LogoutButton.swift in Sources */,
 				8E02CF4A2C6B83FF006E5B93 /* BaseView.swift in Sources */,
 				8E02CF8C2C6C02E6006E5B93 /* OpenAIManager.swift in Sources */,
@@ -715,6 +722,7 @@
 				8E02CFAC2C6E1F47006E5B93 /* FirebaseRemoteConfigManager.swift in Sources */,
 				8E47D1902C77592C00A8C4B3 /* NdHeightPickerModifier.swift in Sources */,
 				8E47D19F2C77CBE500A8C4B3 /* ActivityElement.swift in Sources */,
+				8EE8D9502C78CDC8000EC49B /* PurposeItems.swift in Sources */,
 				8E02CF5F2C6B8746006E5B93 /* Screen+Ext.swift in Sources */,
 				8E47D1922C776AA300A8C4B3 /* NdWeightPickerModifier.swift in Sources */,
 				8E47D1952C77C1F300A8C4B3 /* WeightPickerView.swift in Sources */,

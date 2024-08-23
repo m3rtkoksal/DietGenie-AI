@@ -31,14 +31,14 @@ struct ActivityElement: View {
                 .stroke(isSelected ? Color.black : Color.progressBarPassive, lineWidth: 1)
         )
         .shadow(color: Color(red: 0.51, green: 0.74, blue: 0.62, opacity: 0.3), radius: 20, x: 0, y: 0)
-        .padding()
-        .padding(.horizontal, 33)
+        .padding(.horizontal,33)
     }
 }
 
 #Preview {
     ScrollView {
         VStack(spacing: -10) {
+            CUILeftHeadline(title: "AmaAmaAmaAmaAmaAmaAmaAmaAmaAmaAmaAmaAma", subtitle: "", style: .black)
             ActivityElement(title: "Not very active", subtitle: "Spend most of the day sitting (e.g. desk job, bank teller) ", isSelected: true)
             ActivityElement(title: "Not very active", subtitle: "Spend most of the day sitting (e.g. desk job, bank teller) ", isSelected: true)
             ActivityElement(title: "Not very active", subtitle: "Spend most of the day sitting (e.g. desk job, bank teller) ", isSelected: true)

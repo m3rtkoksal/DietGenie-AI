@@ -10,47 +10,70 @@ import SwiftUI
 struct PurposeInputView: View {
     @EnvironmentObject var userInputModel: UserInputModel
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    
     @StateObject private var viewModel = PurposeInputVM()
-    @State private var selectedPurposeSegmentIndex = 0
+    @State private var selectedPurpose: PurposeItem?
+    @State var goToDietProgram = false
     var body: some View {
-       
+        
         BaseView(currentViewModel: viewModel,
-                 background: .black,
+                 background: .lightTeal,
                  showIndicator: $viewModel.showIndicator) {
-            NavigationLink(
-                destination: DietProgramView()
-                    .environmentObject(userInputModel),
-                isActive: $viewModel.goToDietProgram
-            ) {}
             VStack {
                 CUILeftHeadline(
-                    title: "Details About You",
-                    subtitle: "Please select your purpose",
+                    title: "What’s your goal?",
+                    subtitle: "Let’s focus on one goal to begin with.",
                     style: .black,
                     bottomPadding: 0)
                 Spacer()
-                
-                SegmentedControlView(segmentTitle: "",
-                                     selectedIndex: $selectedPurposeSegmentIndex,
-                                     segmentNames: viewModel.purposeSegmentItems)
-                Spacer()
-                
+                ScrollView {
+                    VStack(spacing: 10) {
+                        ForEach(viewModel.purposeItems, id: \.self) { purpose in
+                            PurposeElement(
+                                title: purpose.title,
+                                icon: purpose.icon,
+                                isSelected: purpose == selectedPurpose)
+                            .onTapGesture {
+                                selectedPurpose = purpose
+                            }
+                        }
+                    }
+                }
                 CUIButton(text: "NEXT") {
                     viewModel.showIndicator = true
-                    userInputModel.purpose = viewModel.purposeSegmentItems[selectedPurposeSegmentIndex].title
-                    viewModel.goToDietProgram = true
+                    userInputModel.purpose = selectedPurpose?.title
+                    goToDietProgram = true
                 }
             }
             .onAppear {
-                viewModel.fetchSegmentItems()
+                viewModel.fetchPurposeItems()
+                print("Purpose Input appeared.")
             }
             .onDisappear {
                 self.viewModel.showIndicator = false
+                print("Purpose Input dissappeared.")
             }
         }
-                 .navigationBarTitle("DietGenie AI")
+                 .navigationTitle("")
                  .navigationBarBackButtonHidden()
-                 .navigationBarItems(leading: CUIBackButton())
+                 .navigationBarItems(
+                    leading:
+                        CUIBackButton()
+                 )
+                 .toolbar {
+                     ToolbarItem(placement: .navigationBarTrailing) {
+                         HStack(spacing: 0) {
+                             Spacer(minLength: 0)
+                             CUIProgressView(progressCount: 3, currentProgress: 3)
+                                 .padding(.trailing, UIScreen.screenWidth * 0.17)
+                         }
+                     }
+                 }
+                 .background(
+                    NavigationLink(
+                        destination: DietProgramView()
+                            .environmentObject(userInputModel),
+                        isActive: $goToDietProgram
+                    ) {}
+                 )
     }
 }

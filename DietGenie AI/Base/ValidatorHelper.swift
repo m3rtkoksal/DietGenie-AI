@@ -22,7 +22,7 @@ struct ValidatorHelper {
     static var heightPredicate = NSPredicate(format: "SELF MATCHES %@", "^(?:[0-9]|[1-9][0-9]|[1-2][0-9][0-9]|300)$")
     static var weightPredicate = NSPredicate(format: "SELF MATCHES %@", "^(?:[0-9]|[1-9][0-9]|[1-2][0-9][0-9]|300)$")
     static var emailPredicate = NSPredicate(format: "SELF MATCHES %@", "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$")
-    static var passwordPredicate = NSPredicate(format: "SELF MATCHES %@", "^[A-Z][a-z]\\d{6}$|^\\d{4}[A-Z][a-z]\\d{2}$")
+    static var passwordPredicate = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)[A-Za-z\\d]{8}$")
     static var datePredicate = NSPredicate(format: "SELF MATCHES %@","^(0?[1-9]|1\\d|2\\d|3[01])[\\.\\/](0?[1-9]|1[0-2])[\\.\\/](19|20)\\d{2}$")
     static var cityPredicate = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[\\x{00}-\\x{FF}\(turkishCharacterSet)][$\\w])\\s*[\\x{00}-\\x{FF}\(turkishCharacterSet)][$\\w\\s]{1,50}$")
     static var stateAndRegionPredicate = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[\\x{00}-\\x{FF}\(turkishCharacterSet)][$\\w])\\s*[\\x{00}-\\x{FF}\(turkishCharacterSet)][$\\w\\s]{1,50}$")

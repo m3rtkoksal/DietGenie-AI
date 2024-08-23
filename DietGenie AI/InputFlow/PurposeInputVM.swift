@@ -9,14 +9,15 @@ import Foundation
 
 class PurposeInputVM: BaseViewModel {
     
-    @Published var purposeSegmentItems: [SegmentTitle] = []
-    @Published var goToDietProgram = false
+    @Published var purposeItems: [PurposeItem] = []
     
-    func fetchSegmentItems() {
-        self.purposeSegmentItems = [
-            SegmentTitle(title: "Fat Loss", icon: ""),
-            SegmentTitle(title: "Muscle Gain", icon: ""),
-            SegmentTitle(title: "Fat Gain", icon: ""),
+    
+    func fetchPurposeItems() {
+        self.purposeItems = [
+            PurposeItem(title: "Lose weight", icon: "loseWeight"),
+            PurposeItem(title: "Maintain weight", icon: "maintainWeight"),
+            PurposeItem(title: "Gain weight", icon: "gainFat"),
+            PurposeItem(title: "Gain muscle", icon: "gainMuscle")
         ]
     }
 }
