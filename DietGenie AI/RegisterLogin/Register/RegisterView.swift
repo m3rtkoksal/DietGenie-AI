@@ -123,9 +123,12 @@ struct RegisterView: View {
                     message: Text(errorMessage.description),
                     dismissButton: .default(Text("OK")) {
                         showAlert = false
+                        self.viewModel.showIndicator = false
                         if errorTitle.contains("success") {
                             self.viewModel.showIndicator = false
                             viewModel.goToHealthPermission = true
+                        } else {
+                            self.viewModel.showIndicator = false
                         }
                     }
                 )
