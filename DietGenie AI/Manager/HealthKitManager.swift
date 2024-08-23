@@ -43,7 +43,7 @@ class HealthKitManager: ObservableObject {
         }
     }
     
-    func fetchYearlyData(userId: String, completion: @escaping (Double?, Double?, Double?, Double?, Double?, HKBiologicalSex?, Double?, Int?) -> Void) {
+    func fetchYearlyData(userId: String, completion: @escaping (Double?, Double?, Double?, Double?, Double?, HKBiologicalSex?, Double?, String?) -> Void) {
         guard isAuthorized else {
             completion(nil, nil, nil, nil, nil, nil, nil, nil)
             return
@@ -58,7 +58,7 @@ class HealthKitManager: ObservableObject {
         var weight: Double?
         var height: Double?
         var gender: HKBiologicalSex?
-        var age: Int?
+        var birthday: String?
         
         let now = Date()
         let calendar = Calendar.current
@@ -150,8 +150,7 @@ class HealthKitManager: ObservableObject {
         dispatchGroup.enter()
         fetchDateOfBirth { dob in
             if let dob = dob {
-                let ageComponents = calendar.dateComponents([.year], from: dob, to: now)
-                age = ageComponents.year
+                birthday = dob.getFormattedDate(format: "dd.MM.yyyy")
             }
             dispatchGroup.leave()
         }
@@ -172,9 +171,9 @@ class HealthKitManager: ObservableObject {
                 weight: weight,
                 gender: gender,
                 height: height,
-                age: age
+                birthday: birthday
             ) {
-                completion(activeEnergy, restingEnergy, bodyFatPercentage, leanBodyMass, weight, gender, height, age)
+                completion(activeEnergy, restingEnergy, bodyFatPercentage, leanBodyMass, weight, gender, height, birthday)
             }
         }
     }
@@ -260,7 +259,7 @@ class HealthKitManager: ObservableObject {
         weight: Double?,
         gender: HKBiologicalSex?,
         height: Double?,
-        age: Int?,
+        birthday: String?,
         completion: @escaping () -> Void
     ) {
         // Prepare health data as a dictionary
@@ -272,7 +271,7 @@ class HealthKitManager: ObservableObject {
             "weight": weight as Any,
             "height": height as Any,
             "gender": hkBiologicalSexToGenderString(gender ?? .notSet),
-            "age": age as Any,
+            "age": birthday as Any,
             "timestamp": Timestamp(date: Date())  // Include a timestamp for ordering
         ]
         

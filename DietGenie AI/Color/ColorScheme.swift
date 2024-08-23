@@ -73,6 +73,11 @@ struct ColorScheme {
         return color(light: UIColor.init(hex: "#D1D1D1"),
                      dark: UIColor.init(hex: "#D1D1D1"))
     }
+    
+    static var cellBGGreen: UIColor {
+        return color(light: UIColor.init(hex: "#D0FCE9"),
+                     dark: UIColor.init(hex: "#D0FCE9"))
+    }
 
     static var textColorsPrimary: UIColor {
         return color(light:UIColor.init(hex: "#351E52"),

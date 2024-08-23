@@ -59,7 +59,7 @@ struct SelectInputMethodView: View {
                                 weight: userInputModel.weight,
                                 gender: userInputModel.gender,
                                 height: userInputModel.height,
-                                age: userInputModel.age
+                                birthday: userInputModel.birthday
                             ) {
                                 print("Health data saved successfully.")
                             }
@@ -162,7 +162,7 @@ struct SelectInputMethodView: View {
                return
            }
            
-           healthKitManager.fetchYearlyData(userId: userId) { activeEnergyData, restingEnergyData, bodyFatPercentageData, leanBodyMassData, weightData, genderData, heightData, ageData in
+           healthKitManager.fetchYearlyData(userId: userId) { activeEnergyData, restingEnergyData, bodyFatPercentageData, leanBodyMassData, weightData, genderData, heightData, birthdayData in
                self.userInputModel.userId = userId
                // Calculate daily values
                let daysInYear = 365.0
@@ -176,7 +176,7 @@ struct SelectInputMethodView: View {
                self.userInputModel.weight = weightData
                self.userInputModel.height = heightData
                self.userInputModel.gender = genderData
-               self.userInputModel.age = ageData
+               self.userInputModel.birthday = birthdayData
            }
        }
 

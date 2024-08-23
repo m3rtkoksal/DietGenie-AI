@@ -35,7 +35,7 @@ class HealthKitPermissionVM: BaseViewModel {
             return
         }
         
-        healthKitManager.fetchYearlyData(userId: userId) { activeEnergyData, restingEnergyData, bodyFatPercentageData, leanBodyMassData, weightData, genderData, heightData, ageData in
+        healthKitManager.fetchYearlyData(userId: userId) { activeEnergyData, restingEnergyData, bodyFatPercentageData, leanBodyMassData, weightData, genderData, heightData, birthdayData in
             self.userInputModel.userId = userId
             // Calculate daily values
             let daysInYear = 365.0
@@ -49,7 +49,7 @@ class HealthKitPermissionVM: BaseViewModel {
             self.userInputModel.weight = weightData
             self.userInputModel.height = heightData
             self.userInputModel.gender = genderData
-            self.userInputModel.age = ageData
+            self.userInputModel.birthday = birthdayData
         }
     }
     
@@ -73,7 +73,7 @@ class HealthKitPermissionVM: BaseViewModel {
                     weight: self.userInputModel.weight,
                     gender: self.userInputModel.gender,
                     height: self.userInputModel.height,
-                    age: self.userInputModel.age
+                    birthday: self.userInputModel.birthday
                 ) {
                     print("Health data saved successfully.")
                 }

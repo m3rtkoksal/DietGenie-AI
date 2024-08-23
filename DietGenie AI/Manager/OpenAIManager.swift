@@ -191,12 +191,13 @@ class OpenAIManager: ObservableObject {
     private func createPrompt(from userInputModel: UserInputModel) -> String {
         return """
         Create a personalized diet plan based on the following information:
-        - Age: \(userInputModel.age != nil ? "\(userInputModel.age!) years old" : "unknown age")
+        - Birthday: \(userInputModel.birthday != nil ? "\(userInputModel.birthday!)" : "unknown age")
         - Height: \(userInputModel.height != nil ? "\(userInputModel.height!) meters" : "unknown height")
         - Weight: \(userInputModel.weight != nil ? "\(userInputModel.weight!) kilograms" : "unknown weight")
         - Body Fat Percentage: \(userInputModel.bodyFatPercentage != nil ? "\(userInputModel.bodyFatPercentage!)%" : "unknown body percantage")
         - Lean Body Mass: \(userInputModel.leanBodyMass != nil ? "\(userInputModel.leanBodyMass!) kilograms" : "unknown lean body mass")
         - Active Energy: \(userInputModel.activeEnergy != nil ? "\(userInputModel.activeEnergy!) kcal" : "unknown active energy")
+        - Activity Level: \(userInputModel.activity != nil ? "\(userInputModel.activity!)" : "unknown activity")
         - Resting Energy: \(userInputModel.restingEnergy != nil ? "\(userInputModel.restingEnergy!) kcal" : "unknown resting energy aka basal metobolsm")
         - Gender: \(userInputModel.gender != nil ? hkBiologicalSexToGenderString(userInputModel.gender!) : "unknown gender")
         - My purpose is to: \(userInputModel.purpose != nil ? "\(userInputModel.purpose!)" : "unknown purpose")

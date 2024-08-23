@@ -18,7 +18,8 @@ class UserInputModel: ObservableObject {
     @Published var weight: Double?
     @Published var height: Double?
     @Published var gender: HKBiologicalSex?
-    @Published var age: Int?
+    @Published var birthday: String?
+    @Published var activity: String?
     @Published var purpose: String?
     @Published var dietPlans: [DietPlan] = []
 }

@@ -131,7 +131,7 @@ struct HealthKitPermissionView: View {
                             .strokeBorder(lineWidth: 0.4)
                     )
                     .shadow(color: Color(red: 0.51, green: 0.74, blue: 0.62, opacity: 0.3), radius: 20, x: 0, y: 0)
-                    .padding(.top,60)
+                    .padding(.top)
                     CUIDivider(title: "Or enter Manually")
                     CUIButton(text: "Enter Manually") {
                         viewModel.goToBMIInputPage = true

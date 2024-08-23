@@ -11,8 +11,6 @@ struct DetailsAboutMeView: View {
     @EnvironmentObject var userInputModel: UserInputModel
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @StateObject private var ageValidator = DefaultTextValidator(predicate: ValidatorHelper.agePredicate)
-    @StateObject private var heightValidator = DefaultTextValidator(predicate: ValidatorHelper.heightPredicate)
-    @StateObject private var weightValidator = DefaultTextValidator(predicate: ValidatorHelper.weightPredicate)
     @StateObject private var birthdayValidator = DefaultTextValidator(predicate: ValidatorHelper.datePredicate)
     @State private var birthday: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date())!
     @StateObject private var viewModel = DetailsAboutMeVM()
@@ -25,17 +23,15 @@ struct DetailsAboutMeView: View {
     @State private var selectedWeightItem = CUIDropdownItemModel(id: "", text: "")
     @State private var selectedWeightUnit: WeightUnit = .kg
     @State private var isWeightExpanded = false
-    
+    @State private var goToHowActivePage = false
+    @State private var tempLength: Double? = nil
+    @State private var tempWeight: Double? = nil
     var body: some View {
         ZStack {
             BaseView(currentViewModel: viewModel,
                      background: .lightTeal,
                      showIndicator: $viewModel.showIndicator) {
-                NavigationLink(
-                    destination: HowActiveYouView()
-                        .environmentObject(userInputModel),
-                    isActive: $viewModel.goToHowActivePage
-                ) {}
+               
                 
                 VStack {
                     CUILeftHeadline(
@@ -44,7 +40,10 @@ struct DetailsAboutMeView: View {
                         style: .black,
                         bottomPadding: 0)
                     VStack(spacing: 20) {
-                        SegmentedControlView(segmentTitle: "Please select your gender", selectedIndex: $selectedGenderSegmentIndex, segmentNames: viewModel.genderSegmentItems)
+                        SegmentedControlView(
+                            segmentTitle: "Please select your gender",
+                            selectedIndex: $selectedGenderSegmentIndex,
+                            segmentNames: viewModel.genderSegmentItems)
                             .padding(.top,40)
                         ZStack(alignment: .top) {
                             CUIValidationField(
@@ -67,7 +66,13 @@ struct DetailsAboutMeView: View {
                         .onTapGesture {
                             isLengthExpanded = true
                         }
-                        
+                        .onChange(of: selectedLengthItem) { newLength in
+                            if let id = newLength.id, let length = Double(id) {
+                                tempLength = length
+                            } else {
+                                tempLength = 0.0
+                            }
+                        }
                         CUIDropdownField(
                             title: "How much do you weight?",
                             isExpanded: $isWeightExpanded,
@@ -76,23 +81,37 @@ struct DetailsAboutMeView: View {
                         .onTapGesture {
                             isWeightExpanded = true
                         }
+                        .onChange(of: selectedWeightItem) { newWeight in
+                            if let id = newWeight.id, let weight = Double(id) {
+                                tempWeight = weight
+                            } else {
+                                tempWeight = 0.0
+                            }
+                        }
                         Spacer()
                         CUIButton(text: "NEXT") {
-                            let selectedGender = viewModel.genderSegmentItems[selectedGenderSegmentIndex].title
-                            if let hkBiologicalSex = viewModel.genderStringToHKBiologicalSex(selectedGender) {
+                            viewModel.showIndicator = true
+                            if let hkBiologicalSex = viewModel.genderStringToHKBiologicalSex(viewModel.genderSegmentItems[selectedGenderSegmentIndex].title) {
                                 self.userInputModel.gender = hkBiologicalSex
                             }
-                            if let age = Int(ageValidator.text) {
-                                self.userInputModel.age = age
-                            }
-                            if let height = Double(heightValidator.text) {
+                            self.userInputModel.birthday = birthdayValidator.text
+                            if let height = tempLength {
                                 self.userInputModel.height = height
                             }
-                            if let weight = Double(weightValidator.text) {
+                            if let weight = tempWeight {
                                 self.userInputModel.weight = weight
                             }
-                            self.viewModel.goToHowActivePage = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                self.goToHowActivePage = true
+                            }
                         }
+                        .background(
+                            NavigationLink(
+                                destination: HowActiveYouView()
+                                    .environmentObject(userInputModel),
+                                isActive: self.$goToHowActivePage
+                            ) {}
+                        )
                     }
                 }
                 .onAppear {
@@ -100,10 +119,13 @@ struct DetailsAboutMeView: View {
                     viewModel.fetchLengthItems()
                     viewModel.fetchWeightItems()
                 }
+                .onDisappear {
+                    viewModel.showIndicator = false
+                }
                 .onChange(of: selectedLengthUnit) { _ in
                     viewModel.loadLengthItems(for: selectedLengthUnit)
                 }
-                .onChange(of: selectedLengthUnit) { _ in
+                .onChange(of: selectedWeightUnit) { _ in
                     viewModel.loadWeightItems(for: selectedWeightUnit)
                 }
             }

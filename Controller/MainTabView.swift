@@ -10,10 +10,10 @@ import SwiftUI
 struct MainTabView: View {
     var body: some View {
         TabView {
-            SelectInputMethodView()
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }
+//            SelectInputMethodView()
+//                .tabItem {
+//                    Label("Home", systemImage: "house")
+//                }
 
             SavedPlanView()
                 .tabItem {

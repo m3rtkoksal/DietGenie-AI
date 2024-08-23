@@ -65,6 +65,7 @@ extension Color {
     static let lightTeal = Color(ColorScheme.lightTeal)
     static let otherPurple = Color(UIColor(named: "otherPurple") ?? UIColor.init(hex: "#9747FF"))
     static let progressBarPassive = Color(ColorScheme.progressBarPassive)
+    static let cellBGGreen = Color(ColorScheme.cellBGGreen)
 
     //Text Colors
     static let textColorsPrimary = Color(ColorScheme.textColorsPrimary)

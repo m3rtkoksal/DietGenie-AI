@@ -18,8 +18,8 @@ struct ContentView: View {
                 NavigationView {
                     MainTabView()
                         .environmentObject(userInputModel)
-                    SelectInputMethodView()
-                        .environmentObject(userInputModel)
+//                    SelectInputMethodView()
+//                        .environmentObject(userInputModel)
                 }
             } else {
                 OnboardingView()
