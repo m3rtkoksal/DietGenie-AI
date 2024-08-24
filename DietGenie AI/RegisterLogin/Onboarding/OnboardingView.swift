@@ -53,7 +53,7 @@ struct OnboardingView: View {
             }
             .foregroundColor(.black)
             .fullScreenCover(isPresented: $viewModel.goToRegister) {
-                NavigationView {
+                NavigationStack {
                     RegisterView()
                         .environmentObject(userInputModel)
                 }
@@ -62,7 +62,7 @@ struct OnboardingView: View {
                 )
             }
             .fullScreenCover(isPresented: $viewModel.goToLogin) {
-                NavigationView {
+                NavigationStack {
                     LoginView()
                         .environmentObject(userInputModel)
                 }

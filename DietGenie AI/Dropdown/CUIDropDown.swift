@@ -10,7 +10,7 @@ import SwiftUI
 struct CUIDropdownItemModel: Codable, Hashable {
     var id : String?
     var icon: String? = ""
-    let text: String
+    var text: String
     var code: String?
     var hasArrow: Bool?
 }

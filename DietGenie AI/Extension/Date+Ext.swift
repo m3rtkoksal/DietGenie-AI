@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 extension Date {
     // Method to format the date with a given format string
     func getFormattedDate(format: String) -> String {
@@ -24,6 +22,11 @@ extension Date {
         formatter.timeStyle = .none
         return formatter.string(from: self)
     }
+    static func date(from string: String, format: String) -> Date? {
+           let dateFormatter = DateFormatter()
+           dateFormatter.dateFormat = format
+           return dateFormatter.date(from: string)
+       }
 }
 
 

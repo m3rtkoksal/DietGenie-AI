@@ -116,10 +116,10 @@ struct SelectInputMethodView: View {
             .onDisappear {
                 viewModel.showIndicator = false
             }
-            .onAppear {
-                healthKitManager.requestAuthorization()
-              
-            }
+//            .onAppear {
+//                healthKitManager.requestAuthorization()
+//              
+//            }
         }
         .navigationBarTitle("DietGenie AI")
         .navigationBarItems(

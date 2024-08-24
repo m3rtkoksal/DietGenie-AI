@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if authManager.isLoggedIn {
-                NavigationView {
+                NavigationStack {
                     MainTabView()
                         .environmentObject(userInputModel)
 //                    SelectInputMethodView()

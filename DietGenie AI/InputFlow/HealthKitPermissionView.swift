@@ -38,6 +38,7 @@ struct HealthKitPermissionView: View {
     @State private var isOn: Bool = false
     @State private var hasCheckedAuthorization = false
     @State private var activeAlert: AlertType?
+    @State private var isDataLoaded = false
     private let db = Firestore.firestore()
     
     func handleScenePhaseChange(_ phase: ScenePhase) {
@@ -95,24 +96,35 @@ struct HealthKitPermissionView: View {
                                 .labelsHidden()
                                 .toggleStyle(SwitchToggleStyle(tint: .topGreen))
                                 .onChange(of: isOn) { newValue in
-                                    if newValue {
-                                        // Request authorization when toggle is turned on
-                                        //                                    showAlert = true
-                                        healthKitManager.requestAuthorization()
-                                        if healthKitManager.isAuthorized {
-                                            isOn = true
-                                            viewModel.saveHealthToFireStore()
-                                        } else {
-                                            isOn = false
-                                        }
-                                    } else {
+                                    if newValue == false {
                                         if healthKitManager.isAuthorized {
                                             if let url = URL(string: UIApplication.openSettingsURLString) {
+                                                viewModel.goToBMIInputPage = false
                                                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                            }
+                                        }
+                                    } else {
+                                        // Request authorization asynchronously
+                                        healthKitManager.requestAuthorization { success in
+                                            DispatchQueue.main.async {
+                                                if success && healthKitManager.isAuthorized {
+                                                    isOn = true
+                                                    viewModel.showIndicator = true
+                                                    self.saveHealthDataToUserInputModel {
+                                                        self.isDataLoaded = true
+                                                        viewModel.goToBMIInputPage = true
+                                                        viewModel.showIndicator = false
+                                                        self.saveHealthDataToFirestore()
+                                                    }
+                                                } else {
+                                                    isOn = false
+                                                    // Handle the case where authorization was denied or failed
+                                                }
                                             }
                                         }
                                     }
                                 }
+
                                 .onChange(of: healthKitManager.isAuthorized) { newValue in
                                     isOn = newValue
                                 }
@@ -160,25 +172,6 @@ struct HealthKitPermissionView: View {
                                     leading:
                                         CUIDismissButton()
                                 )
-            //                                .alert(isPresented: $showAlert) {
-            //                                    Alert(
-            //                                        title: Text("Authorization Required"),
-            //                                        message: Text("You need to authorize access."),
-            //                                        primaryButton: .default(Text("Allow")) {
-            //                                            if !healthKitManager.isAuthorized {
-            //                                                healthKitManager.requestAuthorization()
-            //                                            }
-            //                                        },
-            //                                        secondaryButton: .cancel(Text("Cancel")) {
-            //                                            if !healthKitManager.isAuthorized {
-            //                                                isOn = false
-            //                                                showAlert = false
-            //                                            } else {
-            //                                                isOn = true
-            //                                            }
-            //                                        }
-            //                                    )
-            //                                }
         }
                  .onChange(of: scenePhase, perform: handleScenePhaseChange)
     }
@@ -191,4 +184,53 @@ struct HealthKitPermissionView: View {
             }
         }
     }
+    
+    func saveHealthDataToUserInputModel(completion: @escaping () -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("No user ID found.")
+            return
+        }
+        
+        healthKitManager.fetchYearlyData(userId: userId) { activeEnergyData, restingEnergyData, bodyFatPercentageData, leanBodyMassData, weightData, genderData, heightData, birthdayData in
+            self.userInputModel.userId = userId
+            // Calculate daily values
+            let daysInYear = 365.0
+            let dailyActiveEnergy = (activeEnergyData ?? 0.0) / daysInYear
+            let dailyRestingEnergy = (restingEnergyData ?? 0.0) / daysInYear
+            // Update user input model
+            self.userInputModel.activeEnergy = dailyActiveEnergy
+            self.userInputModel.restingEnergy = dailyRestingEnergy
+            self.userInputModel.bodyFatPercentage = bodyFatPercentageData
+            self.userInputModel.leanBodyMass = leanBodyMassData
+            self.userInputModel.weight = weightData
+            self.userInputModel.height = heightData
+            self.userInputModel.gender = genderData
+            self.userInputModel.birthday = birthdayData
+            completion()
+        }
+    }
+    
+    func saveHealthDataToFirestore() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                guard let userId = Auth.auth().currentUser?.uid else {
+                    print("No user ID found.")
+                    return
+                }
+                
+                self.healthKitManager.saveHealthDataToFirestore(
+                    userId: userId,
+                    activeEnergy: self.userInputModel.activeEnergy,
+                    restingEnergy: self.userInputModel.restingEnergy,
+                    bodyFatPercentage: self.userInputModel.bodyFatPercentage,
+                    leanBodyMass: self.userInputModel.leanBodyMass,
+                    weight: self.userInputModel.weight,
+                    gender: self.userInputModel.gender,
+                    height: self.userInputModel.height,
+                    birthday: self.userInputModel.birthday
+                ) {
+                    print("Health data saved successfully.")
+                }
+            }
+        }
+    
 }

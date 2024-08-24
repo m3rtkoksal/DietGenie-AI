@@ -6,7 +6,7 @@ class HealthKitManager: ObservableObject {
     private let db = Firestore.firestore()  // Add Firestore instance
     @Published var isAuthorized = false
     
-    func requestAuthorization() {
+    func requestAuthorization(completion: @escaping (Bool) -> Void) {
         let readTypes: Set<HKObjectType> = [
             HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
             HKObjectType.quantityType(forIdentifier: .basalEnergyBurned)!,
@@ -24,6 +24,7 @@ class HealthKitManager: ObservableObject {
                 if let error = error {
                     print("Error requesting HealthKit authorization: \(error.localizedDescription)")
                 }
+                completion(success)
             }
         }
     }

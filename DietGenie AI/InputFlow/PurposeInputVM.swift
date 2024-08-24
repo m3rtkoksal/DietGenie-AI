@@ -8,10 +8,9 @@
 import Foundation
 
 class PurposeInputVM: BaseViewModel {
-    
     @Published var purposeItems: [PurposeItem] = []
-    
-    
+    @Published var goToDietProgram = false
+
     func fetchPurposeItems() {
         self.purposeItems = [
             PurposeItem(title: "Lose weight", icon: "loseWeight"),

@@ -24,14 +24,14 @@ struct HowActiveYouView: View {
                     isActive: $viewModel.goToPurpose
                 ) {}
                 
-                VStack(spacing:0) {
+                VStack(spacing:20) {
                     CUILeftHeadline(
                         title: "Details About You",
                         subtitle: "Exclude sports and strenuous activities like running, playing basketball, or working out.",
                         style: .black,
                         bottomPadding: 0)
                     ScrollView {
-                        VStack(spacing: -10) {
+                        VStack(spacing: 15) {
                             ForEach(viewModel.activityItems, id: \.self) { activity in
                                 ActivityElement(
                                     title: activity.title,

@@ -16,7 +16,6 @@ struct PurposeElement: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 38)
                     .stroke(isSelected ? Color.black : Color.progressBarPassive, lineWidth: 1)
-                   
                     .background(isSelected ? Color.cellBGGreen : Color.clear)
                     .clipShape(RoundedRectangle(cornerRadius: 38))
                     
@@ -27,7 +26,6 @@ struct PurposeElement: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer()
                     Image(icon)
-                        .renderingMode(.template)
                         .resizable()
                         .frame(width: 38, height: 38)
                 }
@@ -41,8 +39,8 @@ struct PurposeElement: View {
 #Preview {
     ScrollView {
         VStack(spacing: -10) {
-            PurposeElement(title: "Not very active", icon: "male", isSelected: true)
-            PurposeElement(title: "Not very active", icon: "male", isSelected: false)
+            PurposeElement(title: "Not very active", icon: "loseWeight", isSelected: true)
+            PurposeElement(title: "Not very active", icon: "gainFat", isSelected: false)
             PurposeElement(title: "Not very active", icon: "male", isSelected: false)
         }
     }

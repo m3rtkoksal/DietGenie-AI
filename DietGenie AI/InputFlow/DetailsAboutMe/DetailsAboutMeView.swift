@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailsAboutMeView: View {
     @EnvironmentObject var userInputModel: UserInputModel
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    @StateObject private var healthKitManager = HealthKitManager()
     @StateObject private var ageValidator = DefaultTextValidator(predicate: ValidatorHelper.agePredicate)
     @StateObject private var birthdayValidator = DefaultTextValidator(predicate: ValidatorHelper.datePredicate)
     @State private var birthday: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date())!
@@ -31,8 +32,11 @@ struct DetailsAboutMeView: View {
             BaseView(currentViewModel: viewModel,
                      background: .lightTeal,
                      showIndicator: $viewModel.showIndicator) {
-               
-                
+                NavigationLink(
+                    destination: HowActiveYouView()
+                        .environmentObject(userInputModel),
+                    isActive: self.$goToHowActivePage
+                ) {}
                 VStack {
                     CUILeftHeadline(
                         title: "Details About You",
@@ -105,19 +109,30 @@ struct DetailsAboutMeView: View {
                                 self.goToHowActivePage = true
                             }
                         }
-                        .background(
-                            NavigationLink(
-                                destination: HowActiveYouView()
-                                    .environmentObject(userInputModel),
-                                isActive: self.$goToHowActivePage
-                            ) {}
-                        )
                     }
                 }
                 .onAppear {
                     viewModel.fetchMenuItems()
                     viewModel.fetchLengthItems()
                     viewModel.fetchWeightItems()
+                    if let gender = userInputModel.gender {
+                        let genderString = healthKitManager.hkBiologicalSexToGenderString(gender)
+                        // Find the index by comparing the string with a property in SegmentTitle
+                        selectedGenderSegmentIndex = viewModel.genderSegmentItems.firstIndex { segment in
+                            segment.title == genderString // Adjust this line based on your SegmentTitle implementation
+                        } ?? 3
+                    }
+                    if let birthday = userInputModel.birthday {
+                        birthdayValidator.text = birthday
+                        ageValidator.text = birthday
+                        self.birthday = Date.date(from: birthday, format: "dd-MM-YYYY") ?? Date()
+                    }
+                    if let height = userInputModel.height {
+                        selectedLengthItem.text = String(height)
+                    }
+                    if let weight = userInputModel.weight {
+                        selectedWeightItem.text = String(weight)
+                    }
                 }
                 .onDisappear {
                     viewModel.showIndicator = false

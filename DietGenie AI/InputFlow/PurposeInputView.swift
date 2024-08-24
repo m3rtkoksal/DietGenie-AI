@@ -12,13 +12,17 @@ struct PurposeInputView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @StateObject private var viewModel = PurposeInputVM()
     @State private var selectedPurpose: PurposeItem?
-    @State var goToDietProgram = false
     var body: some View {
         
         BaseView(currentViewModel: viewModel,
                  background: .lightTeal,
                  showIndicator: $viewModel.showIndicator) {
-            VStack {
+            NavigationLink(
+                destination: DietProgramView()
+                    .environmentObject(userInputModel),
+                isActive: $viewModel.goToDietProgram
+            ) {}
+            VStack(spacing: 40) {
                 CUILeftHeadline(
                     title: "What’s your goal?",
                     subtitle: "Let’s focus on one goal to begin with.",
@@ -41,7 +45,7 @@ struct PurposeInputView: View {
                 CUIButton(text: "NEXT") {
                     viewModel.showIndicator = true
                     userInputModel.purpose = selectedPurpose?.title
-                    goToDietProgram = true
+                    viewModel.goToDietProgram = true
                 }
             }
             .onAppear {
@@ -68,12 +72,5 @@ struct PurposeInputView: View {
                          }
                      }
                  }
-                 .background(
-                    NavigationLink(
-                        destination: DietProgramView()
-                            .environmentObject(userInputModel),
-                        isActive: $goToDietProgram
-                    ) {}
-                 )
     }
 }
