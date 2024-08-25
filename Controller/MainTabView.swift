@@ -10,21 +10,17 @@ import SwiftUI
 struct MainTabView: View {
     var body: some View {
         TabView {
-//            SelectInputMethodView()
-//                .tabItem {
-//                    Label("Home", systemImage: "house")
-//                }
-
             SavedPlanView()
                 .tabItem {
                     Label("Plans", systemImage: "list.dash")
                 }
-
-//            SettingsView()
-//                .tabItem {
-//                    Label("Settings", systemImage: "gear")
-//                }
+                .navigationBarHidden(true)
+            ProfileView()
+                .tabItem {
+                    Label("Profile", systemImage: "person")
+                }
+                .navigationBarHidden(true)
         }
-        .accentColor(.teal) // Optional: Customize the selected tab color
+        .accentColor(Color.topGreen) // Optional: Customize the selected tab color
     }
 }

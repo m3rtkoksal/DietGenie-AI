@@ -45,6 +45,10 @@ struct DietProgramView: View {
                     }
                     .padding(.horizontal)
                 }
+                Spacer()
+                CUIButton(text: "Home") {
+                    AuthenticationManager.shared.logIn()
+                }
             }
             .onAppear {
                 fetchDietPlan()

@@ -272,7 +272,7 @@ class HealthKitManager: ObservableObject {
             "weight": weight as Any,
             "height": height as Any,
             "gender": hkBiologicalSexToGenderString(gender ?? .notSet),
-            "age": birthday as Any,
+            "birthday": birthday as Any,
             "timestamp": Timestamp(date: Date())  // Include a timestamp for ordering
         ]
         

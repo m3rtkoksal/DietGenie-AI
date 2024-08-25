@@ -36,22 +36,25 @@ class OpenAIManager: ObservableObject {
         var updatedDietPlan = dietPlan
         updatedDietPlan.userId = userInputModel.userId ?? ""  // Ensure userId is set
         
+        // Print the data for debugging purposes
+        print("Saving diet plan entry with data: \(updatedDietPlan)")
+        
         do {
-            if let id = updatedDietPlan.id {
-                // Update existing document
+            if let id = updatedDietPlan.id, !id.isEmpty {
+                // Update existing document if ID is available and not empty
                 try db.collection("dietPlans").document(id).setData(from: updatedDietPlan)
+                print("Updated existing diet plan with ID: \(id)")
             } else {
-                // Add new document
+                // Add new document if ID is not available
                 _ = try db.collection("dietPlans").addDocument(from: updatedDietPlan)
+                print("Added new diet plan entry.")
             }
             completion() // Call the completion handler after successful save
-            print("Diet plan entry saved successfully.")
         } catch {
             print("Error saving diet plan entry: \(error.localizedDescription)")
         }
     }
 
-    
     func generatePrompt(userInputModel: UserInputModel, completion: @escaping ([String]?) -> Void) {
         let prompt = createPrompt(from: userInputModel)
         print(prompt)

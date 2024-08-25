@@ -49,16 +49,6 @@ struct LoginView: View {
                         showPrompt: $passwordValidator.showPrompt)
                     
                     HStack {
-                        Button {
-                            viewModel.goToRegisterView = true
-                        } label: {
-                            Text("Signup")
-                                .foregroundColor(.lightGray200)
-                                .padding()
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.teal, lineWidth: 2))
-                        }
                         Spacer()
                         Button("Forgot Password") {
                             viewModel.goToPasswordReset = true
@@ -109,15 +99,15 @@ struct LoginView: View {
                 .hiddenConditionally(isHidden: keyboardObserver.isKeyboardVisible)
             }
         
-            .fullScreenCover(isPresented: $viewModel.goToSelectInputView) {
-                NavigationView {
-                    SelectInputMethodView()
-                        .environmentObject(userInputModel)
-                }
-                .environmentObject(
-                    BindingRouter($viewModel.goToSelectInputView)
-                )
-            }
+//            .fullScreenCover(isPresented: $viewModel.goToSelectInputView) {
+//                NavigationView {
+//                    SelectInputMethodView()
+//                        .environmentObject(userInputModel)
+//                }
+//                .environmentObject(
+//                    BindingRouter($viewModel.goToSelectInputView)
+//                )
+//            }
             .fullScreenCover(isPresented: $viewModel.goToRegister) {
                 NavigationView {
                     RegisterView()

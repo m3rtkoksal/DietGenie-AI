@@ -17,7 +17,7 @@ struct SavedPlanView: View {
     
     var body: some View {
         BaseView(currentViewModel: viewModel,
-                 background: .black,
+                 background: .lightTeal,
                  showIndicator: $viewModel.showIndicator
         ) {
             VStack {
@@ -26,19 +26,17 @@ struct SavedPlanView: View {
                     subtitle: "You can see details of your previous meal plans from this list",
                     style: .black,
                     bottomPadding: 50)
-                ForEach(userInputModel.dietPlans) { dietPlan in
-                    NavigationLink(destination: DietPlanDetailView(dietPlan: dietPlan)) {
-                        ScrollView {
+                ScrollView {
+                    ForEach(userInputModel.dietPlans) { dietPlan in
+                        NavigationLink(destination: DietPlanDetailView(dietPlan: dietPlan)) {
                             VStack(alignment: .leading) {
                                 DietPlanElement(date: dietPlan.createdAt?.getShortDate() ?? "N/A")
-                                    .padding(.top)
                             }
                         }
                     }
                 }
             }
             .onAppear {
-                // Fetch diet plans or update the list if necessary
                 fetchDietPlans()
             }
         }
@@ -49,6 +47,7 @@ struct SavedPlanView: View {
                 CUIBackButton()
         )
     }
+    
     private func fetchDietPlans() {
         guard let userId = Auth.auth().currentUser?.uid else {
             print("User not logged in")
@@ -63,10 +62,13 @@ struct SavedPlanView: View {
                     print("Error fetching diet plans: \(error.localizedDescription)")
                 } else {
                     var fetchedDietPlans: [DietPlan] = []
-                    for document in querySnapshot!.documents {
+                    for document in querySnapshot?.documents ?? [] {
                         do {
                             let dietPlan = try document.data(as: DietPlan.self)
-                            fetchedDietPlans.append(dietPlan)
+                            // Check for duplicates before appending
+                            if !fetchedDietPlans.contains(where: { $0.id == dietPlan.id }) {
+                                fetchedDietPlans.append(dietPlan)
+                            }
                         } catch {
                             print("Error decoding diet plan: \(error.localizedDescription)")
                         }
@@ -79,4 +81,3 @@ struct SavedPlanView: View {
             }
     }
 }
-

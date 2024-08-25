@@ -113,6 +113,11 @@
 		8EAEB0772C73CF7E00FD9713 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EAEB0762C73CF7E00FD9713 /* Montserrat-SemiBold.ttf */; };
 		8EBBE6182C7A7BC40009CA62 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBBE6172C7A7BC40009CA62 /* LoadingView.swift */; };
 		8EBBE61A2C7A82A80009CA62 /* MealItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBBE6192C7A82A80009CA62 /* MealItems.swift */; };
+		8EBBE6212C7B7E700009CA62 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBBE6202C7B7E700009CA62 /* ProfileView.swift */; };
+		8EBBE6232C7B80360009CA62 /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBBE6222C7B80360009CA62 /* ProfileVM.swift */; };
+		8EBBE6252C7B80E30009CA62 /* CUIPersonalInfoElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBBE6242C7B80E30009CA62 /* CUIPersonalInfoElement.swift */; };
+		8EBBE6272C7B84140009CA62 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBBE6262C7B84140009CA62 /* ProfileManager.swift */; };
+		8EBBE6292C7B9B4A0009CA62 /* DietPlanDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBBE6282C7B9B4A0009CA62 /* DietPlanDetailVM.swift */; };
 		8EDFD1AB2C713E8D00CCA1C2 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AA2C713E8D00CCA1C2 /* PasswordResetView.swift */; };
 		8EDFD1AD2C714F4F00CCA1C2 /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */; };
 		8EDFD1AF2C7154D900CCA1C2 /* CUIPasswordValidationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AE2C7154D900CCA1C2 /* CUIPasswordValidationField.swift */; };
@@ -210,6 +215,11 @@
 		8EAEB0762C73CF7E00FD9713 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		8EBBE6172C7A7BC40009CA62 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		8EBBE6192C7A82A80009CA62 /* MealItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealItems.swift; sourceTree = "<group>"; };
+		8EBBE6202C7B7E700009CA62 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		8EBBE6222C7B80360009CA62 /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
+		8EBBE6242C7B80E30009CA62 /* CUIPersonalInfoElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIPersonalInfoElement.swift; sourceTree = "<group>"; };
+		8EBBE6262C7B84140009CA62 /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
+		8EBBE6282C7B9B4A0009CA62 /* DietPlanDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietPlanDetailVM.swift; sourceTree = "<group>"; };
 		8EDFD1AA2C713E8D00CCA1C2 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 		8EDFD1AE2C7154D900CCA1C2 /* CUIPasswordValidationField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIPasswordValidationField.swift; sourceTree = "<group>"; };
@@ -411,6 +421,7 @@
 				8E02CF972C6E0D79006E5B93 /* KeychainManager.swift */,
 				8E02CFAB2C6E1F47006E5B93 /* FirebaseRemoteConfigManager.swift */,
 				8E0B2C0C2C71891C004DFCD8 /* AuthenticationManager.swift */,
+				8EBBE6262C7B84140009CA62 /* ProfileManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -418,6 +429,7 @@
 		8E02CFDC2C70FFC2006E5B93 /* RegisterLogin */ = {
 			isa = PBXGroup;
 			children = (
+				8EBBE61F2C7B7E600009CA62 /* Profile */,
 				8EAEB0662C73B81D00FD9713 /* Onboarding */,
 				8EDFD1C12C71642500CCA1C2 /* Welcome */,
 				8EDFD1BE2C71633400CCA1C2 /* Register */,
@@ -440,6 +452,7 @@
 				8E0B2C112C720F35004DFCD8 /* SavedPlanView.swift */,
 				8E0B2C132C722007004DFCD8 /* DietPlanDetailView.swift */,
 				8E0B2C152C722450004DFCD8 /* DietPlanElement.swift */,
+				8EBBE6282C7B9B4A0009CA62 /* DietPlanDetailVM.swift */,
 			);
 			name = SavedPlan;
 			sourceTree = "<group>";
@@ -506,6 +519,16 @@
 				8EBBE6172C7A7BC40009CA62 /* LoadingView.swift */,
 			);
 			name = Loading;
+			sourceTree = "<group>";
+		};
+		8EBBE61F2C7B7E600009CA62 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8EBBE6202C7B7E700009CA62 /* ProfileView.swift */,
+				8EBBE6222C7B80360009CA62 /* ProfileVM.swift */,
+				8EBBE6242C7B80E30009CA62 /* CUIPersonalInfoElement.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		8EDFD1B22C715FC200CCA1C2 /* Purpose */ = {
@@ -695,12 +718,14 @@
 				8E02CF382C6B8205006E5B93 /* DietGenie_AIApp.swift in Sources */,
 				8E0B2C122C720F35004DFCD8 /* SavedPlanView.swift in Sources */,
 				8E02CF882C6BF777006E5B93 /* SelectInputMethodView.swift in Sources */,
+				8EBBE6292C7B9B4A0009CA62 /* DietPlanDetailVM.swift in Sources */,
 				8E47D18A2C77285C00A8C4B3 /* CUIProgressView.swift in Sources */,
 				8EDFD1B42C715FE800CCA1C2 /* DietProgramVM.swift in Sources */,
 				8EDFD1BA2C71613E00CCA1C2 /* DetailsAboutMeVM.swift in Sources */,
 				8E02CF802C6BB137006E5B93 /* CUIDefaultTextField.swift in Sources */,
 				8E02CF8A2C6BFB43006E5B93 /* DietProgramView.swift in Sources */,
 				8E02CF862C6BB7B1006E5B93 /* HealthKitManager.swift in Sources */,
+				8EBBE6252C7B80E30009CA62 /* CUIPersonalInfoElement.swift in Sources */,
 				8E02CF742C6BA020006E5B93 /* CUIButton.swift in Sources */,
 				8E02CF522C6B84B7006E5B93 /* BaseViewModel.swift in Sources */,
 				8E36DC512C7503F4005F58E4 /* TrackableScrollView.swift in Sources */,
@@ -720,6 +745,7 @@
 				8E02CFE02C71114B006E5B93 /* RegisterView.swift in Sources */,
 				8E47D19B2C77C81200A8C4B3 /* HowActiveYouVM.swift in Sources */,
 				8E02CF722C6B9F36006E5B93 /* CUILeftHeadline.swift in Sources */,
+				8EBBE6212C7B7E700009CA62 /* ProfileView.swift in Sources */,
 				8E47D19D2C77C9E800A8C4B3 /* ActivityItems.swift in Sources */,
 				8EDFD1AB2C713E8D00CCA1C2 /* PasswordResetView.swift in Sources */,
 				8E02CF7E2C6BB0ED006E5B93 /* CUIValidationField.swift in Sources */,
@@ -754,8 +780,10 @@
 				8E02CF7C2C6BACD6006E5B93 /* CUIBackButton.swift in Sources */,
 				8E02CF592C6B856B006E5B93 /* Font+Ext.swift in Sources */,
 				8E36DC4D2C73F5A2005F58E4 /* CUIDivider.swift in Sources */,
+				8EBBE6272C7B84140009CA62 /* ProfileManager.swift in Sources */,
 				8E0B2C142C722007004DFCD8 /* DietPlanDetailView.swift in Sources */,
 				8E02CF552C6B8506006E5B93 /* CUIDropDownElement.swift in Sources */,
+				8EBBE6232C7B80360009CA62 /* ProfileVM.swift in Sources */,
 				8E02CF5B2C6B860B006E5B93 /* SelectInputMethodVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

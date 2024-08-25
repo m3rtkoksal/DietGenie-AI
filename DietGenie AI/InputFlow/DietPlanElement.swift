@@ -9,24 +9,31 @@ import SwiftUI
 
 struct DietPlanElement: View {
     var date: String
+    
     var body: some View {
-        HStack {
-            Text(date)
-            Spacer()
-            Image(systemName: "chevron.right")
+        ZStack {
+            RoundedRectangle(cornerRadius: 38)
+                .stroke(Color.progressBarPassive, lineWidth: 1)
+                .background(Color.clear)
+                .clipShape(RoundedRectangle(cornerRadius: 38))
+            HStack {
+                Text(date)
+                    .foregroundStyle(.black)
+                    .font(.montserrat(.semiBold, size: 14))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .resizable()
+                    .frame(width: 10, height: 10)
+            }
+            .padding(.horizontal)
         }
-        .padding(.horizontal)
-        .foregroundColor(.lightGray200)
-        .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.teal, lineWidth: 2)
-                .frame(width: UIScreen.screenWidth * 0.9))
-        
-        
+        .background(Color.clear)
+        .frame(height: 46)
+        .padding(.horizontal, 33)
     }
 }
 
 #Preview {
-    DietPlanElement(date: "13.06,24")
+    DietPlanElement(date: "13.06.24")
 }

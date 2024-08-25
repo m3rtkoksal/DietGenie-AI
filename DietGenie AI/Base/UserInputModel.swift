@@ -11,6 +11,9 @@ import FirebaseCore
 
 class UserInputModel: ObservableObject {
     @Published var userId: String?
+    @Published var firstName: String?
+    @Published var lastName: String?
+    @Published var email: String?
     @Published var activeEnergy: Double?
     @Published var restingEnergy: Double?
     @Published var bodyFatPercentage: Double?
