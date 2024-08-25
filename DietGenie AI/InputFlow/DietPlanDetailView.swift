@@ -24,7 +24,7 @@ struct DietPlanDetailView: View {
                     bottomPadding: 50)
                 ScrollView {
                     ForEach(dietPlan.meals, id: \.self) { meal in
-                        MealCardElementView(meal: meal)
+//                        MealCardElementView(meal: meal)
                     }
                     .navigationBarTitle("DietGenie AI")
                     .navigationBarBackButtonHidden()

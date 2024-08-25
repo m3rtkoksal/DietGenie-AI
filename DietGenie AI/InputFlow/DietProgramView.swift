@@ -17,10 +17,11 @@ struct DietProgramView: View {
     @State private var dietPlan: String? = nil
     @State var meals: [String] = []
     private let db = Firestore.firestore()
+    @State private var selectedMeals: Set<String> = []
     
     var body: some View {
         BaseView(currentViewModel: viewModel,
-                 background: .black,
+                 background: .lightTeal,
                  showIndicator: $viewModel.showIndicator) {
             VStack {
                 CUILeftHeadline(
@@ -30,78 +31,38 @@ struct DietProgramView: View {
                     bottomPadding: 50)
                 ScrollView {
                     VStack(alignment: .leading, spacing: 10) {
-                        ForEach(meals, id: \.self) { meal in
-                            MealCardElementView(meal: meal)
+                        ForEach(Array(meals.enumerated()), id: \.offset) { index, meal in
+                            let icon = viewModel.mealIcons[index % viewModel.mealIcons.count]
+                            MealCardElementView(meal: meal, icon: icon, selectedMeals: selectedMeals)
+                                .onTapGesture {
+                                    if selectedMeals.contains(meal) {
+                                        selectedMeals.remove(meal)
+                                    } else {
+                                        selectedMeals.insert(meal)
+                                    }
+                                }
                         }
                     }
                     .padding(.horizontal)
                 }
             }
-            
             .onAppear {
-                generateDietPlan()
+                fetchDietPlan()
+                viewModel.getMealIcons()
             }
         }
-                 
-                 .navigationBarTitle("DietGenie AI")
-                 .navigationBarBackButtonHidden()
-                 .navigationBarItems(
-                    leading:
-                        CUIBackButton()
-                 )
-        
+        .navigationBarBackButtonHidden()
     }
-    private func generateDietPlan() {
-        viewModel.showIndicator = true // Show indicator
-        print("Generating diet plan...")
-        
-        // Create a DietPlan instance
-        let dietPlan = DietPlan(
-            id: nil, // Will be set by Firestore if it’s a new document
-            createdAt: Date(),
-            meals: [], // You can initialize with an empty array or a default value
-            userId: userInputModel.userId ?? "unknown"
-        )
-        
-        // Save the diet plan entry
-        openAIManager.saveDietPlanEntry(userInputModel: userInputModel, dietPlan: dietPlan) {
-            // Assuming saveDietPlanEntry is updated to include a completion handler
-            print("Diet plan entry saved successfully.")
-        }
+    
+    private func fetchDietPlan() {
+        // Fetch meals directly as strings from userInputModel
+        meals = userInputModel.dietPlans.first?.meals ?? []
 
-        // Generate the diet plan
-        openAIManager.generatePrompt(userInputModel: userInputModel) { responseMeals in
-            DispatchQueue.main.async {
-                print("Received response.")
-                if let responseMeals = responseMeals {
-                    self.meals = responseMeals
-                    saveDietPlanToFirebase(meals: responseMeals)
-                } else {
-                    print("No response meals received.")
-                }
-                viewModel.showIndicator = false // Hide indicator
-            }
+        if meals.isEmpty {
+            print("No meals found in userInputModel.")
+        } else {
+            print("Diet plan fetched from userInputModel. Meals: \(meals)")
         }
     }
 
-    private func saveDietPlanToFirebase(meals: [String]) {
-        guard let userId = Auth.auth().currentUser?.uid else {
-            print("No user ID found")
-            return
-        }
-        
-        let dietPlanData: [String: Any] = [
-            "userId": userId,
-            "createdAt": Timestamp(date: Date()),
-            "meals": meals
-        ]
-        
-        db.collection("dietPlans").addDocument(data: dietPlanData) { error in
-            if let error = error {
-                print("Error saving diet plan: \(error.localizedDescription)")
-            } else {
-                print("Diet plan saved successfully.")
-            }
-        }
-    }
 }

@@ -11,7 +11,8 @@ struct DetailsAboutMeView: View {
     @EnvironmentObject var userInputModel: UserInputModel
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @StateObject private var healthKitManager = HealthKitManager()
-    @StateObject private var ageValidator = DefaultTextValidator(predicate: ValidatorHelper.agePredicate)
+    @State private var showDatePicker = false
+    @State private var formattedDate: String = ""
     @StateObject private var birthdayValidator = DefaultTextValidator(predicate: ValidatorHelper.datePredicate)
     @State private var birthday: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date())!
     @StateObject private var viewModel = DetailsAboutMeVM()
@@ -53,9 +54,9 @@ struct DetailsAboutMeView: View {
                             CUIValidationField(
                                 placeholder: "Please select birthday",
                                 prompt: "",
-                                text: $ageValidator.text,
-                                isCriteriaValid: $ageValidator.isCriteriaValid,
-                                isNotValid: $ageValidator.isNotValid,
+                                text: .constant("Please select birthday"),
+                                isCriteriaValid: $birthdayValidator.isCriteriaValid,
+                                isNotValid: $birthdayValidator.isNotValid,
                                 showPrompt: .constant(false), style: .default)
                             .disabled(true)
                             .background(Color.clear)
@@ -122,17 +123,23 @@ struct DetailsAboutMeView: View {
                             segment.title == genderString // Adjust this line based on your SegmentTitle implementation
                         } ?? 3
                     }
-                    if let birthday = userInputModel.birthday {
-                        birthdayValidator.text = birthday
-                        ageValidator.text = birthday
-                        self.birthday = Date.date(from: birthday, format: "dd-MM-YYYY") ?? Date()
+                    if let birthdayString = userInputModel.birthday {
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "dd.MM.yyyy"
+                        if let date = formatter.date(from: birthdayString) {
+                            birthday = date
+                        }
                     }
                     if let height = userInputModel.height {
-                        selectedLengthItem.text = String(height)
+                        let heightString = String(format: "%.0f", height * 100) // Convert height to string
+                        selectedLengthItem = viewModel.lengthOptions.first { $0.id == heightString } ?? CUIDropdownItemModel(id: "", text: "")
                     }
                     if let weight = userInputModel.weight {
-                        selectedWeightItem.text = String(weight)
+                        // Convert weight to an integer string by removing the decimal part
+                        let weightString = String(format: "%.0f", weight) // Use "%.0f" to keep only the integer part
+                        selectedWeightItem = viewModel.weightOptions.first { $0.id == weightString } ?? CUIDropdownItemModel(id: "", text: "")
                     }
+
                 }
                 .onDisappear {
                     viewModel.showIndicator = false

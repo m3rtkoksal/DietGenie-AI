@@ -45,7 +45,7 @@ struct RegisterView: View {
                             isCriteriaValid: $nameValidator.isCriteriaValid,
                             isNotValid: $nameValidator.isNotValid,
                             showPrompt: $nameValidator.showPrompt,
-                            style: .emailAddress
+                            style: .namePhonePad
                         )
                         CUIValidationField(
                             placeholder: "Last name",
@@ -54,7 +54,7 @@ struct RegisterView: View {
                             isCriteriaValid: $surnameValidator.isCriteriaValid,
                             isNotValid: $surnameValidator.isNotValid,
                             showPrompt: $surnameValidator.showPrompt,
-                            style: .emailAddress
+                            style: .namePhonePad
                         )
                         CUIValidationField(
                             placeholder: "Email address",
@@ -62,8 +62,10 @@ struct RegisterView: View {
                             text: $emailValidator.text,
                             isCriteriaValid: $emailValidator.isCriteriaValid,
                             isNotValid: $emailValidator.isNotValid,
-                            showPrompt: $emailValidator.showPrompt, style: .emailAddress
+                            showPrompt: $emailValidator.showPrompt,
+                            style: .emailAddress
                         )
+                        .autocapitalization(.none)
                         
                         CUIPasswordValidationField(
                             placeholder: "Password",

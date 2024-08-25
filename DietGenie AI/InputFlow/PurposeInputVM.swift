@@ -9,7 +9,7 @@ import Foundation
 
 class PurposeInputVM: BaseViewModel {
     @Published var purposeItems: [PurposeItem] = []
-    @Published var goToDietProgram = false
+    @Published var goToLoadingView = false
 
     func fetchPurposeItems() {
         self.purposeItems = [

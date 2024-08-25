@@ -18,19 +18,17 @@ struct PurposeInputView: View {
                  background: .lightTeal,
                  showIndicator: $viewModel.showIndicator) {
             NavigationLink(
-                destination: DietProgramView()
+                destination: LoadingView()
                     .environmentObject(userInputModel),
-                isActive: $viewModel.goToDietProgram
+                isActive: $viewModel.goToLoadingView
             ) {}
-            VStack(spacing: 40) {
+            VStack(spacing: 20) {
                 CUILeftHeadline(
                     title: "What’s your goal?",
                     subtitle: "Let’s focus on one goal to begin with.",
-                    style: .black,
-                    bottomPadding: 0)
-                Spacer()
+                    style: .black)
                 ScrollView {
-                    VStack(spacing: 10) {
+                    VStack(spacing: 20) {
                         ForEach(viewModel.purposeItems, id: \.self) { purpose in
                             PurposeElement(
                                 title: purpose.title,
@@ -45,7 +43,7 @@ struct PurposeInputView: View {
                 CUIButton(text: "NEXT") {
                     viewModel.showIndicator = true
                     userInputModel.purpose = selectedPurpose?.title
-                    viewModel.goToDietProgram = true
+                    viewModel.goToLoadingView = true
                 }
             }
             .onAppear {

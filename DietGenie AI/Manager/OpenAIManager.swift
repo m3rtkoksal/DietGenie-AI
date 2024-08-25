@@ -139,9 +139,11 @@ class OpenAIManager: ObservableObject {
         let mealSeparator = "***"
         // Define meal keywords for better segmentation
         let mealKeywords = ["Breakfast", "Morning Snack", "Lunch", "Afternoon Snack", "Dinner", "Evening Snack","Meal 1", "Meal 2", "Meal 3", "Meal 4", "Meal 5", "Snack"]
+        // Remove the "Note:" part if it exists in the response
+        let cleanedResponse = response.components(separatedBy: "Note:").first ?? response
 
-        // Split the response by the meal separator
-        let mealComponents = response.components(separatedBy: mealSeparator)
+        // Split the cleaned response by the meal separator
+        let mealComponents = cleanedResponse.components(separatedBy: mealSeparator)
 
         // Filter out empty strings and trim whitespace from each component
         let trimmedComponents = mealComponents
@@ -202,6 +204,7 @@ class OpenAIManager: ObservableObject {
         - Gender: \(userInputModel.gender != nil ? hkBiologicalSexToGenderString(userInputModel.gender!) : "unknown gender")
         - My purpose is to: \(userInputModel.purpose != nil ? "\(userInputModel.purpose!)" : "unknown purpose")
         - Please write grams or litres unit to my meal plan and before each meal add "***" so that I can split each meal in my code from your response
+        - Please only write me the daily plan do not write things like ["Based on the information provided, here is a personalized diet plan for weight loss:" or Make sure to drink plenty of water throughout the day and incorporate physical activity into your routine to support your weight loss goals. It\'s also important to consult with a nutritionist or healthcare provider before starting any new diet plan just the feeding plan only or Note: something Nothing else.
         """
     }
     

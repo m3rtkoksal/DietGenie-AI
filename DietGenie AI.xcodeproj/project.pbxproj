@@ -111,6 +111,8 @@
 		8EAEB0732C73CF6D00FD9713 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EAEB0722C73CF6D00FD9713 /* Montserrat-Medium.ttf */; };
 		8EAEB0752C73CF7700FD9713 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EAEB0742C73CF7700FD9713 /* Montserrat-Bold.ttf */; };
 		8EAEB0772C73CF7E00FD9713 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EAEB0762C73CF7E00FD9713 /* Montserrat-SemiBold.ttf */; };
+		8EBBE6182C7A7BC40009CA62 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBBE6172C7A7BC40009CA62 /* LoadingView.swift */; };
+		8EBBE61A2C7A82A80009CA62 /* MealItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBBE6192C7A82A80009CA62 /* MealItems.swift */; };
 		8EDFD1AB2C713E8D00CCA1C2 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AA2C713E8D00CCA1C2 /* PasswordResetView.swift */; };
 		8EDFD1AD2C714F4F00CCA1C2 /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */; };
 		8EDFD1AF2C7154D900CCA1C2 /* CUIPasswordValidationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDFD1AE2C7154D900CCA1C2 /* CUIPasswordValidationField.swift */; };
@@ -206,6 +208,8 @@
 		8EAEB0722C73CF6D00FD9713 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		8EAEB0742C73CF7700FD9713 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		8EAEB0762C73CF7E00FD9713 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		8EBBE6172C7A7BC40009CA62 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		8EBBE6192C7A82A80009CA62 /* MealItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealItems.swift; sourceTree = "<group>"; };
 		8EDFD1AA2C713E8D00CCA1C2 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		8EDFD1AC2C714F4F00CCA1C2 /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 		8EDFD1AE2C7154D900CCA1C2 /* CUIPasswordValidationField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIPasswordValidationField.swift; sourceTree = "<group>"; };
@@ -308,9 +312,10 @@
 				8E36DC552C750C3D005F58E4 /* HealthKitPermission */,
 				8EDFD1BB2C7161E400CCA1C2 /* DetailsAboutMe */,
 				8E47D1972C77C7E600A8C4B3 /* HowActive */,
+				8EDFD1B22C715FC200CCA1C2 /* Purpose */,
+				8EBBE6162C7A7BAA0009CA62 /* Loading */,
 				8E0B2C102C720F25004DFCD8 /* SavedPlan */,
 				8EDFD1C22C7164BF00CCA1C2 /* SelectInput */,
-				8EDFD1B22C715FC200CCA1C2 /* Purpose */,
 				8EDFD1B52C71601900CCA1C2 /* DietProgram */,
 			);
 			path = InputFlow;
@@ -495,6 +500,14 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		8EBBE6162C7A7BAA0009CA62 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				8EBBE6172C7A7BC40009CA62 /* LoadingView.swift */,
+			);
+			name = Loading;
+			sourceTree = "<group>";
+		};
 		8EDFD1B22C715FC200CCA1C2 /* Purpose */ = {
 			isa = PBXGroup;
 			children = (
@@ -509,9 +522,10 @@
 		8EDFD1B52C71601900CCA1C2 /* DietProgram */ = {
 			isa = PBXGroup;
 			children = (
-				8E02CF932C6C7671006E5B93 /* MealCardElementView.swift */,
 				8E02CF892C6BFB43006E5B93 /* DietProgramView.swift */,
+				8E02CF932C6C7671006E5B93 /* MealCardElementView.swift */,
 				8EDFD1B32C715FE800CCA1C2 /* DietProgramVM.swift */,
+				8EBBE6192C7A82A80009CA62 /* MealItems.swift */,
 			);
 			name = DietProgram;
 			sourceTree = "<group>";
@@ -696,6 +710,7 @@
 				8E0B2C162C722450004DFCD8 /* DietPlanElement.swift in Sources */,
 				8E47D18C2C77455E00A8C4B3 /* HeightPickerView.swift in Sources */,
 				8E02CF702C6B94C3006E5B93 /* SegmentedControlView.swift in Sources */,
+				8EBBE61A2C7A82A80009CA62 /* MealItems.swift in Sources */,
 				8EE8D94E2C78CDB8000EC49B /* PurposeElement.swift in Sources */,
 				8EDFD1AD2C714F4F00CCA1C2 /* LogoutButton.swift in Sources */,
 				8E02CF4A2C6B83FF006E5B93 /* BaseView.swift in Sources */,
@@ -723,6 +738,7 @@
 				8E47D1902C77592C00A8C4B3 /* NdHeightPickerModifier.swift in Sources */,
 				8E47D19F2C77CBE500A8C4B3 /* ActivityElement.swift in Sources */,
 				8EE8D9502C78CDC8000EC49B /* PurposeItems.swift in Sources */,
+				8EBBE6182C7A7BC40009CA62 /* LoadingView.swift in Sources */,
 				8E02CF5F2C6B8746006E5B93 /* Screen+Ext.swift in Sources */,
 				8E47D1922C776AA300A8C4B3 /* NdWeightPickerModifier.swift in Sources */,
 				8E47D1952C77C1F300A8C4B3 /* WeightPickerView.swift in Sources */,

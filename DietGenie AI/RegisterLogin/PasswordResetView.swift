@@ -14,16 +14,12 @@ struct PasswordResetView: View {
     @State private var errorMessage = ""
     @State private var showAlert = false
     @StateObject private var emailValidator = DefaultTextValidator(predicate: ValidatorHelper.emailPredicate)
-    @State private var scrollViewContentOffset: CGFloat = 0
     
     var body: some View {
         BaseView(currentViewModel: viewModel,
                  background: .lightTeal,
-                 showIndicator: $viewModel.showIndicator,
-                 scrollViewOffset: scrollViewContentOffset) {
-            TrackableScrollView(.vertical,
-                                showIndicators: false,
-                                contentOffset: $scrollViewContentOffset) {
+                 showIndicator: $viewModel.showIndicator) {
+            VStack{
                 CUILeftHeadline(
                     title: "Forgot Password",
                     subtitle: "Please enter your email address to recieve your password reset code",
@@ -43,7 +39,7 @@ struct PasswordResetView: View {
                     self.showAlert = true
                 }
                 .padding(.top,110)
-                LottieView(lottieFile: "forgotPass_animation", loopMode: .loop)
+                LottieView(lottieFile: "", loopMode: .loop)
                     .padding(.top)
             }
             .navigationBarTitle("Forgot Password")

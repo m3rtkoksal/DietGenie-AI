@@ -11,8 +11,6 @@ struct HowActiveYouView: View {
     @EnvironmentObject var userInputModel: UserInputModel
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @StateObject private var viewModel = HowActiveYouVM()
-    @State private var selectedActivity: ActivityItem?
-    @State private var activities: [ActivityItem] = []
     
     var body: some View {
             BaseView(currentViewModel: viewModel,
@@ -32,25 +30,29 @@ struct HowActiveYouView: View {
                         bottomPadding: 0)
                     ScrollView {
                         VStack(spacing: 15) {
+                            Spacer(minLength: 16)
                             ForEach(viewModel.activityItems, id: \.self) { activity in
                                 ActivityElement(
                                     title: activity.title,
                                     subtitle: activity.subtitle,
-                                    isSelected: activity == selectedActivity)
+                                    isSelected: activity == viewModel.selectedActivity)
                                 .onTapGesture {
-                                    selectedActivity = activity
+                                    viewModel.selectedActivity = activity
                                 }
                             }
                         }
                     }
                     Spacer()
                     CUIButton(text: "NEXT") {
-                        userInputModel.activity = selectedActivity?.title
+                        userInputModel.activity = viewModel.selectedActivity?.title
                         viewModel.goToPurpose = true
                     }
                 }
                 .onAppear {
                     viewModel.fetchActivityItems()
+                    if let activeEnergy = userInputModel.activeEnergy {
+                        viewModel.selectActivityBasedOnEnergy(activeEnergy: activeEnergy)
+                    }
                 }
             }
                      .navigationBarBackButtonHidden()

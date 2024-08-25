@@ -25,7 +25,7 @@ struct CUIValidationField: View {
                 CUIDefaultTextField(
                     text: $text,
                     placeholder: placeholder,
-                    fontColor: .black)
+                    fontColor: .textColorsNeutral)
                 .keyboardType(style)
                 .padding(.leading, 3)
                 .frame(height: 50)
