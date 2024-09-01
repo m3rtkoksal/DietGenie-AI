@@ -63,6 +63,8 @@ struct ProfileView: View {
                                            buttonIcon: "") { }
                 }
                 .padding(.horizontal)
+                Spacer()
+                LogoutButton()
             }
         }
                  .navigationBarBackButtonHidden(true)

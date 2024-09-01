@@ -13,12 +13,17 @@ struct LogoutButton: View {
         Button {
             signOut()
         } label: {
-            Text("Sign out")
+            Text("Log out")
                 .font(.system(size: 16, weight: .semibold))
-                .foregroundColor(.teal)
-                .padding(5)
+                .foregroundColor(.red)
+                .padding(15)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 38)
+                        .strokeBorder(Color.lightGray200, lineWidth: 2)
+                        .shadow(color: Color(red: 0.51, green: 0.74, blue: 0.62, opacity: 0.3), radius: 20, x: 0, y: 0)
+                )
+               
         }
-        .frame(width: 50)
     }
     
     func signOut() {
