@@ -64,10 +64,13 @@ struct SavedPlanView: View {
                     var fetchedDietPlans: [DietPlan] = []
                     for document in querySnapshot?.documents ?? [] {
                         do {
-                            let dietPlan = try document.data(as: DietPlan.self)
+                            var dietPlan = try document.data(as: DietPlan.self)
+                            dietPlan.id = document.documentID
                             // Check for duplicates before appending
                             if !fetchedDietPlans.contains(where: { $0.id == dietPlan.id }) {
-                                fetchedDietPlans.append(dietPlan)
+                                if dietPlan.meals.count > 0 {
+                                    fetchedDietPlans.append(dietPlan)
+                                }
                             }
                         } catch {
                             print("Error decoding diet plan: \(error.localizedDescription)")

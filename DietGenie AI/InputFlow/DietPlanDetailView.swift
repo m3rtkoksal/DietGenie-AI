@@ -13,6 +13,7 @@ struct DietPlanDetailView: View {
     let dietPlan: DietPlan
     @StateObject private var viewModel = DietPlanDetailVM()
     @State private var selectedMeals: Set<String> = []
+    private let mealManager = MealManager()
 
     var body: some View {
         BaseView(currentViewModel: viewModel,
@@ -46,28 +47,19 @@ struct DietPlanDetailView: View {
                 }
             }
             .onAppear {
+                MealManager.shared.checkAndCleanDaily() // Clean old data if needed
                 viewModel.getMealIcons()
                 if let dietPlanId = dietPlan.id, !dietPlanId.isEmpty {
-                    viewModel.loadSelectedMeals(dietPlanId: dietPlanId) { loadedMeals, error in
-                        if let error = error {
-                            print("Error loading selected meals: \(error.localizedDescription)")
-                        } else {
-                            selectedMeals = loadedMeals ?? []
-                        }
-                    }
+                    // Load selected meals only once on appear
+                    selectedMeals = MealManager.shared.loadSelectedMeals(dietPlanId: dietPlanId)
                 } else {
                     print("Diet plan ID is invalid")
                 }
             }
+                
             .onDisappear {
                 if let dietPlanId = dietPlan.id, !dietPlanId.isEmpty {
-                    viewModel.saveSelectedMeals(dietPlanId: dietPlanId, selectedMeals: selectedMeals) { error in
-                        if let error = error {
-                            print("Error saving selected meals: \(error.localizedDescription)")
-                        } else {
-                            print("Selected meals saved successfully.")
-                        }
-                    }
+                    MealManager.shared.saveSelectedMeals(dietPlanId: dietPlanId, selectedMeals: selectedMeals)
                 } else {
                     print("Diet plan ID is invalid")
                 }
