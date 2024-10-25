@@ -20,6 +20,10 @@ struct MainTabView: View {
                     Label("Profile", systemImage: "person")
                 }
                 .navigationBarHidden(true)
+            OfferingsView()
+                .tabItem {
+                    Label("Offers", systemImage: "command")
+                }
         }
         .accentColor(Color.topGreen) // Optional: Customize the selected tab color
     }

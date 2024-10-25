@@ -8,6 +8,7 @@
 import Foundation
 import HealthKit
 import FirebaseFirestore
+import FirebaseAuth
 
 class OpenAIManager: ObservableObject {
     private let openAIURL = URL(string: "https://api.openai.com/v1/chat/completions")
@@ -34,7 +35,7 @@ class OpenAIManager: ObservableObject {
     func saveDietPlanEntry(userInputModel: UserInputModel, dietPlan: DietPlan, completion: @escaping () -> Void) {
         // Ensure the diet plan includes the userId from the UserInputModel
         var updatedDietPlan = dietPlan
-        updatedDietPlan.userId = userInputModel.userId ?? ""  // Ensure userId is set
+        updatedDietPlan.userId = Auth.auth().currentUser?.uid ?? "" 
         
         // Print the data for debugging purposes
         print("Saving diet plan entry with data: \(updatedDietPlan)")
@@ -58,7 +59,7 @@ class OpenAIManager: ObservableObject {
     func generatePrompt(userInputModel: UserInputModel, completion: @escaping ([String]?) -> Void) {
         let prompt = createPrompt(from: userInputModel)
         print(prompt)
-        RemoteConfigManager.shared.fetchAPIKey { apiKey in
+        RemoteConfigManager.shared.fetchOpenAIAPIKey { apiKey in
             if let key = apiKey {
                 KeychainManager.shared.saveToKeychain(data: key, forKey: .secureToken)
             } else {

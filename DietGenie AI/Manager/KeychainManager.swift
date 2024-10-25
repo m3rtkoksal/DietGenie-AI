@@ -10,9 +10,12 @@ import KeychainSwift
 
 public enum KeychainKey: Int, CaseIterable {
     case secureToken
+    case revenueCatToken  // Add this line
+
     var key: String {
         switch self {
         case .secureToken: return "secureToken"
+        case .revenueCatToken: return "revenueCatToken" 
         }
     }
 }

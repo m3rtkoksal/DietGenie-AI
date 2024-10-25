@@ -45,7 +45,6 @@
 		8E02CF982C6E0D79006E5B93 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF972C6E0D79006E5B93 /* KeychainManager.swift */; };
 		8E02CF9B2C6E0E67006E5B93 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8E02CF9A2C6E0E67006E5B93 /* KeychainSwift */; };
 		8E02CF9D2C6E0FDC006E5B93 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CF9C2C6E0FDC006E5B93 /* Constant.swift */; };
-		8E02CF9F2C6E1E4E006E5B93 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E02CF9E2C6E1E4E006E5B93 /* GoogleService-Info.plist */; };
 		8E02CFAC2C6E1F47006E5B93 /* FirebaseRemoteConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CFAB2C6E1F47006E5B93 /* FirebaseRemoteConfigManager.swift */; };
 		8E02CFAF2C6E20DE006E5B93 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8E02CFAE2C6E20DE006E5B93 /* FirebaseAnalytics */; };
 		8E02CFB12C6E20DE006E5B93 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 8E02CFB02C6E20DE006E5B93 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -101,6 +100,12 @@
 		8E47D19B2C77C81200A8C4B3 /* HowActiveYouVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E47D19A2C77C81200A8C4B3 /* HowActiveYouVM.swift */; };
 		8E47D19D2C77C9E800A8C4B3 /* ActivityItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E47D19C2C77C9E800A8C4B3 /* ActivityItems.swift */; };
 		8E47D19F2C77CBE500A8C4B3 /* ActivityElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E47D19E2C77CBE500A8C4B3 /* ActivityElement.swift */; };
+		8E5CD1262CC8979100696988 /* DietGenie-AI-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E5CD1252CC8979100696988 /* DietGenie-AI-Info.plist */; };
+		8E5CD12E2CC89AD500696988 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E5CD12D2CC89AD500696988 /* GoogleService-Info.plist */; };
+		8E5CD1322CCB8A0100696988 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = 8E5CD1312CCB8A0100696988 /* ReceiptParser */; };
+		8E5CD1342CCB8A0100696988 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 8E5CD1332CCB8A0100696988 /* RevenueCat */; };
+		8E5CD1362CCB8A0100696988 /* RevenueCat_CustomEntitlementComputation in Frameworks */ = {isa = PBXBuildFile; productRef = 8E5CD1352CCB8A0100696988 /* RevenueCat_CustomEntitlementComputation */; };
+		8E5CD1382CCB8A0200696988 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8E5CD1372CCB8A0200696988 /* RevenueCatUI */; };
 		8EAEB05E2C73B6C500FD9713 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAEB05D2C73B6C500FD9713 /* LottieView.swift */; };
 		8EAEB0612C73B79800FD9713 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 8EAEB0602C73B79800FD9713 /* Lottie */; };
 		8EAEB0632C73B7B000FD9713 /* DietGenie_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EAEB0622C73B7B000FD9713 /* DietGenie_animation.json */; };
@@ -172,7 +177,6 @@
 		8E02CF952C6CC3F6006E5B93 /* CUILoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUILoadingView.swift; sourceTree = "<group>"; };
 		8E02CF972C6E0D79006E5B93 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		8E02CF9C2C6E0FDC006E5B93 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		8E02CF9E2C6E1E4E006E5B93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E02CFAB2C6E1F47006E5B93 /* FirebaseRemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfigManager.swift; sourceTree = "<group>"; };
 		8E02CFDD2C70FFEA006E5B93 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8E02CFDF2C71114B006E5B93 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -204,13 +208,14 @@
 		8E47D19A2C77C81200A8C4B3 /* HowActiveYouVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowActiveYouVM.swift; sourceTree = "<group>"; };
 		8E47D19C2C77C9E800A8C4B3 /* ActivityItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityItems.swift; sourceTree = "<group>"; };
 		8E47D19E2C77CBE500A8C4B3 /* ActivityElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityElement.swift; sourceTree = "<group>"; };
+		8E5CD1252CC8979100696988 /* DietGenie-AI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DietGenie-AI-Info.plist"; sourceTree = "<group>"; };
+		8E5CD12D2CC89AD500696988 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8EAEB05D2C73B6C500FD9713 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		8EAEB0622C73B7B000FD9713 /* DietGenie_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DietGenie_animation.json; sourceTree = "<group>"; };
 		8EAEB0642C73B7E300FD9713 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		8EAEB0672C73B83100FD9713 /* OnboardingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVM.swift; sourceTree = "<group>"; };
 		8EAEB06B2C73C60A00FD9713 /* CustomEllipseShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEllipseShape.swift; sourceTree = "<group>"; };
 		8EAEB06F2C73CC4800FD9713 /* Montserrat-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-VariableFont_wght.ttf"; sourceTree = "<group>"; };
-		8EAEB0712C73CC6900FD9713 /* DietGenie-AI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "DietGenie-AI-Info.plist"; sourceTree = SOURCE_ROOT; };
 		8EAEB0722C73CF6D00FD9713 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		8EAEB0742C73CF7700FD9713 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		8EAEB0762C73CF7E00FD9713 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -241,6 +246,8 @@
 			files = (
 				8E02CFDB2C6E20DE006E5B93 /* FirebaseVertexAI-Preview in Frameworks */,
 				8E02CFC52C6E20DE006E5B93 /* FirebaseFirestoreCombine-Community in Frameworks */,
+				8E5CD1322CCB8A0100696988 /* ReceiptParser in Frameworks */,
+				8E5CD1362CCB8A0100696988 /* RevenueCat_CustomEntitlementComputation in Frameworks */,
 				8E02CFC72C6E20DE006E5B93 /* FirebaseFunctions in Frameworks */,
 				8E02CFD32C6E20DE006E5B93 /* FirebasePerformance in Frameworks */,
 				8E02CFD92C6E20DE006E5B93 /* FirebaseStorageCombine-Community in Frameworks */,
@@ -255,12 +262,14 @@
 				8E02CFCD2C6E20DE006E5B93 /* FirebaseInstallations in Frameworks */,
 				8E02CFC92C6E20DE006E5B93 /* FirebaseFunctionsCombine-Community in Frameworks */,
 				8EAEB0612C73B79800FD9713 /* Lottie in Frameworks */,
+				8E5CD1382CCB8A0200696988 /* RevenueCatUI in Frameworks */,
 				8E02CFB52C6E20DE006E5B93 /* FirebaseAppCheck in Frameworks */,
 				8E02CFB32C6E20DE006E5B93 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				8E02CFCB2C6E20DE006E5B93 /* FirebaseInAppMessaging-Beta in Frameworks */,
 				8E02CFB92C6E20DE006E5B93 /* FirebaseAuth in Frameworks */,
 				8E02CFBD2C6E20DE006E5B93 /* FirebaseCrashlytics in Frameworks */,
 				8E02CFCF2C6E20DE006E5B93 /* FirebaseMLModelDownloader in Frameworks */,
+				8E5CD1342CCB8A0100696988 /* RevenueCat in Frameworks */,
 				8E02CFD72C6E20DE006E5B93 /* FirebaseStorage in Frameworks */,
 				8E02CFB72C6E20DE006E5B93 /* FirebaseAppDistribution-Beta in Frameworks */,
 				8E02CFBB2C6E20DE006E5B93 /* FirebaseAuthCombine-Community in Frameworks */,
@@ -273,10 +282,12 @@
 		8E02CF2B2C6B8205006E5B93 = {
 			isa = PBXGroup;
 			children = (
+				8E5CD12D2CC89AD500696988 /* GoogleService-Info.plist */,
+				8E5CD1252CC8979100696988 /* DietGenie-AI-Info.plist */,
 				8E0B2C172C722BEC004DFCD8 /* Controller */,
 				8E02CFE12C7119FF006E5B93 /* Modifier */,
-				8E02CF9E2C6E1E4E006E5B93 /* GoogleService-Info.plist */,
 				8E02CF362C6B8205006E5B93 /* DietGenie AI */,
+				8E5CD1302CCB8A0100696988 /* Frameworks */,
 				8E02CF352C6B8205006E5B93 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -292,7 +303,6 @@
 		8E02CF362C6B8205006E5B93 /* DietGenie AI */ = {
 			isa = PBXGroup;
 			children = (
-				8EAEB0712C73CC6900FD9713 /* DietGenie-AI-Info.plist */,
 				8E02CFDC2C70FFC2006E5B93 /* RegisterLogin */,
 				8E02CF842C6BB79E006E5B93 /* Manager */,
 				8E02CF832C6BB6F3006E5B93 /* DietGenie AI.entitlements */,
@@ -507,6 +517,13 @@
 			name = HowActive;
 			sourceTree = "<group>";
 		};
+		8E5CD1302CCB8A0100696988 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8EAEB0662C73B81D00FD9713 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,6 +651,10 @@
 				8E02CFD82C6E20DE006E5B93 /* FirebaseStorageCombine-Community */,
 				8E02CFDA2C6E20DE006E5B93 /* FirebaseVertexAI-Preview */,
 				8EAEB0602C73B79800FD9713 /* Lottie */,
+				8E5CD1312CCB8A0100696988 /* ReceiptParser */,
+				8E5CD1332CCB8A0100696988 /* RevenueCat */,
+				8E5CD1352CCB8A0100696988 /* RevenueCat_CustomEntitlementComputation */,
+				8E5CD1372CCB8A0200696988 /* RevenueCatUI */,
 			);
 			productName = "DietGenie AI";
 			productReference = 8E02CF342C6B8205006E5B93 /* DietGenie AI.app */;
@@ -667,6 +688,7 @@
 				8E02CF992C6E0E67006E5B93 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 				8E02CFAD2C6E20DE006E5B93 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8EAEB05F2C73B79800FD9713 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				8E5CD12F2CCB89C600696988 /* XCRemoteSwiftPackageReference "purchases-ios" */,
 			);
 			productRefGroup = 8E02CF352C6B8205006E5B93 /* Products */;
 			projectDirPath = "";
@@ -682,13 +704,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E5CD1262CC8979100696988 /* DietGenie-AI-Info.plist in Resources */,
 				8E02CF3F2C6B8207006E5B93 /* Preview Assets.xcassets in Resources */,
 				8EAEB0632C73B7B000FD9713 /* DietGenie_animation.json in Resources */,
 				8E02CF3C2C6B8207006E5B93 /* Assets.xcassets in Resources */,
-				8E02CF9F2C6E1E4E006E5B93 /* GoogleService-Info.plist in Resources */,
 				8EAEB0732C73CF6D00FD9713 /* Montserrat-Medium.ttf in Resources */,
 				8E36DC532C750B67005F58E4 /* forgotPass_animation.json in Resources */,
 				8EAEB0702C73CC4800FD9713 /* Montserrat-VariableFont_wght.ttf in Resources */,
+				8E5CD12E2CC89AD500696988 /* GoogleService-Info.plist in Resources */,
 				8EAEB0772C73CF7E00FD9713 /* Montserrat-SemiBold.ttf in Resources */,
 				8EAEB0752C73CF7700FD9713 /* Montserrat-Bold.ttf in Resources */,
 			);
@@ -943,7 +966,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mika.DietGenie-AI";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mika.DietGenieAI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -981,7 +1004,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mika.DietGenie-AI";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mika.DietGenieAI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1028,6 +1051,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 11.0.0;
+			};
+		};
+		8E5CD12F2CCB89C600696988 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.0;
 			};
 		};
 		8EAEB05F2C73B79800FD9713 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
@@ -1160,6 +1191,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8E02CFAD2C6E20DE006E5B93 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseVertexAI-Preview";
+		};
+		8E5CD1312CCB8A0100696988 /* ReceiptParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E5CD12F2CCB89C600696988 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = ReceiptParser;
+		};
+		8E5CD1332CCB8A0100696988 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E5CD12F2CCB89C600696988 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
+		};
+		8E5CD1352CCB8A0100696988 /* RevenueCat_CustomEntitlementComputation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E5CD12F2CCB89C600696988 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat_CustomEntitlementComputation;
+		};
+		8E5CD1372CCB8A0200696988 /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E5CD12F2CCB89C600696988 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCatUI;
 		};
 		8EAEB0602C73B79800FD9713 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
