@@ -24,6 +24,7 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Offers", systemImage: "command")
                 }
+                .navigationBarHidden(true)
         }
         .accentColor(Color.topGreen) // Optional: Customize the selected tab color
     }

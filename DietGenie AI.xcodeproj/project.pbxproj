@@ -104,8 +104,9 @@
 		8E5CD12E2CC89AD500696988 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E5CD12D2CC89AD500696988 /* GoogleService-Info.plist */; };
 		8E5CD1322CCB8A0100696988 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = 8E5CD1312CCB8A0100696988 /* ReceiptParser */; };
 		8E5CD1342CCB8A0100696988 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 8E5CD1332CCB8A0100696988 /* RevenueCat */; };
-		8E5CD1362CCB8A0100696988 /* RevenueCat_CustomEntitlementComputation in Frameworks */ = {isa = PBXBuildFile; productRef = 8E5CD1352CCB8A0100696988 /* RevenueCat_CustomEntitlementComputation */; };
-		8E5CD1382CCB8A0200696988 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8E5CD1372CCB8A0200696988 /* RevenueCatUI */; };
+		8E5CD17D2CCB9DA600696988 /* OfferingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5CD17C2CCB9DA600696988 /* OfferingsView.swift */; };
+		8E5CD17F2CCBA18F00696988 /* OfferingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5CD17E2CCBA18F00696988 /* OfferingsVM.swift */; };
+		8E5CD1812CCBA1AE00696988 /* CUIOfferingElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5CD1802CCBA1AE00696988 /* CUIOfferingElement.swift */; };
 		8EAEB05E2C73B6C500FD9713 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAEB05D2C73B6C500FD9713 /* LottieView.swift */; };
 		8EAEB0612C73B79800FD9713 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 8EAEB0602C73B79800FD9713 /* Lottie */; };
 		8EAEB0632C73B7B000FD9713 /* DietGenie_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EAEB0622C73B7B000FD9713 /* DietGenie_animation.json */; };
@@ -210,6 +211,9 @@
 		8E47D19E2C77CBE500A8C4B3 /* ActivityElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityElement.swift; sourceTree = "<group>"; };
 		8E5CD1252CC8979100696988 /* DietGenie-AI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DietGenie-AI-Info.plist"; sourceTree = "<group>"; };
 		8E5CD12D2CC89AD500696988 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8E5CD17C2CCB9DA600696988 /* OfferingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferingsView.swift; sourceTree = "<group>"; };
+		8E5CD17E2CCBA18F00696988 /* OfferingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferingsVM.swift; sourceTree = "<group>"; };
+		8E5CD1802CCBA1AE00696988 /* CUIOfferingElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIOfferingElement.swift; sourceTree = "<group>"; };
 		8EAEB05D2C73B6C500FD9713 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		8EAEB0622C73B7B000FD9713 /* DietGenie_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DietGenie_animation.json; sourceTree = "<group>"; };
 		8EAEB0642C73B7E300FD9713 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -247,7 +251,6 @@
 				8E02CFDB2C6E20DE006E5B93 /* FirebaseVertexAI-Preview in Frameworks */,
 				8E02CFC52C6E20DE006E5B93 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				8E5CD1322CCB8A0100696988 /* ReceiptParser in Frameworks */,
-				8E5CD1362CCB8A0100696988 /* RevenueCat_CustomEntitlementComputation in Frameworks */,
 				8E02CFC72C6E20DE006E5B93 /* FirebaseFunctions in Frameworks */,
 				8E02CFD32C6E20DE006E5B93 /* FirebasePerformance in Frameworks */,
 				8E02CFD92C6E20DE006E5B93 /* FirebaseStorageCombine-Community in Frameworks */,
@@ -262,7 +265,6 @@
 				8E02CFCD2C6E20DE006E5B93 /* FirebaseInstallations in Frameworks */,
 				8E02CFC92C6E20DE006E5B93 /* FirebaseFunctionsCombine-Community in Frameworks */,
 				8EAEB0612C73B79800FD9713 /* Lottie in Frameworks */,
-				8E5CD1382CCB8A0200696988 /* RevenueCatUI in Frameworks */,
 				8E02CFB52C6E20DE006E5B93 /* FirebaseAppCheck in Frameworks */,
 				8E02CFB32C6E20DE006E5B93 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				8E02CFCB2C6E20DE006E5B93 /* FirebaseInAppMessaging-Beta in Frameworks */,
@@ -303,6 +305,7 @@
 		8E02CF362C6B8205006E5B93 /* DietGenie AI */ = {
 			isa = PBXGroup;
 			children = (
+				8E5CD17A2CCB9D6900696988 /* MainApp */,
 				8E02CFDC2C70FFC2006E5B93 /* RegisterLogin */,
 				8E02CF842C6BB79E006E5B93 /* Manager */,
 				8E02CF832C6BB6F3006E5B93 /* DietGenie AI.entitlements */,
@@ -442,7 +445,6 @@
 		8E02CFDC2C70FFC2006E5B93 /* RegisterLogin */ = {
 			isa = PBXGroup;
 			children = (
-				8EBBE61F2C7B7E600009CA62 /* Profile */,
 				8EAEB0662C73B81D00FD9713 /* Onboarding */,
 				8EDFD1C12C71642500CCA1C2 /* Welcome */,
 				8EDFD1BE2C71633400CCA1C2 /* Register */,
@@ -522,6 +524,25 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8E5CD17A2CCB9D6900696988 /* MainApp */ = {
+			isa = PBXGroup;
+			children = (
+				8E5CD17B2CCB9D8D00696988 /* Offers */,
+				8EBBE61F2C7B7E600009CA62 /* Profile */,
+			);
+			path = MainApp;
+			sourceTree = "<group>";
+		};
+		8E5CD17B2CCB9D8D00696988 /* Offers */ = {
+			isa = PBXGroup;
+			children = (
+				8E5CD17C2CCB9DA600696988 /* OfferingsView.swift */,
+				8E5CD17E2CCBA18F00696988 /* OfferingsVM.swift */,
+				8E5CD1802CCBA1AE00696988 /* CUIOfferingElement.swift */,
+			);
+			path = Offers;
 			sourceTree = "<group>";
 		};
 		8EAEB0662C73B81D00FD9713 /* Onboarding */ = {
@@ -653,8 +674,6 @@
 				8EAEB0602C73B79800FD9713 /* Lottie */,
 				8E5CD1312CCB8A0100696988 /* ReceiptParser */,
 				8E5CD1332CCB8A0100696988 /* RevenueCat */,
-				8E5CD1352CCB8A0100696988 /* RevenueCat_CustomEntitlementComputation */,
-				8E5CD1372CCB8A0200696988 /* RevenueCatUI */,
 			);
 			productName = "DietGenie AI";
 			productReference = 8E02CF342C6B8205006E5B93 /* DietGenie AI.app */;
@@ -732,6 +751,7 @@
 				8E47D18E2C7748B000A8C4B3 /* VisualEffectBlur.swift in Sources */,
 				8EDFD1BD2C7162A800CCA1C2 /* RegisterVM.swift in Sources */,
 				8E0B2C092C717EB4004DFCD8 /* NavigationUtil.swift in Sources */,
+				8E5CD17F2CCBA18F00696988 /* OfferingsVM.swift in Sources */,
 				8E02CFE72C711AC4006E5B93 /* Date+Ext.swift in Sources */,
 				8EDFD1B12C715F2200CCA1C2 /* PurposeInputVM.swift in Sources */,
 				8E0B2C0F2C720B81004DFCD8 /* ConditionalOpacityAndDisableModifier.swift in Sources */,
@@ -798,8 +818,10 @@
 				8E02CF6C2C6B8A8D006E5B93 /* CUISearchBar.swift in Sources */,
 				8E47D1862C768B7E00A8C4B3 /* CUIDismissButton.swift in Sources */,
 				8E0B2C072C71710C004DFCD8 /* ContentView.swift in Sources */,
+				8E5CD1812CCBA1AE00696988 /* CUIOfferingElement.swift in Sources */,
 				8EAEB0652C73B7E300FD9713 /* OnboardingView.swift in Sources */,
 				8E02CF4D2C6B8440006E5B93 /* Color+Ext.swift in Sources */,
+				8E5CD17D2CCB9DA600696988 /* OfferingsView.swift in Sources */,
 				8E02CF942C6C7671006E5B93 /* MealCardElementView.swift in Sources */,
 				8E02CF572C6B8542006E5B93 /* CUIDropDown.swift in Sources */,
 				8E02CF962C6CC3F6006E5B93 /* CUILoadingView.swift in Sources */,
@@ -1201,16 +1223,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8E5CD12F2CCB89C600696988 /* XCRemoteSwiftPackageReference "purchases-ios" */;
 			productName = RevenueCat;
-		};
-		8E5CD1352CCB8A0100696988 /* RevenueCat_CustomEntitlementComputation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8E5CD12F2CCB89C600696988 /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = RevenueCat_CustomEntitlementComputation;
-		};
-		8E5CD1372CCB8A0200696988 /* RevenueCatUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8E5CD12F2CCB89C600696988 /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = RevenueCatUI;
 		};
 		8EAEB0602C73B79800FD9713 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
